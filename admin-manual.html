@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用説明書 - AMINATI_EC 管理システム</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <style>
+        .manual-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .manual-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .manual-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            color: #333;
+        }
+        
+        .manual-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: #444;
+        }
+        
+        .manual-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 20px 0 10px;
+            color: #555;
+        }
+        
+        .manual-section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .manual-section ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        .manual-section li {
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .feature-box {
+            background: #f8f9fa;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .important-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .password-section {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .password-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .password-item:last-child {
+            border-bottom: none;
+        }
+        
+        .password-label {
+            font-weight: 600;
+            color: #333;
+            min-width: 200px;
+        }
+        
+        .password-value {
+            font-family: monospace;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            word-break: break-all;
+            flex: 1;
+            margin-left: 20px;
+        }
+        
+        .example-box {
+            background: #e8f4f8;
+            border: 1px solid #b8daff;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .button-info {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 15px;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .button-sample {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: #2196f3;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="header-content">
+            <div>
+                <span class="admin-logo">AMINATI_EC</span>
+                <span class="admin-badge">使用説明書</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="btn btn-secondary" onclick="location.href='admin.html'" style="padding: 8px 16px; font-size: 14px;">
+                    ← 管理画面に戻る
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="manual-container">
+        <div class="manual-section">
+            <h2>📖 AMINATI_EC 管理システム 使用説明書</h2>
+            
+            <div class="toc">
+                <h3>目次</h3>
+                <ul>
+                    <li><a href="#system-concept">1. システムのコンセプト</a></li>
+                    <li><a href="#initial-setup">2. 初期設定</a></li>
+                    <li><a href="#product-registration">3. 商品登録の手順</a></li>
+                    <li><a href="#function-explanation">4. 各機能の説明</a></li>
+                    <li><a href="#order-management">5. 注文管理について</a></li>
+                    <li><a href="#troubleshooting">6. トラブルシューティング</a></li>
+                    <li><a href="#system-info">7. システム情報・パスワード</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="manual-section" id="system-concept">
+            <h2>1. システムのコンセプト</h2>
+            
+            <div class="feature-box">
+                <h3>🎯 本システムの特徴</h3>
+                <p>AMINATI_EC管理システムは、以下のコンセプトで開発されています：</p>
+                <ul>
+                    <li><strong>半年に一度の販売</strong>を想定した、シンプルな在庫管理</li>
+                    <li><strong>最小限の工程</strong>で商品登録が完了する設計</li>
+                    <li><strong>必要最低限の機能</strong>に絞り込み、操作の複雑さを排除</li>
+                    <li><strong>直感的な操作性</strong>を重視したインターフェース</li>
+                </ul>
+            </div>
+            
+            <p>過剰な機能を実装せず、商品登録から販売までの基本的な流れをスムーズに行えることを最優先に設計しております。そのため、一部の高度な機能は意図的に実装しておりません。</p>
+        </div>
+
+        <div class="manual-section" id="initial-setup">
+            <h2>2. 初期設定</h2>
+            
+            <div class="important-box">
+                <h3>⚠️ 必ず最初に行ってください</h3>
+                <p>商品登録を行う前に、必ず「管理設定」から店舗情報を設定してください。</p>
+            </div>
+            
+            <h3>設定手順</h3>
+            <ol>
+                <li>管理画面上部の「⚙️ 管理設定」ボタンをクリックします</li>
+                <li>以下の情報を入力してください：
+                    <ul>
+                        <li>会社名</li>
+                        <li>営業時間</li>
+                        <li>電話番号（TEL）</li>
+                        <li>FAX番号</li>
+                        <li>住所</li>
+                    </ul>
+                </li>
+                <li>「保存」ボタンをクリックして設定を保存します</li>
+            </ol>
+            
+            <div class="warning-box">
+                <h4>📧 メールアドレスについて</h4>
+                <p>メールアドレスは<strong>変更しないでください</strong>。自動メール送信機能が正常に動作しなくなる可能性があります。</p>
+            </div>
+        </div>
+
+        <div class="manual-section" id="product-registration">
+            <h2>3. 商品登録の手順</h2>
+            
+            <h3>📝 STEP 1: Excelファイルの準備</h3>
+            <p>商品データをExcel形式（.xlsx または .xls）で準備します。</p>
+            
+            <h4>Excelファイルの形式：</h4>
+            <table class="excel-table" style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                <thead>
+                    <tr style="background: #f0f0f0;">
+                        <th style="border: 1px solid #ddd; padding: 10px;">行</th>
+                        <th style="border: 1px solid #ddd; padding: 10px;">内容</th>
+                        <th style="border: 1px solid #ddd; padding: 10px;">記入例</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 10px;">1行目</td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">項目名（ヘッダー）</td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">商品番号 | ブランド名 | 商品名 | 販売価格 | 定価 | 素材 | 原産国 | カラー | サイズ</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 10px;">2行目以降</td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">商品データ</td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">21765 | ノーブランド | リラックスルーズベーシックT | 5000 | 10000 | 綿100% | 中国 | ホワイト,ブラック | S,M,L,XL</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="info-box">
+                <p><strong>💡 ポイント</strong></p>
+                <ul>
+                    <li>カラーとサイズは<strong>カンマ区切り</strong>で複数入力できます</li>
+                    <li>既存の商品がある場合は<strong>上書き</strong>されますのでご注意ください</li>
+                </ul>
+            </div>
+            
+            <h3>🖼️ STEP 2: 商品画像の準備</h3>
+            
+            <h4>サムネイル画像（商品一覧用）</h4>
+            <p>各商品につき1枚のサムネイル画像を準備してください。</p>
+            
+            <div class="important-box">
+                <h4>重要：ファイル名のルール</h4>
+                <p>画像ファイル名には必ず<strong>商品番号</strong>を含めてください。システムは商品番号を自動的に認識し、対応する商品と紐付けます。</p>
+            </div>
+            
+            <div class="example-box">
+                <strong>ファイル名の例：</strong><br>
+                ✅ カットソー21765.jpg<br>
+                ✅ 2025_0725_21765.jpg<br>
+                ✅ 21765-thumb.jpg<br>
+                ✅ item_21765_white.jpg
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ 商品番号の注意点</h4>
+                <p>商品番号が「0」のような単純な番号の場合、他の商品番号と重複する可能性があります。<br>
+                その場合は「0-a」のように識別子を追加し、画像ファイル名も同様に「カットソー0-a.jpg」としてください。</p>
+            </div>
+            
+            <h4>詳細画像（商品詳細ページ用）</h4>
+            <p>各商品に最大10枚まで詳細画像を登録できます。ファイル名のルールはサムネイル画像と同様です。</p>
+            
+            <div class="info-box">
+                <p><strong>💡 おすすめの運用方法</strong><br>
+                サムネイルで使用した画像を詳細画像にも含めることで、画像管理が簡単になります。</p>
+            </div>
+            
+            <h3>🚀 STEP 3: データのアップロード</h3>
+            <ol>
+                <li>準備したExcelファイルを「商品データ」エリアにドラッグ＆ドロップまたはクリックして選択</li>
+                <li>サムネイル画像を「サムネイル画像」エリアにドラッグ＆ドロップ</li>
+                <li>詳細画像を「詳細画像」エリアにドラッグ＆ドロップ</li>
+                <li>すべてのデータが正しく読み込まれたことを確認</li>
+                <li>「商品ページを生成」ボタンをクリック</li>
+            </ol>
+        </div>
+
+        <div class="manual-section" id="function-explanation">
+            <h2>4. 各機能の説明</h2>
+            
+            <h3>🔘 ヘッダーボタンの機能</h3>
+            
+            <div class="button-info">
+                <span class="button-sample" style="background: #007bff; color: white;">🏠 トップページを確認</span>
+                <span>お客様に表示される店舗トップページを確認できます</span>
+            </div>
+            
+            <div class="button-info">
+                <span class="button-sample" style="background: #6c757d; color: white;">📋 商品管理</span>
+                <span>登録済みの商品一覧を確認・編集・削除できます</span>
+            </div>
+            
+            <div class="button-info">
+                <span class="button-sample" style="background: #6c757d; color: white;">⚙️ 管理設定</span>
+                <span>店舗情報やシステム設定を変更できます</span>
+            </div>
+            
+            <div class="button-info">
+                <span class="button-sample" style="background: #007bff; color: white;">📦 注文管理</span>
+                <span>受注した注文の確認・ステータス管理ができます</span>
+            </div>
+            
+            <h3>🤖 商品説明文の自動生成</h3>
+            <p>商品説明文は、商品名を基にAI（Google Gemini）が自動的に生成します。</p>
+            
+            <div class="info-box">
+                <h4>📝 AIが利用できない場合</h4>
+                <p>無料利用枠の上限に達した場合は、汎用的なテンプレート文章が使用されます。<br>
+                この場合でも、商品名に基づいた適切な説明文が生成されます。</p>
+            </div>
+        </div>
+
+        <div class="manual-section" id="order-management">
+            <h2>5. 注文管理について</h2>
+            
+            <h3>💳 お支払い方法</h3>
+            <p>お客様が選択できる支払い方法は<strong>代金引換（代引き）のみ</strong>です。</p>
+            
+            <h3>📧 注文通知</h3>
+            <p>注文が入ると、管理設定で指定されたメールアドレスに自動的に通知メールが送信されます。</p>
+            
+            <h3>📦 注文処理の流れ</h3>
+            <ol>
+                <li>お客様が商品を注文</li>
+                <li>管理者にメール通知が届く</li>
+                <li>「注文管理」画面で注文内容を確認</li>
+                <li>ステータスを「未処理」→「確認済み」→「発送済み」→「配達完了」と更新</li>
+            </ol>
+        </div>
+
+        <div class="manual-section" id="troubleshooting">
+            <h2>6. トラブルシューティング</h2>
+            
+            <h3>❓ よくある質問</h3>
+            
+            <h4>Q: 商品画像が表示されません</h4>
+            <p>A: 画像ファイル名に商品番号が含まれているか確認してください。商品番号が正しく認識されていない可能性があります。</p>
+            
+            <h4>Q: Excelファイルが読み込めません</h4>
+            <p>A: ファイル形式が .xlsx または .xls であることを確認してください。また、1行目にヘッダーが正しく入力されているか確認してください。</p>
+            
+            <h4>Q: メール通知が届きません</h4>
+            <p>A: 管理設定のメールアドレスが正しく設定されているか確認してください。また、迷惑メールフォルダも確認してください。</p>
+        </div>
+
+        <div class="manual-section" id="system-info">
+            <h2>7. システム情報・パスワード</h2>
+            
+            <div class="password-section">
+                <h3>🔐 システムアクセス情報</h3>
+                
+                <div class="password-item">
+                    <span class="password-label">店舗名：</span>
+                    <span class="password-value">AMINATI_EC （アミナティ）</span>
+                </div>
+                
+                <div class="password-item">
+                    <span class="password-label">店舗TOP URL：</span>
+                    <span class="password-value">https://aminati-ec.github.io/top/</span>
+                </div>
+                
+                <div class="password-item">
+                    <span class="password-label">管理用パスワード：</span>
+                    <span class="password-value">zozo20250725@</span>
+                </div>
+                
+                <div class="password-item">
+                    <span class="password-label">Gemini API Key：</span>
+                    <span class="password-value">AIzaSyDuLxskrLJoQxTQMHKc1cCc-tWWCSfE6AU</span>
+                </div>
+            </div>
+            
+            <div class="password-section">
+                <h3>🖼️ 画像アップロード関連</h3>
+                
+                <div class="password-item">
+                    <span class="password-label">画像アップローダー：</span>
+                    <span class="password-value">https://ec-image-uploader-v2.pages.dev</span>
+                </div>
+                
+                <div class="password-item">
+                    <span class="password-label">Cloudflare R2：</span>
+                    <span class="password-value">https://dash.cloudflare.com/sign-up/r2</span>
+                </div>
+                
+                <div class="password-item">
+                    <span class="password-label">公開URL：</span>
+                    <span class="password-value">https://pub-a2319224352d4abda31362be3c2b1c19.r2.dev</span>
+                </div>
+            </div>
+            
+            <div class="password-section">
+                <h3>🔑 API情報（画像サーバー）</h3>
+                
+                <div class="password-item">
+                    <span class="password-label">アクセスキーID：</span>
+                    <span class="password-value">016edad8d98f07ad63d2496fa598910a</span>
+                </div>
+                
+                <div class="password-item">
+                    <span class="password-label">シークレットアクセスキー：</span>
+                    <span class="password-value" style="font-size: 12px;">873f37fbf751f5c157e7a861d70f6af683fa2d37bccfa5bbc25cb4ab3551d9c6</span>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h4>💡 画像URLの構成例</h4>
+                <p>アップロードした画像は以下のような形式でアクセスできます：</p>
+                <div class="example-box">
+                    ファイルパス：products/image1.jpg<br>
+                    完全なURL：https://pub-a2319224352d4abda31362be3c2b1c19.r2.dev/products/image1.jpg
+                </div>
+            </div>
+        </div>
+
+        <div class="manual-section">
+            <h2>📞 お問い合わせ</h2>
+            <p>ご不明な点がございましたら、管理設定に登録されている連絡先までお問い合わせください。</p>
+        </div>
+    </main>
+</body>
+</html>

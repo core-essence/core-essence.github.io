@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail SMTP テスト - AMINATI_EC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; 
+            background: #f5f5f5; 
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .test-section h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        .test-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        .test-button:hover {
+            background: #333;
+        }
+        .test-button.secondary {
+            background: #6c757d;
+        }
+        .test-button.danger {
+            background: #dc3545;
+        }
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .status.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .status.info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .order-form {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .form-group {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+            align-items: center;
+        }
+        .form-group input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .server-status {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Gmail SMTP テスト画面</h1>
+        
+        <div class="server-status">
+            <h2>🔧 サーバー状態</h2>
+            <button class="test-button secondary" onclick="checkServerHealth()">サーバー状態確認</button>
+            <div id="serverStatus" class="status info" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📨 基本テスト</h2>
+            <button class="test-button" onclick="sendTestEmail()">テストメール送信</button>
+            <div id="testResult" class="status" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🛍️ 注文メールテスト</h2>
+            <p>実際の注文と同じ形式でメールを送信します</p>
+            
+            <div class="order-form">
+                <div class="form-group">
+                    <label>お客様名:</label>
+                    <input type="text" id="customerName" value="テスト太郎" placeholder="お名前を入力">
+                </div>
+                <div class="form-group">
+                    <label>メールアドレス:</label>
+                    <input type="email" id="customerEmail" value="" placeholder="お客様のメールアドレス（オプション）">
+                </div>
+                <div class="form-group">
+                    <label>電話番号:</label>
+                    <input type="tel" id="customerPhone" value="090-1234-5678" placeholder="電話番号">
+                </div>
+                <div class="form-group">
+                    <label>住所:</label>
+                    <input type="text" id="customerAddress" value="東京都渋谷区神南1-1-1" placeholder="お届け先住所">
+                </div>
+            </div>
+            
+            <button class="test-button" onclick="sendOrderEmail()">注文メール送信テスト</button>
+            <div id="orderResult" class="status" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📋 Gmail設定確認</h2>
+            <p><strong>設定済みアカウント:</strong> aminati.ec@gmail.com</p>
+            <p><strong>認証方式:</strong> アプリパスワード</p>
+            <p><strong>SMTP設定:</strong> smtp.gmail.com:587 (STARTTLS)</p>
+            
+            <div style="margin-top: 15px;">
+                <button class="test-button secondary" onclick="showGmailInstructions()">Gmail設定手順</button>
+            </div>
+            
+            <div id="gmailInstructions" style="display: none; margin-top: 15px;">
+                <h4>Gmail設定確認項目:</h4>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li>Googleアカウント → セキュリティ → 2段階認証が有効</li>
+                    <li>アプリパスワード「vorm ocsn dqit graf」が有効</li>
+                    <li>Gmail の送信制限（1日500通）内であること</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // サーバーヘルスチェック
+        async function checkServerHealth() {
+            const statusDiv = document.getElementById('serverStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status info';
+            statusDiv.innerHTML = '🔄 サーバー状態を確認中...';
+            
+            try {
+                const response = await fetch('http://localhost:8001/health');
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `
+                        ✅ メールサーバー正常動作中<br>
+                        <strong>サービス:</strong> ${result.service}<br>
+                        <strong>時刻:</strong> ${new Date(result.timestamp).toLocaleString('ja-JP')}
+                    `;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = `
+                    ❌ メールサーバーに接続できません<br>
+                    <strong>エラー:</strong> ${error.message}<br>
+                    <strong>解決方法:</strong> <code>npm start</code> でメールサーバーを起動してください
+                `;
+            }
+        }
+        
+        // テストメール送信
+        async function sendTestEmail() {
+            const resultDiv = document.getElementById('testResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'status info';
+            resultDiv.innerHTML = '📧 テストメール送信中...';
+            
+            try {
+                const response = await fetch('http://localhost:8001/test-email', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    resultDiv.className = 'status success';
+                    resultDiv.innerHTML = `
+                        ✅ テストメール送信成功！<br>
+                        <strong>宛先:</strong> aminati.ec@gmail.com<br>
+                        <strong>メッセージID:</strong> ${result.messageId}<br>
+                        📬 Gmailの受信トレイを確認してください
+                    `;
+                } else {
+                    const error = await response.json();
+                    throw new Error(error.error || `HTTP ${response.status}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'status error';
+                resultDiv.innerHTML = `
+                    ❌ テストメール送信失敗<br>
+                    <strong>エラー:</strong> ${error.message}
+                `;
+            }
+        }
+        
+        // 注文メール送信テスト
+        async function sendOrderEmail() {
+            const resultDiv = document.getElementById('orderResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'status info';
+            resultDiv.innerHTML = '📨 注文メール送信中...';
+            
+            // フォームデータを取得
+            const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const customerAddress = document.getElementById('customerAddress').value;
+            
+            // テスト用注文データ作成
+            const orderData = {
+                orderId: 'TEST-' + Date.now(),
+                orderDate: new Date().toISOString(),
+                adminEmail: 'aminati.ec@gmail.com',
+                product: {
+                    productNumber: '99999',
+                    productName: 'テスト商品 - リラックスベーシックT',
+                    brandName: 'AMINATI COLLECTION',
+                    selectedColor: 'ホワイト',
+                    selectedSize: 'M',
+                    price: 3980
+                },
+                pricing: {
+                    productPrice: 3980,
+                    shippingFee: 500,
+                    codFee: 330,
+                    totalPrice: 4810
+                },
+                customer: {
+                    name: customerName || 'テスト太郎',
+                    kana: 'テストタロウ',
+                    phone: customerPhone || '090-1234-5678',
+                    email: customerEmail || '',
+                    zip: '150-0041',
+                    address: customerAddress || '東京都渋谷区神南1-1-1'
+                },
+                delivery: {
+                    date: '',
+                    time: '',
+                    note: 'テスト注文です'
+                }
+            };
+            
+            try {
+                const response = await fetch('http://localhost:8001/send-order-email', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json' 
+                    },
+                    body: JSON.stringify(orderData)
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    resultDiv.className = 'status success';
+                    
+                    let emailsList = '';
+                    result.results.forEach(emailResult => {
+                        const status = emailResult.success ? '✅' : '❌';
+                        const type = emailResult.type === 'admin' ? '管理者' : 'お客様';
+                        emailsList += `${status} ${type}: ${emailResult.to}<br>`;
+                    });
+                    
+                    resultDiv.innerHTML = `
+                        ✅ 注文メール送信完了！<br>
+                        <strong>注文番号:</strong> ${orderData.orderId}<br>
+                        <strong>送信結果:</strong><br>
+                        ${emailsList}
+                        <strong>メッセージ:</strong> ${result.message}<br>
+                        📬 各メールアドレスの受信トレイを確認してください
+                    `;
+                } else {
+                    const error = await response.json();
+                    throw new Error(error.error || `HTTP ${response.status}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'status error';
+                resultDiv.innerHTML = `
+                    ❌ 注文メール送信失敗<br>
+                    <strong>エラー:</strong> ${error.message}
+                `;
+            }
+        }
+        
+        // Gmail設定手順表示
+        function showGmailInstructions() {
+            const instructions = document.getElementById('gmailInstructions');
+            instructions.style.display = instructions.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        // ページ読み込み時にサーバー状態確認
+        window.addEventListener('load', () => {
+            setTimeout(checkServerHealth, 1000);
+        });
+    </script>
+</body>
+</html>

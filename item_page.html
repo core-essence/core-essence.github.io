@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>リラックスルーズベーシックT - ZOZO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ヘッダー */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: relative;
+        }
+
+        /* ハンバーガーメニュー */
+        .menu-btn {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #000000;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        .menu-btn span:nth-child(1) {
+            top: 0;
+        }
+
+        .menu-btn span:nth-child(2) {
+            top: 11px;
+        }
+
+        .menu-btn span:nth-child(3) {
+            bottom: 0;
+        }
+
+        .menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+
+        .menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            bottom: 11px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* カートアイコン */
+        .cart-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #000000;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .cart-icon::after {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #000000;
+            border-top: none;
+            border-right: none;
+            transform: rotate(45deg);
+            position: absolute;
+            top: -6px;
+            left: 4px;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #000000;
+            color: #ffffff;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* スライドメニュー */
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: #ffffff;
+            z-index: 1001;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+        }
+
+        .slide-menu.active {
+            left: 0;
+        }
+
+        .menu-header {
+            padding: 30px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .menu-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .menu-subtitle {
+            font-size: 12px;
+            color: #888888;
+        }
+
+        .menu-nav {
+            padding: 20px 0;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #000000;
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #f5f5f5;
+            padding-left: 30px;
+        }
+
+        .menu-item::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            opacity: 0.5;
+        }
+
+        .menu-footer {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            right: 20px;
+        }
+
+        .menu-footer-text {
+            font-size: 11px;
+            color: #888888;
+            line-height: 1.5;
+        }
+
+        /* オーバーレイ */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* メインコンテンツ */
+        main {
+            margin-top: 64px;
+            flex: 1;
+            margin-bottom: 180px;
+        }
+
+        /* 商品画像セクション */
+        .product-images {
+            position: relative;
+            width: 100%;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px;
+            background: #ffffff;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .image-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-item {
+            flex: 0 0 80px;
+            height: 100px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-item.active {
+            border-color: #000000;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 商品情報セクション */
+        .product-details {
+            padding: 20px;
+            background: #ffffff;
+        }
+
+        .brand-name {
+            font-size: 12px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .price-section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .current-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff0000;
+            margin-bottom: 5px;
+        }
+
+        .original-price {
+            font-size: 16px;
+            color: #999999;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #ff0000;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* カラー選択 */
+        .color-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .color-option {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            background: #f5f5f5;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .color-option.active {
+            border-color: #000000;
+        }
+
+        .color-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* サイズ選択 */
+        .size-section {
+            margin-bottom: 20px;
+        }
+
+        .size-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .size-option {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .size-option.active {
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .size-option.disabled {
+            color: #cccccc;
+            cursor: not-allowed;
+            position: relative;
+        }
+
+        .size-option.disabled::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #cccccc;
+        }
+
+        /* 購入ボタン */
+        .purchase-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 15px 20px 25px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 997;
+        }
+
+        .purchase-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-add-cart {
+            background: #000000;
+            color: #ffffff;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-cart:active {
+            transform: scale(0.98);
+        }
+
+        .btn-favorite {
+            background: #ffffff;
+            color: #000000;
+            padding: 15px;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* 商品説明 */
+        .description-section {
+            padding: 20px;
+            background: #f8f8f8;
+            margin-bottom: 20px;
+        }
+
+        .description-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333333;
+        }
+
+        /* 商品詳細 */
+        .details-section {
+            padding: 20px;
+            background: #ffffff;
+        }
+
+        .detail-item {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .detail-label {
+            flex: 0 0 100px;
+            font-size: 13px;
+            color: #666666;
+        }
+
+        .detail-value {
+            flex: 1;
+            font-size: 13px;
+            color: #000000;
+        }
+
+        /* 在庫状況 */
+        .stock-info {
+            display: inline-block;
+            background: #000000;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* レビューセクション */
+        .review-section {
+            padding: 20px;
+            background: #ffffff;
+            margin-top: 20px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            width: 16px;
+            height: 16px;
+            background: #ffc107;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .star.empty {
+            background: #e0e0e0;
+        }
+
+        .rating-text {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        /* スムーズスクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* タッチフィードバック */
+        button, .color-option, .size-option {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="menu-btn" id="menuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h1 class="logo">ZOZO</h1>
+            <div class="cart-icon">
+                <div class="cart-badge">0</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- スライドメニュー -->
+    <div class="slide-menu" id="slideMenu">
+        <div class="menu-header">
+            <div class="menu-title">MENU</div>
+            <div class="menu-subtitle">WHOLESALE CATALOG</div>
+        </div>
+        <nav class="menu-nav">
+            <a href="#" class="menu-item">すべての商品</a>
+            <a href="#" class="menu-item">新着商品</a>
+            <a href="#" class="menu-item">カテゴリー</a>
+            <a href="#" class="menu-item">お取引について</a>
+            <a href="#" class="menu-item">会社概要</a>
+            <a href="#" class="menu-item">お問い合わせ</a>
+        </nav>
+        <div class="menu-footer">
+            <p class="menu-footer-text">
+                営業時間: 平日 9:00-18:00<br>
+                TEL: 03-XXXX-XXXX<br>
+                FAX: 03-XXXX-XXXX
+            </p>
+        </div>
+    </div>
+
+    <!-- オーバーレイ -->
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+        <!-- 商品画像 -->
+        <div class="product-images">
+            <img src="https://c.imgz.jp/004/64628004/64628004b_1_d_500.jpg" alt="商品画像" class="main-image" id="mainImage">
+            <div class="image-carousel">
+                <div class="carousel-item active" onclick="changeImage('https://c.imgz.jp/004/64628004/64628004b_1_d_500.jpg', this)">
+                    <img src="https://c.imgz.jp/004/64628004/64628004b_1_d_500.jpg" alt="画像1">
+                </div>
+                <div class="carousel-item" onclick="changeImage('https://c.imgz.jp/004/64628004/64628004b_8_d_500.jpg', this)">
+                    <img src="https://c.imgz.jp/004/64628004/64628004b_8_d_500.jpg" alt="画像2">
+                </div>
+                <div class="carousel-item" onclick="changeImage('https://c.imgz.jp/004/64628004/64628004b_3_d_500.jpg', this)">
+                    <img src="https://c.imgz.jp/004/64628004/64628004b_3_d_500.jpg" alt="画像3">
+                </div>
+                <div class="carousel-item" onclick="changeImage('https://c.imgz.jp/004/64628004/64628004b_72_d_500.jpg', this)">
+                    <img src="https://c.imgz.jp/004/64628004/64628004b_72_d_500.jpg" alt="画像4">
+                </div>
+                <div class="carousel-item" onclick="changeImage('https://c.imgz.jp/004/64628004/64628004b_365_d_500.jpg', this)">
+                    <img src="https://c.imgz.jp/004/64628004/64628004b_365_d_500.jpg" alt="画像5">
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品詳細 -->
+        <div class="product-details">
+            <div class="brand-name">MONO-MART</div>
+            <h2 class="product-name">リラックスルーズベーシックT オーバーサイズ ラスティックコットンカットソー</h2>
+            
+            <div class="stock-info">在庫 無限</div>
+            
+            <div class="price-section">
+                <div class="current-price">¥990</div>
+                <span class="original-price">¥1,980</span>
+                <span class="discount-badge">50% OFF</span>
+            </div>
+
+            <!-- カラー選択 -->
+            <div class="color-section">
+                <h3 class="section-title">カラー</h3>
+                <div class="color-options">
+                    <div class="color-option active">
+                        <img src="https://c.imgz.jp/004/64628004/64628004b_1_d_500.jpg" alt="ホワイト">
+                    </div>
+                    <div class="color-option">
+                        <img src="https://c.imgz.jp/004/64628004/64628004b_8_d_500.jpg" alt="ブラック">
+                    </div>
+                    <div class="color-option">
+                        <img src="https://c.imgz.jp/004/64628004/64628004b_3_d_500.jpg" alt="グレー">
+                    </div>
+                    <div class="color-option">
+                        <img src="https://c.imgz.jp/004/64628004/64628004b_72_d_500.jpg" alt="ブルー">
+                    </div>
+                    <div class="color-option">
+                        <img src="https://c.imgz.jp/004/64628004/64628004b_17_d_500.jpg" alt="ブラウン">
+                    </div>
+                </div>
+            </div>
+
+            <!-- サイズ選択 -->
+            <div class="size-section">
+                <h3 class="section-title">サイズ</h3>
+                <div class="size-options">
+                    <div class="size-option">S</div>
+                    <div class="size-option active">M</div>
+                    <div class="size-option">L</div>
+                    <div class="size-option">XL</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品説明 -->
+        <div class="description-section">
+            <h3 class="section-title">商品説明</h3>
+            <p class="description-text">
+                累計124,000着以上売れている大人気半袖カットソー！<br><br>
+                ヘビーウエイトな肉厚コットンを使用した新作クルーネックTシャツがナチュラルに着こなせるルーズなシルエットで登場。
+                コットン素材の無地のデザインで着こなしやすく、メイントップスとしてはもちろん、羽織アイテムを引き立てられるシンプルさはこれからのレイヤードコーデに1枚あると重宝します。
+            </p>
+        </div>
+
+        <!-- 商品詳細情報 -->
+        <div class="details-section">
+            <h3 class="section-title">商品詳細</h3>
+            <div class="detail-item">
+                <span class="detail-label">素材</span>
+                <span class="detail-value">コットン100%</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">原産国</span>
+                <span class="detail-value">中国</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">品番</span>
+                <span class="detail-value">64628004</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">性別タイプ</span>
+                <span class="detail-value">メンズ・レディース</span>
+            </div>
+        </div>
+
+        <!-- レビュー -->
+        <div class="review-section">
+            <h3 class="section-title">レビュー</h3>
+            <div class="rating">
+                <div class="stars">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star empty"></div>
+                </div>
+                <span class="rating-text">3.75 (112件)</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- 購入ボタン -->
+    <div class="purchase-section">
+        <div class="purchase-buttons">
+            <button class="btn-add-cart">カートに入れる</button>
+            <button class="btn-favorite">
+                <span>♡</span>
+                お気に入り
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // メニューの開閉
+        const menuBtn = document.getElementById('menuBtn');
+        const slideMenu = document.getElementById('slideMenu');
+        const overlay = document.getElementById('overlay');
+
+        menuBtn.addEventListener('click', function() {
+            menuBtn.classList.toggle('active');
+            slideMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', function() {
+            menuBtn.classList.remove('active');
+            slideMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // 画像切り替え
+        function changeImage(src, element) {
+            document.getElementById('mainImage').src = src;
+            
+            // アクティブクラスの切り替え
+            document.querySelectorAll('.carousel-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        // カラー選択
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.color-option').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // サイズ選択
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                if (!this.classList.contains('disabled')) {
+                    document.querySelectorAll('.size-option').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // スムーズスクロール効果
+        document.addEventListener('DOMContentLoaded', function() {
+            // フェードインアニメーション
+            const elements = document.querySelectorAll('.product-details > *, .description-section, .details-section, .review-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.6s ease';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+# 管理画面関連（公開しない）
+admin.html
+admin-*.html
+/js/admin-*.js
+/css/admin.css
+
+# ローカル開発用
+start_server.py
+start_server.bat
+*.py
+
+# テスト・デバッグ用
+debug*.html
+test*.html
+*test*.py
+*debug*.js
+
+# バックアップ
+*.backup*
+*コピー*
+
+# 個人情報・認証情報
+パスワード.txt
+config.js
+
+# 開発ツール
+package.json
+package-lock.json
+node_modules/
+
+# OS関連
+.DS_Store
+Thumbs.db
+
+# エディタ関連
+.vscode/
+.idea/
+
+# 一時ファイル
+*.tmp
+*.log
+*.swp

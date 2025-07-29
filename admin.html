@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMINATI_EC 管理画面 - 商品登録</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div class="header-content">
+            <div>
+                <span class="admin-logo">AMINATI_EC</span>
+                <span class="admin-badge">管理画面</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="btn btn-primary" onclick="location.href='index.html'" style="padding: 8px 16px; font-size: 14px;">
+                    🏠 トップページを確認
+                </button>
+                <button class="btn btn-secondary" onclick="app.productGenerator.viewProducts()" style="padding: 8px 16px; font-size: 14px;">
+                    📋 商品管理
+                </button>
+                <button class="btn btn-secondary" onclick="adminSettings.showSettingsDialog()" style="padding: 8px 16px; font-size: 14px;">
+                    ⚙️ 管理設定
+                </button>
+                <button class="btn btn-primary" onclick="location.href='admin-orders.html'" style="padding: 8px 16px; font-size: 14px;">
+                    📦 注文管理
+                </button>
+                <button class="btn btn-secondary" onclick="location.href='admin-manual.html'" style="padding: 8px 16px; font-size: 14px;">
+                    📖 使用説明書
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <h1 class="page-title">商品一括登録</h1>
+
+        <div class="status-message status-success" id="statusMessage">
+            商品の登録が完了しました！
+        </div>
+
+        <div class="admin-grid">
+            <!-- 左側：データ入力エリア -->
+            <div class="card">
+                <h2 class="card-title">📊 商品データ</h2>
+                
+                <!-- Excel指示 -->
+                <div class="excel-instructions">
+                    <h3 class="instruction-title">Excel ファイルの作成方法</h3>
+                    <table class="excel-table">
+                        <thead>
+                            <tr>
+                                <th>行</th>
+                                <th>説明</th>
+                                <th>入力例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="column-header">1行目</span></td>
+                                <td>項目名（ヘッダー）</td>
+                                <td>商品番号 | ブランド名 | 商品名 | 販売価格 | 定価 | 素材 | 原産国 | カラー | サイズ</td>
+                            </tr>
+                            <tr>
+                                <td><span class="column-header">2行目</span></td>
+                                <td>1つ目の商品データ</td>
+                                <td>21765 | ノーブランド | リラックスルーズベーシックT | 5000 | 10000 | 綿100% | 中国 | ホワイト,ブラック | S,M,L,XL</td>
+                            </tr>
+                            <tr>
+                                <td><span class="column-header">3行目</span></td>
+                                <td>2つ目の商品データ</td>
+                                <td>21766 | ノーブランド | プレミアムコットンシャツ | 7900 | 15800 | 綿100% | 日本 | ネイビー,カーキ | M,L,LL</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="padding-top: 15px; font-style: italic; color: #666;">
+                                    ※ 3行目以降も同様に商品データを追加できます<br>
+                                    ※ カラーとサイズはカンマ区切りで複数入力可能
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 10px; font-size: 12px; color: #666666;">
+                        ※ 画像ファイル名から商品番号を自動認識（例: 21765-1.jpg → 商品番号 21765）
+                    </p>
+                </div>
+
+                <!-- Excelドロップゾーン -->
+                <div class="drop-zone excel-drop-zone" id="excelDropZone">
+                    <div class="drop-zone-icon">📊</div>
+                    <div class="drop-zone-text">Excel ファイルをドロップ</div>
+                    <div class="drop-zone-subtext">.xlsx または .xls 形式</div>
+                </div>
+
+                <!-- データプレビュー -->
+                <div class="data-preview" id="dataPreview">
+                    <table class="preview-table" id="previewTable">
+                        <thead>
+                            <tr id="previewHeader"></tr>
+                        </thead>
+                        <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 右側：画像アップロードエリア -->
+            <div class="card">
+                <h2 class="card-title">🖼️ 商品画像</h2>
+
+                <!-- サムネイル画像 -->
+                <div style="margin-bottom: 30px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 15px;">サムネイル画像（商品一覧用）</h3>
+                    <div class="drop-zone thumbnail-drop-zone" id="thumbnailDropZone">
+                        <div class="drop-zone-icon">🖼️</div>
+                        <div class="drop-zone-text">サムネイル画像をドロップ</div>
+                        <div class="drop-zone-subtext">商品一覧に表示される画像（1商品1枚）</div>
+                    </div>
+                    <div class="preview-area" id="thumbnailPreview">
+                        <div class="preview-grid" id="thumbnailGrid"></div>
+                    </div>
+                </div>
+
+                <!-- 詳細画像 -->
+                <div>
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 15px;">詳細画像（商品詳細ページ用）</h3>
+                    <div class="drop-zone detail-drop-zone" id="detailDropZone">
+                        <div class="drop-zone-icon">📸</div>
+                        <div class="drop-zone-text">詳細画像をドロップ</div>
+                        <div class="drop-zone-subtext">商品詳細ページに表示される画像（最大10枚/商品）</div>
+                    </div>
+                    <div class="preview-area" id="detailPreview">
+                        <div class="preview-grid" id="detailGrid"></div>
+                    </div>
+                </div>
+
+                <!-- 画像グループ表示 -->
+                <div class="image-groups" id="imageGroups"></div>
+            </div>
+        </div>
+
+        <!-- アクションボタン -->
+        <div class="action-buttons">
+            <button class="btn btn-primary" id="generateBtn" disabled onclick="app.generateProducts()">
+                商品ページを生成
+                <span class="loading" style="display: none;"></span>
+            </button>
+        </div>
+
+        <!-- ログ表示 -->
+        <div class="log-area" id="logArea"></div>
+    </main>
+
+    <!-- 外部ライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <!-- 基盤・設定系 (最初に読み込み) -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/admin-settings.js"></script>
+
+    <!-- API・サービス系 -->
+    <script src="js/api-client.js"></script>
+    <script src="js/r2-uploader.js"></script>
+
+    <!-- データ処理系 -->
+    <script src="js/excel-handler.js"></script>
+    <script src="js/image-handler.js"></script>
+    <script src="js/url-handler.js"></script>
+    <script src="js/product-storage.js"></script>
+
+    <!-- UI・生成系 (分割されたファイル群) -->
+    <script src="js/html-template-generator.js"></script>
+    <script src="js/javascript-code-generator.js"></script>
+    <script src="js/post-generation-manager.js"></script>
+    <script src="js/product-generator.js"></script>
+    
+    <!-- UI管理・アプリ統合 (最後に読み込み) -->
+    <script src="js/ui-manager.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ProductGenerator テスト</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        pre {
+            background: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>ProductGenerator テストページ</h1>
+    
+    <div id="results"></div>
+    
+    <h2>手動テスト</h2>
+    <button onclick="testShowDownloadOptions()">showDownloadOptions()をテスト</button>
+    <button onclick="testUploadToGitHub()">uploadToGitHub()をテスト（実行はしない）</button>
+    
+    <h2>エラー詳細</h2>
+    <pre id="errorDetails"></pre>
+
+    <!-- 必要な依存関係を読み込み -->
+    <script>
+        // ダミーの依存関係を作成
+        class ProductStorage {
+            async saveProduct() { return Promise.resolve(); }
+        }
+        
+        class HTMLTemplateGenerator {
+            generateHTML() { return '<html>test</html>'; }
+        }
+        
+        class JavaScriptCodeGenerator {
+            getAdminSettingsCode() { return '// admin settings'; }
+            getProductScripts() { return '// product scripts'; }
+            getPurchaseFlowScript() { return '// purchase flow'; }
+        }
+        
+        class PostGenerationManager {
+            showPostGenerationOptions() { console.log('Post generation options'); }
+        }
+        
+        // ダミーのグローバル関数
+        function addLog(message, type) {
+            console.log(`[${type}] ${message}`);
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = `[${type}] ${message}`;
+            document.getElementById('results').appendChild(div);
+        }
+        
+        function formatDate() {
+            return new Date().toISOString().split('T')[0];
+        }
+        
+        // CONFIG定義
+        const CONFIG = {
+            IMAGE: {
+                MAX_DETAIL_IMAGES: 10
+            }
+        };
+    </script>
+    
+    <!-- テスト対象のファイルを読み込み -->
+    <script src="js/product-generator.js"></script>
+    
+    <script>
+        // テスト実行
+        function runTests() {
+            const results = document.getElementById('results');
+            
+            // ProductGeneratorクラスの存在確認
+            try {
+                if (typeof ProductGenerator === 'function') {
+                    addLog('✅ ProductGeneratorクラスが見つかりました', 'success');
+                    
+                    // インスタンス作成テスト
+                    const storage = new ProductStorage();
+                    const templateGenerator = new HTMLTemplateGenerator();
+                    const jsGenerator = new JavaScriptCodeGenerator();
+                    const postManager = new PostGenerationManager();
+                    
+                    const generator = new ProductGenerator(storage, templateGenerator, jsGenerator, postManager);
+                    addLog('✅ ProductGeneratorのインスタンスを作成できました', 'success');
+                    
+                    // メソッドの存在確認
+                    const methods = [
+                        'generateProducts',
+                        'processImages',
+                        'generateDescription',
+                        'generateProductsJson',
+                        'showDownloadOptions',
+                        'downloadAllFiles',
+                        'downloadProductsJson',
+                        'uploadToGitHub'
+                    ];
+                    
+                    methods.forEach(method => {
+                        if (typeof generator[method] === 'function') {
+                            addLog(`✅ ${method}メソッドが存在します`, 'success');
+                        } else {
+                            addLog(`❌ ${method}メソッドが見つかりません`, 'error');
+                        }
+                    });
+                    
+                    // グローバルに保存（手動テスト用）
+                    window.testGenerator = generator;
+                    
+                } else {
+                    addLog('❌ ProductGeneratorクラスが見つかりません', 'error');
+                    addLog(`typeof ProductGenerator: ${typeof ProductGenerator}`, 'info');
+                }
+            } catch (error) {
+                addLog(`❌ エラーが発生しました: ${error.message}`, 'error');
+                document.getElementById('errorDetails').textContent = error.stack;
+            }
+            
+            // その他の関数の確認
+            const functions = [
+                'loadTemplate',
+                'generateColorSection',
+                'generateSizeSection',
+                'generateImageCarousel',
+                'generateDiscountSection',
+                'escapeHtml',
+                'generateProductHTML',
+                'downloadHTML',
+                'sendOrderNotification'
+            ];
+            
+            functions.forEach(func => {
+                if (typeof window[func] === 'function') {
+                    addLog(`✅ ${func}関数が存在します`, 'success');
+                } else {
+                    addLog(`⚠️ ${func}関数が見つかりません`, 'info');
+                }
+            });
+        }
+        
+        // 手動テスト関数
+        function testShowDownloadOptions() {
+            try {
+                if (window.testGenerator) {
+                    // ダミーのファイルを追加
+                    window.testGenerator.generatedFiles = [
+                        { filename: 'test.html', content: '<html>test</html>' },
+                        { filename: 'products.json', content: '{"test": true}' }
+                    ];
+                    window.testGenerator.showDownloadOptions();
+                    addLog('✅ showDownloadOptionsが実行されました', 'success');
+                } else {
+                    addLog('❌ testGeneratorが初期化されていません', 'error');
+                }
+            } catch (error) {
+                addLog(`❌ エラー: ${error.message}`, 'error');
+                document.getElementById('errorDetails').textContent = error.stack;
+            }
+        }
+        
+        function testUploadToGitHub() {
+            try {
+                if (window.testGenerator && typeof window.testGenerator.uploadToGitHub === 'function') {
+                    addLog('✅ uploadToGitHubメソッドが存在します', 'success');
+                    // 実際には実行しない
+                    addLog('ℹ️ uploadToGitHubの実行はスキップしました', 'info');
+                } else {
+                    addLog('❌ uploadToGitHubメソッドが見つかりません', 'error');
+                }
+            } catch (error) {
+                addLog(`❌ エラー: ${error.message}`, 'error');
+                document.getElementById('errorDetails').textContent = error.stack;
+            }
+        }
+        
+        // ページ読み込み時にテスト実行
+        window.onload = function() {
+            addLog('テストを開始します...', 'info');
+            runTests();
+        };
+    </script>
+</body>
+</html>

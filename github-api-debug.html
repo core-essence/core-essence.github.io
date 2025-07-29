@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub API デバッグツール</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .test-section h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #495057;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        
+        .success {
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        
+        .error {
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+        
+        .info {
+            border: 2px solid #17a2b8;
+            color: #0c5460;
+        }
+        
+        .warning {
+            border: 2px solid #ffc107;
+            color: #856404;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        #results {
+            margin-top: 30px;
+        }
+        
+        .step-indicator {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #6c757d;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        
+        .step-indicator.success {
+            background: #28a745;
+        }
+        
+        .step-indicator.error {
+            background: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 GitHub API デバッグツール</h1>
+        
+        <div class="test-section">
+            <h2><span class="step-indicator" id="step1">1</span>設定確認</h2>
+            <div class="input-group">
+                <label>GitHubトークン（パスワード.txtから）</label>
+                <input type="password" id="githubToken" value="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">
+            </div>
+            <div class="input-group">
+                <label>リポジトリオーナー</label>
+                <input type="text" id="repoOwner" value="aminati-ec">
+            </div>
+            <div class="input-group">
+                <label>リポジトリ名</label>
+                <input type="text" id="repoName" value="aminati-ec.github.io">
+            </div>
+            <div class="input-group">
+                <label>ブランチ名</label>
+                <input type="text" id="branchName" value="main">
+            </div>
+            <button onclick="testConnection()">接続テスト</button>
+            <div id="result1" class="result" style="display:none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2><span class="step-indicator" id="step2">2</span>トークン権限確認</h2>
+            <button onclick="testTokenPermissions()" disabled id="permTestBtn">トークン権限をチェック</button>
+            <div id="result2" class="result" style="display:none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2><span class="step-indicator" id="step3">3</span>ファイル読み込みテスト</h2>
+            <button onclick="testReadFile()" disabled id="readTestBtn">index.html を読み込む</button>
+            <div id="result3" class="result" style="display:none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2><span class="step-indicator" id="step4">4</span>ファイルアップロードテスト</h2>
+            <button onclick="testUploadFile()" disabled id="uploadTestBtn">テストファイルをアップロード</button>
+            <div id="result4" class="result" style="display:none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2><span class="step-indicator" id="step5">5</span>問題の診断結果</h2>
+            <div id="diagnosis" class="result warning" style="display:none;"></div>
+        </div>
+    </div>
+    
+    <script>
+        // グローバル変数
+        let config = {};
+        let testResults = {
+            connection: false,
+            permissions: false,
+            read: false,
+            upload: false
+        };
+        
+        // 設定を取得
+        function getConfig() {
+            return {
+                token: document.getElementById('githubToken').value,
+                owner: document.getElementById('repoOwner').value,
+                repo: document.getElementById('repoName').value,
+                branch: document.getElementById('branchName').value
+            };
+        }
+        
+        // 結果表示
+        function showResult(elementId, content, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.textContent = content;
+            element.className = `result ${type}`;
+            element.style.display = 'block';
+        }
+        
+        // ステップインジケーター更新
+        function updateStep(stepId, status) {
+            const element = document.getElementById(stepId);
+            element.className = `step-indicator ${status}`;
+        }
+        
+        // 1. 接続テスト
+        async function testConnection() {
+            config = getConfig();
+            showResult('result1', 'テスト中...', 'info');
+            
+            try {
+                // まずはGitHub APIの基本的な接続確認
+                const response = await fetch('https://api.github.com', {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (response.ok) {
+                    showResult('result1', '✅ GitHub APIへの接続: 成功\n\n次にトークンの確認を行います。', 'success');
+                    updateStep('step1', 'success');
+                    testResults.connection = true;
+                    document.getElementById('permTestBtn').disabled = false;
+                } else {
+                    throw new Error(`GitHub API接続エラー: ${response.status}`);
+                }
+            } catch (error) {
+                showResult('result1', `❌ エラー: ${error.message}`, 'error');
+                updateStep('step1', 'error');
+                showDiagnosis();
+            }
+        }
+        
+        // 2. トークン権限確認
+        async function testTokenPermissions() {
+            showResult('result2', 'トークンを確認中...', 'info');
+            
+            try {
+                // ユーザー情報を取得（トークンの有効性確認）
+                const response = await fetch('https://api.github.com/user', {
+                    headers: {
+                        'Authorization': `token ${config.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    // Bearer形式も試す
+                    const response2 = await fetch('https://api.github.com/user', {
+                        headers: {
+                            'Authorization': `Bearer ${config.token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+                    
+                    if (!response2.ok) {
+                        throw new Error(`認証エラー: ${response.status} - トークンが無効または期限切れです`);
+                    }
+                    
+                    const userData = await response2.json();
+                    showResult('result2', `✅ トークン有効（Bearer形式）\nユーザー: ${userData.login}\n\n⚠️ 注意: Bearer形式での認証が必要です`, 'warning');
+                } else {
+                    const userData = await response.json();
+                    
+                    // リポジトリへのアクセス確認
+                    const repoResponse = await fetch(`https://api.github.com/repos/${config.owner}/${config.repo}`, {
+                        headers: {
+                            'Authorization': `token ${config.token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+                    
+                    if (repoResponse.ok) {
+                        showResult('result2', `✅ トークン有効\nユーザー: ${userData.login}\nリポジトリアクセス: OK`, 'success');
+                        updateStep('step2', 'success');
+                        testResults.permissions = true;
+                        document.getElementById('readTestBtn').disabled = false;
+                    } else {
+                        throw new Error('リポジトリへのアクセス権限がありません');
+                    }
+                }
+            } catch (error) {
+                showResult('result2', `❌ ${error.message}`, 'error');
+                updateStep('step2', 'error');
+                showDiagnosis();
+            }
+        }
+        
+        // 3. ファイル読み込みテスト
+        async function testReadFile() {
+            showResult('result3', 'ファイルを読み込み中...', 'info');
+            
+            try {
+                const response = await fetch(
+                    `https://api.github.com/repos/${config.owner}/${config.repo}/contents/index.html?ref=${config.branch}`,
+                    {
+                        headers: {
+                            'Authorization': `token ${config.token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    }
+                );
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult('result3', `✅ ファイル読み込み成功\nファイル: index.html\nサイズ: ${data.size} bytes\nSHA: ${data.sha.substring(0, 7)}...`, 'success');
+                    updateStep('step3', 'success');
+                    testResults.read = true;
+                    document.getElementById('uploadTestBtn').disabled = false;
+                } else if (response.status === 404) {
+                    showResult('result3', `⚠️ index.htmlが見つかりません（新規リポジトリの可能性）\nアップロードテストに進みます。`, 'warning');
+                    updateStep('step3', 'success');
+                    testResults.read = true;
+                    document.getElementById('uploadTestBtn').disabled = false;
+                } else {
+                    throw new Error(`読み込みエラー: ${response.status}`);
+                }
+            } catch (error) {
+                showResult('result3', `❌ ${error.message}`, 'error');
+                updateStep('step3', 'error');
+                showDiagnosis();
+            }
+        }
+        
+        // 4. ファイルアップロードテスト
+        async function testUploadFile() {
+            showResult('result4', 'テストファイルをアップロード中...', 'info');
+            
+            try {
+                const testContent = `<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub API Test</title>
+</head>
+<body>
+    <h1>テスト成功！</h1>
+    <p>このファイルは ${new Date().toLocaleString()} にアップロードされました。</p>
+</body>
+</html>`;
+                
+                const contentBase64 = btoa(unescape(encodeURIComponent(testContent)));
+                const testPath = `test/api-test-${Date.now()}.html`;
+                
+                // 既存ファイルの確認（新規作成のため、存在しないことを期待）
+                const checkResponse = await fetch(
+                    `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${testPath}?ref=${config.branch}`,
+                    {
+                        headers: {
+                            'Authorization': `token ${config.token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    }
+                );
+                
+                let sha = null;
+                if (checkResponse.ok) {
+                    const existingFile = await checkResponse.json();
+                    sha = existingFile.sha;
+                }
+                
+                // ファイルをアップロード
+                const uploadResponse = await fetch(
+                    `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${testPath}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${config.token}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Test upload at ${new Date().toLocaleString()}`,
+                            content: contentBase64,
+                            branch: config.branch,
+                            ...(sha ? { sha } : {})
+                        })
+                    }
+                );
+                
+                if (uploadResponse.ok) {
+                    const result = await uploadResponse.json();
+                    showResult('result4', `✅ アップロード成功！\n\nファイル: ${testPath}\nコミット: ${result.commit.sha.substring(0, 7)}...\nURL: https://${config.owner}.github.io/${testPath}\n\n🎉 すべてのテストが成功しました！`, 'success');
+                    updateStep('step4', 'success');
+                    testResults.upload = true;
+                    showDiagnosis();
+                } else {
+                    const errorData = await uploadResponse.text();
+                    throw new Error(`アップロードエラー: ${uploadResponse.status}\n${errorData}`);
+                }
+            } catch (error) {
+                showResult('result4', `❌ ${error.message}`, 'error');
+                updateStep('step4', 'error');
+                showDiagnosis();
+            }
+        }
+        
+        // 診断結果を表示
+        function showDiagnosis() {
+            let diagnosis = '📊 診断結果:\n\n';
+            
+            if (!testResults.connection) {
+                diagnosis += '❌ GitHub APIへの接続に問題があります。\n';
+                diagnosis += '  → ネットワーク接続を確認してください。\n\n';
+            }
+            
+            if (testResults.connection && !testResults.permissions) {
+                diagnosis += '❌ トークンに問題があります。\n';
+                diagnosis += '  → トークンが期限切れまたは無効です。\n';
+                diagnosis += '  → 新しいトークンを生成してください。\n';
+                diagnosis += '  → 必要な権限: repo (Full control of private repositories)\n\n';
+            }
+            
+            if (testResults.permissions && !testResults.read) {
+                diagnosis += '⚠️ ファイルの読み込みに問題があります。\n';
+                diagnosis += '  → ブランチ名が正しいか確認してください（main or master）\n';
+                diagnosis += '  → リポジトリが初期化されているか確認してください。\n\n';
+            }
+            
+            if (testResults.read && !testResults.upload) {
+                diagnosis += '❌ ファイルのアップロードに問題があります。\n';
+                diagnosis += '  → トークンの権限が不足している可能性があります。\n';
+                diagnosis += '  → GitHub APIのレート制限に達している可能性があります。\n\n';
+            }
+            
+            if (testResults.upload) {
+                diagnosis += '✅ すべてのテストが成功しました！\n\n';
+                diagnosis += '📝 product-generator.jsの修正点:\n';
+                diagnosis += '1. Bearer形式の認証に変更が必要かもしれません\n';
+                diagnosis += '2. エラーハンドリングの改善が必要です\n';
+                diagnosis += '3. Base64エンコーディングは問題ありません\n\n';
+                diagnosis += '💡 推奨事項:\n';
+                diagnosis += '- トークンは環境変数や設定画面から取得するように変更\n';
+                diagnosis += '- アップロード前にファイルの存在確認を追加\n';
+                diagnosis += '- 進捗状況の表示を改善';
+            }
+            
+            showResult('diagnosis', diagnosis, testResults.upload ? 'success' : 'warning');
+            updateStep('step5', testResults.upload ? 'success' : 'error');
+        }
+    </script>
+</body>
+</html>
