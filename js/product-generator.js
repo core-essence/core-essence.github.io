@@ -377,7 +377,7 @@ class ProductGenerator {
     async uploadToGitHub() {
         try {
             // 設定
-            const GITHUB_TOKEN = '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';
+            const GITHUB_TOKEN = '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';
             const GITHUB_OWNER = 'aminati-ec';  // あなたのGitHubユーザー名
             const GITHUB_REPO = 'aminati-ec.github.io';  // リポジトリ名
             const GITHUB_BRANCH = 'main';  // ブランチ名（mainまたはmaster）
