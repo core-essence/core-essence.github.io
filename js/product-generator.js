@@ -1,4 +1,4 @@
-// 商品ページ生成クラス
+// 商品ページ生成クラスです
 class ProductGenerator {
     constructor(storage, templateGenerator, jsGenerator, postGenerationManager) {
         this.storage = storage;
