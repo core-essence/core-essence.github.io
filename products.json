@@ -1,25 +1,71 @@
 {
-  "generated": "2025-07-30T04:10:34.774Z",
-  "count": 1,
+  "generated": "2025-08-01T06:58:43.529Z",
+  "count": 3,
   "products": [
     {
-      "productNumber": "5515-3001",
-      "productName": "MA-1",
-      "brandName": "クロエマハル",
+      "productNumber": "21720",
+      "productName": "ナイキ エア マックス ココ ウィメンズサンダル / Nike Air Max Koko Women's Sandals CI8798-003 Black",
+      "brandName": "ノーブランド",
       "category": "その他",
-      "salePrice": "10000",
-      "originalPrice": "20000",
-      "thumbnail": null,
+      "salePrice": "8700",
+      "originalPrice": "14000",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/21720-thumb.jpg",
       "colors": [
-        "クロ",
-        "カーキ"
+        "ホワイト",
+        "ブラック",
+        "グレー"
       ],
       "sizes": [
+        "S",
         "M",
         "L",
         "XL"
       ],
-      "material": "ポリエステル100％",
+      "material": "綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "21765",
+      "productName": "リラックスルーズベーシックT オーバーサイズ ラスティックコットンカットソー",
+      "brandName": "ノーブランド",
+      "category": "その他",
+      "salePrice": "5000",
+      "originalPrice": "10000",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/21765-thumb.jpg",
+      "colors": [
+        "ホワイト",
+        "ブラック",
+        "グレー"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "57820",
+      "productName": "【新色追加／さらっとした着心地】テックリネン半袖シャツジャケット《WEB限定》",
+      "brandName": "ノーブランド",
+      "category": "その他",
+      "salePrice": "2400",
+      "originalPrice": "5400",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/57820-thumb.jpg",
+      "colors": [
+        "ホワイト",
+        "ブラック",
+        "グレー"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "綿100％",
       "origin": "中国"
     }
   ]
