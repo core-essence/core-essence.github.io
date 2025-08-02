@@ -144,6 +144,7 @@ class AdminApp {
             const products = Object.values(this.productData);
             
             // ProductGeneratorのgenerateProductsメソッドを呼び出し
+            // ★★★ ここが重要：generateAll ではなく generateProducts を呼び出す ★★★
             await this.productGenerator.generateProducts(
                 products,
                 this.thumbnailImages,
