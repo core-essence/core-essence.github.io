@@ -131,11 +131,6 @@ class AdminApp {
     // 商品ページ生成
     async generateProducts() {
         try {
-            // デバッグ情報を出力
-            console.log('=== 商品生成開始 ===');
-            console.log('ProductGenerator:', this.productGenerator);
-            console.log('利用可能なメソッド:', Object.getOwnPropertyNames(this.productGenerator.constructor.prototype));
-            
             const generateBtn = document.getElementById('generateBtn');
             if (generateBtn) {
                 generateBtn.disabled = true;
@@ -148,22 +143,15 @@ class AdminApp {
             // productDataをproducts配列に変換
             const products = Object.values(this.productData);
             
-            console.log('生成する商品数:', products.length);
-            console.log('商品データ:', products);
-            
             // ProductGeneratorのgenerateProductsメソッドを呼び出し
-            // generateAllではなくgenerateProductsが正しいメソッド名
             await this.productGenerator.generateProducts(
                 products,
                 this.thumbnailImages,
                 this.detailImages
             );
             
-            console.log('=== 商品生成完了 ===');
-            
         } catch (error) {
             console.error('Generation error:', error);
-            console.error('エラースタック:', error.stack);
             addLog(`エラーが発生しました: ${error.message}`, 'error');
             showErrorMessage('商品ページの生成に失敗しました');
         } finally {
@@ -198,19 +186,10 @@ class AdminApp {
 let app;
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded - アプリケーション初期化開始');
+    app = new AdminApp();
     
-    try {
-        app = new AdminApp();
-        
-        // グローバル関数として公開（HTMLから呼び出すため）
-        window.app = app;
-        window.removeThumbnail = (productNumber) => app.removeThumbnailImage(productNumber);
-        window.removeDetail = (productNumber, index) => app.removeDetailImage(productNumber, index);
-        
-        console.log('アプリケーション初期化完了', app);
-    } catch (error) {
-        console.error('アプリケーション初期化エラー:', error);
-        console.error('エラースタック:', error.stack);
-    }
+    // グローバル関数として公開（HTMLから呼び出すため）
+    window.app = app;
+    window.removeThumbnail = (productNumber) => app.removeThumbnailImage(productNumber);
+    window.removeDetail = (productNumber, index) => app.removeDetailImage(productNumber, index);
 });
