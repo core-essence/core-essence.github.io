@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お取引について - AMINATI_EC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            cursor: pointer;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #007bff;
+        }
+        
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: #f8f8f8;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .trade-info {
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            flex: 0 0 150px;
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .info-value {
+            flex: 1;
+            color: #333;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ffeaa7;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #856404;
+        }
+        
+        footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 100px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .info-item {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="logo" onclick="location.href='index.html'">AMINATI</h1>
+            <nav class="header-nav">
+                <a href="index.html" class="nav-link">トップ</a>
+                <a href="company.html" class="nav-link">会社概要</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main-container">
+        <h1>お取引について</h1>
+        
+        <div class="highlight">
+            <div class="highlight-title">⚠️ 重要なお知らせ</div>
+            <p>当店は卸売業者向けの販売となります。個人のお客様への販売は行っておりません。</p>
+        </div>
+        
+        <div class="section">
+            <h2>お支払い方法</h2>
+            <div class="trade-info">
+                <div class="info-item">
+                    <span class="info-label">取扱い方法</span>
+                    <span class="info-value">代金引換（現金のみ）</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">代引き手数料</span>
+                    <span class="info-value">一律 330円（税込）</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">お支払い時期</span>
+                    <span class="info-value">商品到着時に配送員へ現金でお支払いください</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>配送について</h2>
+            <div class="trade-info">
+                <div class="info-item">
+                    <span class="info-label">配送料</span>
+                    <span class="info-value">全国一律 500円（税込）</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">配送業者</span>
+                    <span class="info-value">ヤマト運輸、佐川急便</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">配送時間指定</span>
+                    <span class="info-value">
+                        午前中 / 12:00-14:00 / 14:00-16:00 / 16:00-18:00 / 18:00-20:00 / 19:00-21:00
+                    </span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">発送までの日数</span>
+                    <span class="info-value">ご注文から5営業日以内に発送</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>返品・交換について</h2>
+            <div class="trade-info">
+                <div class="info-item">
+                    <span class="info-label">返品期限</span>
+                    <span class="info-value">商品到着後7日以内</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">返品条件</span>
+                    <span class="info-value">未使用・未開封の商品に限ります</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">返品送料</span>
+                    <span class="info-value">お客様負担（不良品の場合は当店負担）</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">交換</span>
+                    <span class="info-value">サイズ交換は在庫がある場合のみ対応可能</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>ご注文の流れ</h2>
+            <div class="trade-info">
+                <ol style="padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">商品ページで商品を選択</li>
+                    <li style="margin-bottom: 10px;">カラー・サイズを選択して「注文する」ボタンをクリック</li>
+                    <li style="margin-bottom: 10px;">お客様情報・配送先を入力</li>
+                    <li style="margin-bottom: 10px;">注文内容を確認して注文確定</li>
+                    <li style="margin-bottom: 10px;">商品到着時に代金引換でお支払い</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>注意事項</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 10px;">在庫は他の販売チャネルと共有のため、タイミングにより欠品の場合があります</li>
+                <li style="margin-bottom: 10px;">大量注文の場合は事前にお問い合わせください</li>
+                <li style="margin-bottom: 10px;">商品の色味は画面環境により実物と異なる場合があります</li>
+                <li style="margin-bottom: 10px;">詳細なサイズは商品ページをご確認ください</li>
+            </ul>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 AMINATI_EC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
