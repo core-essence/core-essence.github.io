@@ -14,7 +14,6 @@
             line-height: 1.6;
         }
         
-        /* ヘッダー */
         header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -67,7 +66,6 @@
             font-weight: 700;
         }
         
-        /* ヒーローセクション */
         .hero {
             background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
             padding: 80px 30px;
@@ -88,7 +86,6 @@
             margin: 0 auto;
         }
         
-        /* カテゴリーナビゲーション */
         .category-nav {
             background: #f8f8f8;
             padding: 20px 0;
@@ -127,7 +124,6 @@
             color: #ffffff;
         }
         
-        /* 商品グリッド */
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -208,7 +204,6 @@
             color: #ff0000;
         }
         
-        /* フッター */
         footer {
             background: #000000;
             color: #ffffff;
@@ -221,7 +216,6 @@
             margin: 0 auto;
         }
         
-        /* レスポンシブ */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 32px;
@@ -237,7 +231,6 @@
             }
         }
         
-        /* ローディング */
         .loading {
             text-align: center;
             padding: 40px;
@@ -250,7 +243,6 @@
             color: #666666;
         }
         
-        /* エラーメッセージ */
         .error-message {
             background: #fee;
             color: #c33;
@@ -258,21 +250,6 @@
             border-radius: 8px;
             margin: 20px;
             text-align: center;
-        }
-        
-        /* デバッグ情報表示 */
-        .debug-info {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-family: monospace;
-            z-index: 9999;
-            max-width: 300px;
         }
     </style>
 </head>
@@ -296,7 +273,6 @@
     <nav class="category-nav">
         <div class="category-list" id="categoryList">
             <div class="category-item active" data-category="all">すべて</div>
-            <!-- カテゴリーは動的に追加される -->
         </div>
     </nav>
     
@@ -318,66 +294,32 @@
         </div>
     </footer>
     
-    <!-- デバッグ情報表示 -->
-    <div class="debug-info" id="debugInfo" style="display: none;">
-        <div>商品数: <span id="productCount">0</span></div>
-        <div>表示商品数: <span id="displayCount">0</span></div>
-        <div>カテゴリー: <span id="currentCat">all</span></div>
-    </div>
-    
     <script>
         // グローバル変数
         let allProducts = [];
         let currentCategory = 'all';
         
-        // デバッグモード切り替え（URLに?debug=1を追加で有効化）
-        const urlParams = new URLSearchParams(window.location.search);
-        const debugMode = urlParams.get('debug') === '1';
-        
-        // デバッグ用ログ関数
-        function debugLog(message, data = null) {
-            console.log(`[AMINATI_EC] ${message}`, data);
-            if (debugMode && document.getElementById('debugInfo')) {
-                document.getElementById('debugInfo').style.display = 'block';
-            }
-        }
-        
         // ページ読み込み時の処理
         document.addEventListener('DOMContentLoaded', async () => {
-            debugLog('ページ読み込み開始');
+            console.log('[AMINATI_EC] ページ読み込み開始');
             await loadProducts();
             setupCategoryFilters();
         });
         
-        // エラー表示関数
-        function showError(message) {
-            document.getElementById('productGrid').innerHTML = 
-                `<div class="error-message">${message}</div>`;
-            debugLog('エラー表示:', message);
-        }
-        
-        // 商品データの読み込み（products.jsonから）
+        // 商品データの読み込み（JSONファイルから）
         async function loadProducts() {
             try {
-                debugLog('商品データ読み込み開始');
+                console.log('[AMINATI_EC] 商品データ読み込み開始');
                 
-                // products.jsonからデータを取得
                 const response = await fetch('./products.json');
-                
                 if (!response.ok) {
-                    throw new Error(`HTTPエラー: ${response.status}`);
+                    throw new Error('products.json の読み込みに失敗しました');
                 }
                 
                 const data = await response.json();
-                allProducts = data.products || [];
+                allProducts = data.products;
                 
-                debugLog('取得した商品数:', allProducts.length);
-                console.log('商品データ:', allProducts);
-                
-                // デバッグ情報更新
-                if (debugMode) {
-                    document.getElementById('productCount').textContent = allProducts.length;
-                }
+                console.log('[AMINATI_EC] 取得した商品数:', allProducts.length);
                 
                 if (allProducts.length === 0) {
                     document.getElementById('productGrid').innerHTML = '';
@@ -389,14 +331,9 @@
                 displayProducts();
                 
             } catch (error) {
-                console.error('商品の読み込みエラー:', error);
-                
-                // products.jsonが見つからない場合の代替処理
-                if (error.message.includes('404') || error.message.includes('Not Found')) {
-                    showError('商品データファイル(products.json)が見つかりません。<br>管理画面で商品ページを生成してください。');
-                } else {
-                    showError(`エラーが発生しました: ${error.message}`);
-                }
+                console.error('[AMINATI_EC] 商品の読み込みエラー:', error);
+                document.getElementById('productGrid').innerHTML = 
+                    '<div class="error-message">商品データの読み込みに失敗しました</div>';
             }
         }
         
@@ -409,8 +346,6 @@
                     categories.add(product.category);
                 }
             });
-            
-            debugLog('カテゴリー一覧:', Array.from(categories));
             
             const categoryList = document.getElementById('categoryList');
             categoryList.innerHTML = '';
@@ -440,25 +375,16 @@
         function setupCategoryFilters() {
             document.getElementById('categoryList').addEventListener('click', (e) => {
                 if (e.target.classList.contains('category-item')) {
-                    // アクティブクラスの切り替え
                     document.querySelectorAll('.category-item').forEach(item => {
                         item.classList.remove('active');
                     });
                     e.target.classList.add('active');
                     
-                    // カテゴリーの変更
                     currentCategory = e.target.dataset.category;
                     
-                    // デバッグ情報更新
-                    if (debugMode) {
-                        document.getElementById('currentCat').textContent = currentCategory;
-                    }
-                    
-                    // セクションタイトルの更新
                     const title = currentCategory === 'all' ? 'すべての商品' : currentCategory;
                     document.getElementById('sectionTitle').textContent = title;
                     
-                    // 商品の再表示
                     displayProducts();
                 }
             });
@@ -469,20 +395,9 @@
             const productGrid = document.getElementById('productGrid');
             const noProducts = document.getElementById('noProducts');
             
-            debugLog('displayProducts - 全商品数:', allProducts.length);
-            debugLog('displayProducts - 現在のカテゴリー:', currentCategory);
-            
-            // フィルタリング
             const filteredProducts = currentCategory === 'all' 
                 ? allProducts 
                 : allProducts.filter(p => p.category === currentCategory);
-            
-            debugLog('displayProducts - フィルタリング後の商品数:', filteredProducts.length);
-            
-            // デバッグ情報更新
-            if (debugMode) {
-                document.getElementById('displayCount').textContent = filteredProducts.length;
-            }
             
             if (filteredProducts.length === 0) {
                 productGrid.innerHTML = '';
@@ -491,15 +406,15 @@
             }
             
             noProducts.style.display = 'none';
-            
-            // 商品カードの生成
             productGrid.innerHTML = filteredProducts.map(product => {
                 const hasDiscount = product.originalPrice && product.originalPrice != product.salePrice;
-                const imageUrl = product.thumbnail || 'https://via.placeholder.com/500x625/f5f5f5/666666?text=No+Image';
                 
                 return `
                     <div class="product-card" onclick="openProduct('${product.productNumber}')">
-                        <img src="${imageUrl}" alt="${product.productName}" class="product-image" loading="lazy" onerror="this.src='https://via.placeholder.com/500x625/f5f5f5/666666?text=No+Image'">
+                        <img src="${product.thumbnail || 'https://via.placeholder.com/500x625/f5f5f5/666666?text=No+Image'}" 
+                             alt="${product.productName}" 
+                             class="product-image" 
+                             loading="lazy">
                         <div class="product-info">
                             <div class="product-brand">${product.brandName || 'AMINATI'}</div>
                             <h3 class="product-name">${product.productName}</h3>
@@ -511,48 +426,17 @@
                     </div>
                 `;
             }).join('');
-            
-            debugLog('商品表示完了');
         }
         
         // 商品ページを開く
         function openProduct(productNumber) {
-            debugLog('商品ページを開く:', productNumber);
-            // productsフォルダ内の商品ページへ遷移
-            window.location.href = `./products/${productNumber}.html`;
+            window.location.href = './products/' + productNumber + '.html';
         }
         
         // 数値のフォーマット
         function formatNumber(num) {
             return Number(num).toLocaleString();
         }
-        
-        // 定期的に商品データを更新（オプション：必要に応じてコメントアウト）
-        // setInterval(() => {
-        //     debugLog('定期更新実行');
-        //     loadProducts();
-        // }, 60000); // 1分ごと
-        
-        // デバッグ用：手動で商品データを再読み込み
-        window.reloadProducts = function() {
-            console.log('商品データを再読み込みします...');
-            loadProducts();
-        };
-        
-        // デバッグ用：現在の商品データを確認
-        window.checkProducts = function() {
-            console.log('=== 現在の商品データ ===');
-            console.log('総商品数:', allProducts.length);
-            console.log('商品リスト:', allProducts);
-            console.log('表示中の商品数:', document.querySelectorAll('.product-card').length);
-        };
-        
-        // コンソールで使用方法を表示
-        console.log('=== デバッグ情報 ===');
-        console.log('URLに ?debug=1 を追加すると画面右下にデバッグ情報が表示されます');
-        console.log('reloadProducts() - 商品データを再読み込み');
-        console.log('checkProducts() - 現在の商品データを確認');
     </script>
-
 </body>
 </html>
