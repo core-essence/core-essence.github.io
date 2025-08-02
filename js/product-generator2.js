@@ -459,33 +459,33 @@ class ProductGenerator {
             overlay.classList.remove('active');
         });
         
-        // メニュー項目の処理（相対パスを使用 - GitHub Pages対応）
+        // メニュー項目の処理（絶対パスを使用 - GitHub Pages対応）
         function goToTopPage() {
-            window.location.href = '../index.html';
+            window.location.href = 'https://aminati-ec.github.io/';
         }
         
         function showAllProducts() {
-            window.location.href = '../index.html';
+            window.location.href = 'https://aminati-ec.github.io/';
         }
         
         function showNewProducts() {
-            window.location.href = '../index.html#new';
+            window.location.href = 'https://aminati-ec.github.io/#new';
         }
         
         function showCategories() {
-            window.location.href = '../index.html#categories';
+            window.location.href = 'https://aminati-ec.github.io/#categories';
         }
         
         function showAboutTrade() {
-            window.location.href = '../trade.html';
+            window.location.href = 'https://aminati-ec.github.io/trade.html';
         }
         
         function showCompanyInfo() {
-            window.location.href = '../company.html';
+            window.location.href = 'https://aminati-ec.github.io/company.html';
         }
         
         function showContact() {
-            window.location.href = '../contact.html';
+            window.location.href = 'https://aminati-ec.github.io/contact.html';
         }
         
         // 画像切り替え
@@ -1304,7 +1304,7 @@ class ProductGenerator {
         function closeCompleteModal() {
             const modal = document.getElementById('completeModal');
             if (modal) modal.remove();
-            window.location.href = '../index.html';
+            window.location.href = 'https://aminati-ec.github.io/';
         }`;
     }
     
