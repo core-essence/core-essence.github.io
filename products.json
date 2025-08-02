@@ -1,6 +1,6 @@
 {
-  "generated": "2025-08-02T06:19:59.205Z",
-  "count": 3,
+  "generated": "2025-08-02T06:24:03.556Z",
+  "count": 4,
   "products": [
     {
       "productNumber": "21720",
@@ -32,6 +32,28 @@
       "salePrice": "5000",
       "originalPrice": "10000",
       "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/21765-thumb.jpg",
+      "colors": [
+        "ホワイト",
+        "ブラック",
+        "グレー"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "57000",
+      "productName": "【新色追加／さらっとした着心地】テックリネン半袖シャツジャケット《WEB限定》",
+      "brandName": "ノーブランド",
+      "category": "その他",
+      "salePrice": "2400",
+      "originalPrice": "5400",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/57000-thumb.jpg",
       "colors": [
         "ホワイト",
         "ブラック",
