@@ -14,7 +14,6 @@
             line-height: 1.6;
         }
         
-        /* ヘッダー */
         header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -67,7 +66,6 @@
             font-weight: 700;
         }
         
-        /* ヒーローセクション */
         .hero {
             background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
             padding: 80px 30px;
@@ -88,7 +86,6 @@
             margin: 0 auto;
         }
         
-        /* カテゴリーナビゲーション */
         .category-nav {
             background: #f8f8f8;
             padding: 20px 0;
@@ -127,7 +124,6 @@
             color: #ffffff;
         }
         
-        /* 商品グリッド */
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -208,7 +204,6 @@
             color: #ff0000;
         }
         
-        /* フッター */
         footer {
             background: #000000;
             color: #ffffff;
@@ -221,7 +216,6 @@
             margin: 0 auto;
         }
         
-        /* レスポンシブ */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 32px;
@@ -237,7 +231,6 @@
             }
         }
         
-        /* ローディング */
         .loading {
             text-align: center;
             padding: 40px;
@@ -250,7 +243,6 @@
             color: #666666;
         }
         
-        /* エラーメッセージ */
         .error-message {
             background: #fee;
             color: #c33;
@@ -281,7 +273,6 @@
     <nav class="category-nav">
         <div class="category-list" id="categoryList">
             <div class="category-item active" data-category="all">すべて</div>
-            <!-- カテゴリーは動的に追加される -->
         </div>
     </nav>
     
@@ -307,160 +298,43 @@
         // グローバル変数
         let allProducts = [];
         let currentCategory = 'all';
-        let dbVersion = 2; // 現在のDBバージョン
-        
-        // デバッグ用ログ関数
-        function debugLog(message, data = null) {
-            console.log(`[AMINATI_EC Debug] ${message}`, data);
-        }
         
         // ページ読み込み時の処理
         document.addEventListener('DOMContentLoaded', async () => {
-            debugLog('ページ読み込み開始');
-            
-            // IndexedDBのサポートチェック
-            if (!window.indexedDB) {
-                showError('このブラウザはIndexedDBをサポートしていません。');
-                return;
-            }
-            
+            console.log('[AMINATI_EC] ページ読み込み開始');
             await loadProducts();
             setupCategoryFilters();
         });
         
-        // エラー表示関数
-        function showError(message) {
-            document.getElementById('productGrid').innerHTML = 
-                `<div class="error-message">${message}</div>`;
-            debugLog('エラー表示:', message);
-        }
-        
-        // 商品データの読み込み
+        // 商品データの読み込み（JSONファイルから）
         async function loadProducts() {
             try {
-                debugLog('商品データ読み込み開始');
+                console.log('[AMINATI_EC] 商品データ読み込み開始');
                 
-                // IndexedDBから商品データを取得
-                const products = await getProductsFromDB();
+                const response = await fetch('./products.json');
+                if (!response.ok) {
+                    throw new Error('products.json の読み込みに失敗しました');
+                }
                 
-                debugLog('取得した商品数:', products.length);
+                const data = await response.json();
+                allProducts = data.products;
                 
-                if (products.length === 0) {
+                console.log('[AMINATI_EC] 取得した商品数:', allProducts.length);
+                
+                if (allProducts.length === 0) {
                     document.getElementById('productGrid').innerHTML = '';
                     document.getElementById('noProducts').style.display = 'block';
                     return;
                 }
                 
-                allProducts = products;
                 updateCategories();
                 displayProducts();
                 
             } catch (error) {
-                console.error('商品の読み込みエラー:', error);
-                showError(`エラーが発生しました: ${error.message}`);
+                console.error('[AMINATI_EC] 商品の読み込みエラー:', error);
+                document.getElementById('productGrid').innerHTML = 
+                    '<div class="error-message">商品データの読み込みに失敗しました</div>';
             }
-        }
-        
-        // IndexedDBから商品データを取得（改良版）
-        async function getProductsFromDB() {
-            return new Promise((resolve, reject) => {
-                let attempts = 0;
-                const maxAttempts = 3;
-                
-                function attemptConnection() {
-                    attempts++;
-                    debugLog(`データベース接続試行 ${attempts}/${maxAttempts}`);
-                    
-                    try {
-                        const request = indexedDB.open('AminatiECProducts', dbVersion);
-                        
-                        request.onerror = (event) => {
-                            debugLog('データベース接続エラー:', event.target.error);
-                            
-                            if (attempts < maxAttempts) {
-                                // リトライ
-                                setTimeout(attemptConnection, 1000);
-                            } else {
-                                showError('データベースに接続できませんでした。ブラウザの設定を確認してください。');
-                                resolve([]);
-                            }
-                        };
-                        
-                        request.onsuccess = (event) => {
-                            debugLog('データベース接続成功');
-                            const db = event.target.result;
-                            
-                            // オブジェクトストアの存在確認
-                            if (!db.objectStoreNames.contains('products')) {
-                                debugLog('productsストアが存在しません');
-                                db.close();
-                                resolve([]);
-                                return;
-                            }
-                            
-                            try {
-                                const transaction = db.transaction(['products'], 'readonly');
-                                const store = transaction.objectStore('products');
-                                const getAllRequest = store.getAll();
-                                
-                                getAllRequest.onsuccess = () => {
-                                    const products = getAllRequest.result || [];
-                                    debugLog('データ取得成功:', products.length + '件');
-                                    db.close();
-                                    resolve(products);
-                                };
-                                
-                                getAllRequest.onerror = (error) => {
-                                    debugLog('データ取得エラー:', error);
-                                    db.close();
-                                    resolve([]);
-                                };
-                                
-                                transaction.onerror = (error) => {
-                                    debugLog('トランザクションエラー:', error);
-                                    db.close();
-                                    resolve([]);
-                                };
-                                
-                            } catch (error) {
-                                debugLog('トランザクション作成エラー:', error);
-                                db.close();
-                                resolve([]);
-                            }
-                        };
-                        
-                        request.onupgradeneeded = (event) => {
-                            debugLog('データベースアップグレード中...');
-                            const db = event.target.result;
-                            
-                            // 既存のオブジェクトストアがあるかチェック
-                            if (!db.objectStoreNames.contains('products')) {
-                                debugLog('productsストアを作成');
-                                const store = db.createObjectStore('products', { keyPath: 'productNumber' });
-                                store.createIndex('createdAt', 'createdAt', { unique: false });
-                                store.createIndex('updatedAt', 'updatedAt', { unique: false });
-                                store.createIndex('category', 'productData.category', { unique: false });
-                            }
-                        };
-                        
-                        request.onblocked = () => {
-                            debugLog('データベースがブロックされています');
-                            showError('別のタブでデータベースが使用されています。他のタブを閉じて再読み込みしてください。');
-                            resolve([]);
-                        };
-                        
-                    } catch (error) {
-                        debugLog('予期しないエラー:', error);
-                        if (attempts < maxAttempts) {
-                            setTimeout(attemptConnection, 1000);
-                        } else {
-                            resolve([]);
-                        }
-                    }
-                }
-                
-                attemptConnection();
-            });
         }
         
         // カテゴリーの更新
@@ -468,8 +342,8 @@
             const categories = new Set(['all']);
             
             allProducts.forEach(product => {
-                if (product.productData && product.productData.category) {
-                    categories.add(product.productData.category);
+                if (product.category) {
+                    categories.add(product.category);
                 }
             });
             
@@ -501,20 +375,16 @@
         function setupCategoryFilters() {
             document.getElementById('categoryList').addEventListener('click', (e) => {
                 if (e.target.classList.contains('category-item')) {
-                    // アクティブクラスの切り替え
                     document.querySelectorAll('.category-item').forEach(item => {
                         item.classList.remove('active');
                     });
                     e.target.classList.add('active');
                     
-                    // カテゴリーの変更
                     currentCategory = e.target.dataset.category;
                     
-                    // セクションタイトルの更新
                     const title = currentCategory === 'all' ? 'すべての商品' : currentCategory;
                     document.getElementById('sectionTitle').textContent = title;
                     
-                    // 商品の再表示
                     displayProducts();
                 }
             });
@@ -525,10 +395,9 @@
             const productGrid = document.getElementById('productGrid');
             const noProducts = document.getElementById('noProducts');
             
-            // フィルタリング
             const filteredProducts = currentCategory === 'all' 
                 ? allProducts 
-                : allProducts.filter(p => p.productData && p.productData.category === currentCategory);
+                : allProducts.filter(p => p.category === currentCategory);
             
             if (filteredProducts.length === 0) {
                 productGrid.innerHTML = '';
@@ -538,18 +407,20 @@
             
             noProducts.style.display = 'none';
             productGrid.innerHTML = filteredProducts.map(product => {
-                const data = product.productData;
-                const hasDiscount = data.originalPrice && data.originalPrice != data.salePrice;
+                const hasDiscount = product.originalPrice && product.originalPrice != product.salePrice;
                 
                 return `
                     <div class="product-card" onclick="openProduct('${product.productNumber}')">
-                        <img src="${getProductImage(product)}" alt="${data.productName}" class="product-image" loading="lazy">
+                        <img src="${product.thumbnail || 'https://via.placeholder.com/500x625/f5f5f5/666666?text=No+Image'}" 
+                             alt="${product.productName}" 
+                             class="product-image" 
+                             loading="lazy">
                         <div class="product-info">
-                            <div class="product-brand">${data.brandName || 'AMINATI'}</div>
-                            <h3 class="product-name">${data.productName}</h3>
+                            <div class="product-brand">${product.brandName || 'AMINATI'}</div>
+                            <h3 class="product-name">${product.productName}</h3>
                             <div class="product-price">
-                                ${hasDiscount ? `<span class="original-price">¥${formatNumber(data.originalPrice)}</span>` : ''}
-                                <span class="${hasDiscount ? 'sale-price' : ''}">¥${formatNumber(data.salePrice)}</span>
+                                ${hasDiscount ? `<span class="original-price">¥${formatNumber(product.originalPrice)}</span>` : ''}
+                                <span class="${hasDiscount ? 'sale-price' : ''}">¥${formatNumber(product.salePrice)}</span>
                             </div>
                         </div>
                     </div>
@@ -557,68 +428,15 @@
             }).join('');
         }
         
-        // 商品画像の取得（改良版）
-        function getProductImage(product) {
-            try {
-                // HTMLから画像URLを抽出する
-                const match = product.html.match(/<img[^>]+src="([^"]+)"[^>]*class="main-image"/);
-                if (match && match[1]) {
-                    return match[1];
-                }
-                
-                // main-imageクラスがない場合の代替パターン
-                const altMatch = product.html.match(/<img[^>]+src="([^"]+)"/);
-                if (altMatch && altMatch[1]) {
-                    return altMatch[1];
-                }
-            } catch (error) {
-                debugLog('画像URL抽出エラー:', error);
-            }
-            
-            return 'https://via.placeholder.com/500x625/f5f5f5/666666?text=No+Image';
-        }
-        
         // 商品ページを開く
         function openProduct(productNumber) {
-            debugLog('商品ページを開く:', productNumber);
-            
-            const product = allProducts.find(p => p.productNumber === productNumber);
-            if (product && product.html) {
-                try {
-                    const blob = new Blob([product.html], { type: 'text/html;charset=utf-8' });
-                    const url = URL.createObjectURL(blob);
-                    window.open(url, '_blank');
-                } catch (error) {
-                    debugLog('商品ページ表示エラー:', error);
-                    alert('商品ページの表示でエラーが発生しました。');
-                }
-            } else {
-                alert('商品が見つかりません。');
-            }
+            window.location.href = './products/' + productNumber + '.html';
         }
         
         // 数値のフォーマット
         function formatNumber(num) {
             return Number(num).toLocaleString();
         }
-        
-        // 定期的に商品データを更新（30秒ごとに変更）
-        setInterval(() => {
-            debugLog('定期更新実行');
-            loadProducts();
-        }, 30000);
-        
-        // モバイルデバイスの検出
-        function isMobileDevice() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-        
-        // デバイス情報のログ出力
-        if (isMobileDevice()) {
-            debugLog('モバイルデバイスからのアクセス');
-            debugLog('User Agent:', navigator.userAgent);
-        }
     </script>
-
 </body>
 </html>
