@@ -1,4 +1,4 @@
-// 商品ページ生成クラス（完全版 - admin-settings.js インライン化対応版）
+// 商品ページ生成クラス（軽量版）
 class ProductGenerator {
     constructor(app) {
         this.app = app;
@@ -212,66 +212,11 @@ class ProductGenerator {
     ${this.getPurchaseSection()}
     
     <script>
-        ${this.getAdminSettingsCode()}
         ${this.getProductScripts(product, images)}
         ${this.getPurchaseFlowScript()}
     </script>
 </body>
 </html>`;
-    }
-    
-    // AdminSettings.js のコードをインライン化
-    getAdminSettingsCode() {
-        return `
-        // 管理設定クラス（インライン版）
-        class AdminSettings {
-            constructor() {
-                this.storageKey = 'aminatiAdminSettings';
-                this.settings = this.loadSettings();
-            }
-            
-            loadSettings() {
-                const saved = localStorage.getItem(this.storageKey);
-                if (saved) {
-                    return JSON.parse(saved);
-                }
-                
-                // デフォルト設定
-                return {
-                    geminiApiKey: '',
-                    companyName: 'AMINATI_EC',
-                    companyFullName: '株式会社AMINATI',
-                    ceo: '代表取締役',
-                    address: '〒100-0001 東京都千代田区千代田1-1-1',
-                    tel: '03-XXXX-XXXX',
-                    fax: '03-XXXX-XXXX',
-                    email: 'order@aminati-ec.com',
-                    businessHours: '平日 9:00-18:00',
-                    established: '2024年1月',
-                    capital: '1,000万円',
-                    business: 'アパレル製品の企画・製造・販売',
-                    paymentMethod: '代金引換のみ',
-                    minimumOrder: '1点から可能',
-                    deliveryTime: 'ご注文から3-5営業日',
-                    shippingFee: '全国一律送料無料',
-                    returnPolicy: '商品到着後7日以内',
-                    updated: new Date().toISOString()
-                };
-            }
-            
-            saveSettings() {
-                this.settings.updated = new Date().toISOString();
-                localStorage.setItem(this.storageKey, JSON.stringify(this.settings));
-            }
-            
-            get(key) {
-                return this.settings[key] || '';
-            }
-        }
-        
-        // グローバルに公開
-        window.adminSettings = new AdminSettings();
-        `;
     }
     
     escapeForJavaScript(text) {
@@ -796,33 +741,35 @@ class ProductGenerator {
             overlay.classList.remove('active');
         });
         
-        // メニュー項目の処理（相対パスを使用 - GitHub Pages対応）
+        // メニュー項目の処理
+        const baseUrl = 'http://localhost:8000';
+        
         function goToTopPage() {
-            window.location.href = '../index.html';
+            window.location.href = baseUrl + '/index.html';
         }
         
         function showAllProducts() {
-            window.location.href = '../index.html';
+            window.location.href = baseUrl + '/index.html';
         }
         
         function showNewProducts() {
-            window.location.href = '../index.html#new';
+            window.location.href = baseUrl + '/index.html';
         }
         
         function showCategories() {
-            window.location.href = '../index.html#categories';
+            window.location.href = baseUrl + '/index.html';
         }
         
         function showAboutTrade() {
-            window.location.href = '../trade.html';
+            window.location.href = baseUrl + '/trade.html';
         }
         
         function showCompanyInfo() {
-            window.location.href = '../company.html';
+            window.location.href = baseUrl + '/company.html';
         }
         
         function showContact() {
-            window.location.href = '../contact.html';
+            window.location.href = baseUrl + '/contact.html';
         }
         
         // 画像切り替え
@@ -865,7 +812,7 @@ class ProductGenerator {
     
     getPurchaseFlowScript() {
         return `
-        // EmailNotificationService（購入者優先・管理者デフォルト版）
+        // EmailNotificationService（本番用）
         class EmailNotificationService {
             constructor() {
                 this.apiUrl = 'https://ec-image-uploader.archiver0922.workers.dev/send-order-email';
@@ -875,88 +822,68 @@ class ProductGenerator {
                 try {
                     console.log('📧 メール送信開始...', orderData);
                     
-                    // 管理者メールアドレスを取得
+                    // Admin設定からメールアドレスを取得
                     let adminEmail = this.getAdminEmail();
-                    
-                    // 管理者メールアドレスが取得できない場合はスキップ
-                    if (!adminEmail) {
-                        console.warn('⚠️ 管理者メールアドレスが設定されていないため、管理者通知をスキップします');
-                        this.showEmailPartialSuccess(orderData);
-                        return { success: true, adminSkipped: true };
-                    }
                     
                     // APIに送信するデータ形式に変換
                     const emailData = this.formatEmailData(orderData, adminEmail);
                     
-                    console.log('🌐 API呼び出し先:', this.apiUrl);
-                    console.log('📝 送信データ:', emailData);
-                    
-                    // CloudflareWorkers APIを呼び出し（POST確実対応）
+                    // CloudflareWorkers APIを呼び出し
                     const response = await fetch(this.apiUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Accept': 'application/json'
                         },
                         body: JSON.stringify(emailData)
                     });
                     
-                    console.log('📊 レスポンス状態:', response.status, response.statusText);
+                    const result = await response.json();
                     
-                    if (!response.ok) {
-                        const errorText = await response.text();
-                        console.error('❌ APIエラーレスポンス:', errorText);
-                        throw new Error(\`HTTP \${response.status}: \${errorText}\`);
+                    if (response.ok) {
+                        console.log('✅ メール送信成功:', result);
+                        this.showEmailSuccess(orderData, adminEmail);
+                        return { success: true, result };
+                    } else {
+                        console.error('❌ メール送信失敗:', result);
+                        this.showEmailFallback(orderData);
+                        return { success: false, error: result };
                     }
                     
-                    const result = await response.json();
-                    console.log('✅ メール送信成功:', result);
-                    
-                    this.showEmailSuccess(orderData, adminEmail);
-                    return { success: true, result };
-                    
                 } catch (error) {
-                    console.error('❌ メール送信エラー:', error);
+                    console.error('❌ API接続エラー:', error);
                     this.showEmailFallback(orderData);
                     return { success: false, error: error.message };
                 }
             }
             
-            // 管理者メールアドレスを取得
             getAdminEmail() {
-                if (window.adminSettings && typeof window.adminSettings.get === 'function') {
-                    try {
-                        const email = window.adminSettings.get('email');
-                        if (email && email.trim() !== '') {
-                            console.log('✅ AdminSettings読み込み成功: ' + email);
-                            return email;
-                        }
-                    } catch (e) {
-                        console.warn('⚠️ AdminSettings.get()エラー:', e);
+                if (window.adminSettings) {
+                    const settingsEmail = window.adminSettings.get('email');
+                    if (settingsEmail && settingsEmail.trim() !== '') {
+                        return settingsEmail;
                     }
                 }
                 
-                console.warn('⚠️ 管理者メールアドレスが未設定です');
+                console.warn('⚠️ 管理者メールアドレスが未設定です。管理画面で設定してください。');
                 return null;
             }
             
             formatEmailData(orderData, adminEmail) {
                 return {
-                    customerEmail: orderData.customer.email || '',
+                    customerEmail: orderData.customer.email,
                     adminEmail: adminEmail,
                     orderId: orderData.orderId,
                     customerName: orderData.customer.name,
                     items: [
                         {
                             name: orderData.product.productName,
-                            brand: orderData.product.brandName || 'AMINATI COLLECTION',
-                            color: orderData.product.selectedColor || '',
-                            size: orderData.product.selectedSize || '',
+                            brand: orderData.product.brandName,
+                            color: orderData.product.selectedColor,
+                            size: orderData.product.selectedSize,
                             price: orderData.pricing.productPrice,
                             quantity: 1
                         }
                     ],
-                    total: orderData.pricing.totalPrice,
                     pricing: {
                         productPrice: orderData.pricing.productPrice,
                         shippingFee: orderData.pricing.shippingFee,
@@ -965,9 +892,9 @@ class ProductGenerator {
                     },
                     customer: {
                         name: orderData.customer.name,
-                        kana: orderData.customer.kana || '',
+                        kana: orderData.customer.kana,
                         phone: orderData.customer.phone,
-                        email: orderData.customer.email || '',
+                        email: orderData.customer.email,
                         zip: orderData.customer.zip,
                         address: orderData.customer.address
                     },
@@ -997,7 +924,7 @@ class ProductGenerator {
                                     \` : ''}
                                     <div class="email-sent-item">
                                         <span class="email-icon">✅</span>
-                                        <span>店舗: \${adminEmail}</span>
+                                        <span>店舗への通知完了</span>
                                     </div>
                                 </div>
                                 
@@ -1057,83 +984,6 @@ class ProductGenerator {
                         margin-bottom: 8px;
                         font-size: 14px;
                         line-height: 1.4;
-                    }
-                    .modal-buttons {
-                        display: grid;
-                        grid-template-columns: 1fr;
-                        gap: 15px;
-                        margin-top: 20px;
-                    }
-                    .btn-primary {
-                        padding: 12px 20px;
-                        border: none;
-                        border-radius: 8px;
-                        font-size: 14px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                        background: #000;
-                        color: white;
-                    }
-                    .btn-primary:hover {
-                        background: #333;
-                    }
-                    </style>
-                \`;
-                
-                document.body.insertAdjacentHTML('beforeend', successHtml);
-            }
-            
-            showEmailPartialSuccess(orderData) {
-                const successHtml = \`
-                    <div class="modal-overlay" id="emailSuccessModal">
-                        <div class="modal-content">
-                            <div class="success-icon">⚠️</div>
-                            <h2>注文完了</h2>
-                            
-                            <div class="success-content">
-                                <p><strong>ご注文を承りました</strong></p>
-                                <div class="warning-note">
-                                    <p>⚠️ 管理者メールアドレスが設定されていないため、店舗への自動通知は送信されませんでした</p>
-                                    <p>📞 お急ぎの場合は直接お電話でご連絡ください</p>
-                                </div>
-                            </div>
-                            
-                            <div class="modal-buttons">
-                                <button class="btn-primary" onclick="emailNotificationService.closeEmailSuccess()">確認</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <style>
-                    .success-icon {
-                        width: 60px;
-                        height: 60px;
-                        background: #ffc107;
-                        color: white;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 24px;
-                        margin: 0 auto 20px;
-                    }
-                    .warning-note {
-                        background: #fff3cd;
-                        border: 1px solid #ffeaa7;
-                        border-radius: 8px;
-                        padding: 15px;
-                        margin: 15px 0;
-                    }
-                    .warning-note p {
-                        margin-bottom: 8px;
-                        font-size: 14px;
-                        line-height: 1.4;
-                        color: #856404;
-                    }
-                    .success-content {
-                        text-align: center;
-                        margin: 20px 0;
                     }
                     .modal-buttons {
                         display: grid;
@@ -1558,17 +1408,274 @@ class ProductGenerator {
         }
         
         function saveOrder(orderData) {
-            // GitHub Pages版：IndexedDBは使用せず、メール通知のみ
-            console.log('注文データ:', orderData);
+            const request = indexedDB.open('AminatiECOrders', 1);
             
-            // メール通知送信
-            sendOrderNotification(orderData);
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+                if (!db.objectStoreNames.contains('orders')) {
+                    const objectStore = db.createObjectStore('orders', { keyPath: 'orderId' });
+                    objectStore.createIndex('orderDate', 'orderDate', { unique: false });
+                    objectStore.createIndex('status', 'status', { unique: false });
+                }
+            };
             
-            // 注文完了画面を表示
-            showOrderComplete(orderData);
-            sessionStorage.removeItem('purchaseData');
-            sessionStorage.removeItem('estimateData');
-            
-            // 注：実際の注文データはメールで管理者に送信されます
-            // より高度な注文管理が必要な場合は、バックエンドサーバーの実装が必要です
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(['orders'], 'readwrite');
+                const objectStore = transaction.objectStore('orders');
+                
+                objectStore.add(orderData).onsuccess = () => {
+                    // メール送信処理
+                    sendOrderNotification(orderData);
+                    
+                    showOrderComplete(orderData);
+                    sessionStorage.removeItem('purchaseData');
+                    sessionStorage.removeItem('estimateData');
+                };
+            };
         }
+        
+        function showOrderComplete(orderData) {
+            closeShippingModal();
+            
+            const modalHtml = \`
+                <div class="modal-overlay" id="completeModal">
+                    <div class="modal-content">
+                        <div class="complete-icon">✓</div>
+                        <h2>ご注文ありがとうございました</h2>
+                        
+                        <div class="order-info">
+                            <p><strong>注文番号:</strong> \${orderData.orderId}</p>
+                            <p><strong>注文日時:</strong> \${new Date(orderData.orderDate).toLocaleString('ja-JP')}</p>
+                            <p><strong>合計金額:</strong> ¥\${formatNumber(orderData.pricing.totalPrice)}</p>
+                        </div>
+                        
+                        <div class="complete-message">
+                            <p>ご注文を承りました。</p>
+                            <p>商品は代金引換でお届けいたします。</p>
+                            <p>配送について詳細をお電話にてご連絡する場合がございます。</p>
+                        </div>
+                        
+                        <div class="modal-buttons">
+                            <button class="btn-primary" onclick="closeCompleteModal()">閉じる</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <style>
+                .complete-icon {
+                    width: 60px;
+                    height: 60px;
+                    background: #28a745;
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin: 0 auto 20px;
+                }
+                .order-info {
+                    background: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 8px;
+                    margin: 20px 0;
+                }
+                .order-info p {
+                    margin-bottom: 8px;
+                    font-size: 14px;
+                }
+                .complete-message {
+                    text-align: center;
+                    margin: 20px 0;
+                }
+                .complete-message p {
+                    margin-bottom: 10px;
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+                </style>
+            \`;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+        }
+        
+        function closeCompleteModal() {
+            const modal = document.getElementById('completeModal');
+            if (modal) modal.remove();
+        }`;
+    }
+    
+    formatNumber(num) {
+        return num.toLocaleString('ja-JP');
+    }
+    
+    showPostGenerationOptions(generatedProducts) {
+        const optionsHtml = `
+            <div class="post-generation-options" style="margin-top: 20px; padding: 20px; background: #f0f0f0; border-radius: 8px;">
+                <h3 style="font-size: 18px; margin-bottom: 15px;">生成完了！次のアクションを選択してください</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <button class="btn btn-primary" onclick="app.productGenerator.viewTopPage()">
+                        🏠 トップページを確認
+                    </button>
+                    
+                    <button class="btn btn-secondary" onclick="app.productGenerator.viewProducts()">
+                        📋 保存した商品を確認
+                    </button>
+                    
+                    <button class="btn btn-secondary" onclick="app.productGenerator.exportAll()">
+                        💾 すべてエクスポート
+                    </button>
+                    
+                    <button class="btn btn-secondary" onclick="app.clearAll()">
+                        ✨ 新しい商品を登録
+                    </button>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background: #ffffff; border-radius: 8px;">
+                    <h4 style="font-size: 14px; margin-bottom: 10px;">カテゴリー分類結果</h4>
+                    <div style="font-size: 13px; color: #666;">
+                        ${this.generateCategoryReport(generatedProducts)}
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        const container = document.getElementById('logArea').parentElement;
+        const optionsDiv = document.createElement('div');
+        optionsDiv.innerHTML = optionsHtml;
+        container.appendChild(optionsDiv);
+    }
+    
+    generateCategoryReport(products) {
+        const categoryCount = {};
+        
+        products.forEach(product => {
+            const category = product.category || 'その他';
+            categoryCount[category] = (categoryCount[category] || 0) + 1;
+        });
+        
+        return Object.entries(categoryCount)
+            .sort((a, b) => b[1] - a[1])
+            .map(([category, count]) => `${category}: ${count}件`)
+            .join(' / ');
+    }
+    
+    async viewTopPage() {
+        window.open('index.html', '_blank');
+    }
+    
+    async viewProducts() {
+        const products = await this.storage.getAllProducts();
+        
+        if (products.length === 0) {
+            showErrorMessage('保存された商品がありません');
+            return;
+        }
+        
+        const listHtml = this.generateProductListHtml(products);
+        const blob = new Blob([listHtml], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        window.open(url, '_blank');
+    }
+    
+    generateProductListHtml(products) {
+        const productCards = products.map(p => `
+            <div class="product-card" onclick="viewProduct('${p.productNumber}')">
+                <div class="product-number">${p.productNumber}</div>
+                <div class="product-name">${p.productData.productName}</div>
+                <div class="product-meta">
+                    <span>¥${this.formatNumber(p.productData.salePrice)}</span>
+                    <span>更新: ${new Date(p.updatedAt).toLocaleDateString()}</span>
+                </div>
+            </div>
+        `).join('');
+        
+        return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>保存済み商品一覧 - AMINATI_EC</title>
+    <style>
+        body { 
+            font-family: -apple-system, sans-serif; 
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 { 
+            color: #333; 
+            margin-bottom: 30px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .product-number {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+    <script>
+        async function viewProduct(productNumber) {
+            const dbName = 'AminatiECProducts';
+            const request = indexedDB.open(dbName);
+            
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(['products'], 'readonly');
+                const store = transaction.objectStore('products');
+                const getRequest = store.get(productNumber);
+                
+                getRequest.onsuccess = () => {
+                    const product = getRequest.result;
+                    if (product) {
+                        const blob = new Blob([product.html], { type: 'text/html' });
+                        const url = URL.createObjectURL(blob);
+                        window.open(url, '_blank');
+                    }
+                };
+            };
+        }
+    </script>
+</head>
+<body>
+    <h1>保存済み商品一覧（${products.length}件）</h1>
+    <div class="product-grid">
+        ${productCards}
+    </div>
+</body>
+</html>`;
+    }
+    
+    async exportAll() {
+        await this.storage.exportAllProducts();
+    }
+}

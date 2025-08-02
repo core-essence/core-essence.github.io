@@ -376,14 +376,8 @@ class ProductGenerator {
     // GitHubに直接アップロード
     async uploadToGitHub() {
         try {
-            // GitHubトークンを分割して保存（自動検出回避）
-            const TOKEN_PART1 = 'ghp_VZ4zuGYSZxCZa';
-            const TOKEN_PART2 = 'EY1rxFfrC41EVcWpU';
-            const TOKEN_PART3 = '34WFg2';
-            
-            // 実行時に結合
-            const GITHUB_TOKEN = TOKEN_PART1 + TOKEN_PART2 + TOKEN_PART3;
-            
+            // 設定
+            const GITHUB_TOKEN = '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';
             const GITHUB_OWNER = 'aminati-ec';  // あなたのGitHubユーザー名
             const GITHUB_REPO = 'aminati-ec.github.io';  // リポジトリ名
             const GITHUB_BRANCH = 'main';  // ブランチ名（mainまたはmaster）
