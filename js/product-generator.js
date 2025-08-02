@@ -53,8 +53,8 @@ class ProductGenerator {
                 addLog(`商品 ${product.productNumber} の生成が完了しました`, 'success');
             }
             
-            // 商品一覧JSONを生成
-            const productsJson = this.generateProductsJson(generatedProducts);
+            // 既存のproducts.jsonとマージして新しいJSONを生成
+            const productsJson = await this.mergeWithExistingProducts(generatedProducts);
             this.generatedFiles.push({
                 filename: 'products.json',
                 content: JSON.stringify(productsJson, null, 2),
@@ -80,6 +80,67 @@ class ProductGenerator {
         } catch (error) {
             addLog('商品ページ生成中にエラーが発生しました: ' + error.message, 'error');
             throw error;
+        }
+    }
+    
+    // GitHubから既存のproducts.jsonを取得してマージする関数
+    async mergeWithExistingProducts(newProducts) {
+        try {
+            addLog('既存のproducts.jsonを確認中...', 'info');
+            
+            // GitHubから既存のproducts.jsonを取得
+            const response = await fetch('https://aminati-ec.github.io/products.json');
+            
+            if (response.ok) {
+                const existingData = await response.json();
+                const existingProducts = existingData.products || [];
+                
+                addLog(`既存の商品数: ${existingProducts.length}`, 'info');
+                
+                // 既存商品のマップを作成（productNumberをキーとして）
+                const existingMap = new Map();
+                existingProducts.forEach(product => {
+                    existingMap.set(product.productNumber, product);
+                });
+                
+                // 新しい商品で既存商品を更新または追加
+                newProducts.forEach(product => {
+                    const productData = {
+                        productNumber: product.productNumber,
+                        productName: product.productName,
+                        brandName: product.brandName || 'AMINATI',
+                        category: product.category || 'その他',
+                        salePrice: product.salePrice,
+                        originalPrice: product.originalPrice,
+                        thumbnail: product.images.thumbnail,
+                        colors: product.colors || [],
+                        sizes: product.sizes || [],
+                        material: product.material || '',
+                        origin: product.origin || ''
+                    };
+                    existingMap.set(product.productNumber, productData);
+                });
+                
+                // マップから配列に戻す
+                const mergedProducts = Array.from(existingMap.values());
+                
+                addLog(`マージ後の商品数: ${mergedProducts.length}`, 'success');
+                
+                return {
+                    generated: new Date().toISOString(),
+                    count: mergedProducts.length,
+                    products: mergedProducts
+                };
+                
+            } else {
+                addLog('既存のproducts.jsonが見つかりません。新規作成します。', 'info');
+                return this.generateProductsJson(newProducts);
+            }
+            
+        } catch (error) {
+            addLog('既存データの取得エラー: ' + error.message + ' - 新規作成します。', 'warning');
+            // エラーの場合は新規作成
+            return this.generateProductsJson(newProducts);
         }
     }
     
