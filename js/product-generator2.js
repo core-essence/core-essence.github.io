@@ -1,4 +1,4 @@
-// 商品ページ生成クラス（完全版 - admin-settings.js インライン化対応版）
+// 商品ページ生成クラス（外部CSS対応版 - admin-settings.js インライン化対応版）
 class ProductGenerator {
     constructor(app) {
         this.app = app;
@@ -184,6 +184,7 @@ class ProductGenerator {
         return 'その他';
     }
     
+    // 外部CSS対応版 generateHTML メソッド
     generateHTML(product, description, images) {
         const thumbnailUrl = images.thumbnail || 'https://via.placeholder.com/500x625/f5f5f5/666666?text=No+Image';
         const detailUrls = images.details;
@@ -197,7 +198,8 @@ class ProductGenerator {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>${this.escapeHtml(product.productName)} - AMINATI_EC</title>
-    ${this.getProductStyles()}
+    <!-- 外部CSSを読み込み -->
+    <link rel="stylesheet" href="../css/product.css">
 </head>
 <body>
     ${this.getHeader()}
@@ -287,345 +289,6 @@ class ProductGenerator {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
-    }
-    
-    getProductStyles() {
-        return `<style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; 
-            background-color: #ffffff; 
-            color: #000000; 
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        header { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            background-color: #ffffff; 
-            z-index: 1000; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-        }
-        .header-content { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 15px 20px; 
-            position: relative;
-        }
-        .menu-btn {
-            width: 24px;
-            height: 24px;
-            position: relative;
-            cursor: pointer;
-            z-index: 1002;
-        }
-        .menu-btn span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: #000000;
-            position: absolute;
-            transition: all 0.3s ease;
-        }
-        .menu-btn span:nth-child(1) { top: 0; }
-        .menu-btn span:nth-child(2) { top: 11px; }
-        .menu-btn span:nth-child(3) { bottom: 0; }
-        .menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 11px;
-        }
-        .menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg);
-            bottom: 11px;
-        }
-        .logo { 
-            font-size: 28px; 
-            font-weight: 900; 
-            letter-spacing: -2px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .cart-icon {
-            width: 24px;
-            height: 24px;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .slide-menu {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 300px;
-            height: 100vh;
-            background-color: #ffffff;
-            z-index: 1001;
-            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
-        }
-        .slide-menu.active {
-            left: 0;
-        }
-        .menu-header {
-            padding: 30px 20px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        .menu-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        .menu-subtitle {
-            font-size: 12px;
-            color: #888888;
-        }
-        .menu-nav {
-            padding: 20px 0;
-        }
-        .menu-item {
-            display: block;
-            padding: 15px 20px;
-            text-decoration: none;
-            color: #000000;
-            font-size: 16px;
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .menu-item:hover {
-            background-color: #f5f5f5;
-            padding-left: 30px;
-        }
-        .menu-item::after {
-            content: '→';
-            position: absolute;
-            right: 20px;
-            opacity: 0.5;
-        }
-        .menu-footer {
-            position: absolute;
-            bottom: 30px;
-            left: 20px;
-            right: 20px;
-        }
-        .menu-footer-text {
-            font-size: 11px;
-            color: #888888;
-            line-height: 1.5;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        main { 
-            margin-top: 64px; 
-            flex: 1;
-            margin-bottom: 100px;
-        }
-        
-        .product-images { 
-            position: relative; 
-            width: 100%; 
-            background: #f5f5f5; 
-        }
-        .main-image { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-        }
-        .image-carousel { 
-            display: flex; 
-            overflow-x: auto; 
-            gap: 10px; 
-            padding: 10px; 
-            background: #ffffff;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .image-carousel::-webkit-scrollbar { display: none; }
-        .carousel-item { 
-            flex: 0 0 80px; 
-            height: 100px; 
-            background: #f5f5f5;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer; 
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .carousel-item.active { border-color: #000000; }
-        .carousel-item img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-        }
-        
-        .product-details { padding: 20px; }
-        .brand-name { 
-            font-size: 12px; 
-            color: #666666; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            margin-bottom: 8px; 
-        }
-        .product-name { 
-            font-size: 18px; 
-            font-weight: 700; 
-            line-height: 1.4;
-            margin-bottom: 15px; 
-        }
-        .stock-info { 
-            background: #000000; 
-            color: #ffffff; 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            font-size: 11px;
-            font-weight: 600;
-            display: inline-block; 
-            margin-bottom: 15px; 
-        }
-        .price-section { 
-            margin-bottom: 20px; 
-            padding-bottom: 20px; 
-            border-bottom: 1px solid #e0e0e0; 
-        }
-        .current-price { 
-            font-size: 28px; 
-            font-weight: 700; 
-            margin-bottom: 5px;
-        }
-        .original-price { 
-            font-size: 16px; 
-            color: #999999; 
-            text-decoration: line-through; 
-            margin-right: 10px; 
-        }
-        .discount-badge { 
-            background: #ff0000; 
-            color: #ffffff; 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            font-size: 12px;
-            font-weight: 600;
-            display: inline-block;
-        }
-        
-        .selection-section { margin-bottom: 20px; }
-        .section-title { 
-            font-size: 14px; 
-            font-weight: 600; 
-            margin-bottom: 10px; 
-        }
-        .color-options, .size-options { 
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .option-item {
-            padding: 8px 16px;
-            border: 1px solid #e0e0e0;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 13px;
-        }
-        .option-item.active {
-            background: #000000;
-            color: #ffffff;
-            border-color: #000000;
-        }
-        .size-options .option-item {
-            min-width: 60px;
-            text-align: center;
-            border-radius: 8px;
-        }
-        
-        .purchase-section { 
-            position: fixed; 
-            bottom: 0; 
-            left: 0; 
-            right: 0; 
-            background: #ffffff; 
-            padding: 15px 20px 25px; 
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 997;
-        }
-        .purchase-buttons { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 10px; 
-        }
-        .btn-add-cart { 
-            background: #000000; 
-            color: #ffffff; 
-            padding: 15px; 
-            border: none; 
-            border-radius: 8px; 
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn-add-cart:active { transform: scale(0.98); }
-        
-        .description-section { 
-            padding: 20px; 
-            background: #f8f8f8;
-            margin-bottom: 20px;
-        }
-        .description-text { 
-            font-size: 14px; 
-            line-height: 1.8;
-            color: #333333;
-        }
-        .details-section { 
-            padding: 20px; 
-            background: #ffffff;
-        }
-        .detail-item { 
-            display: flex; 
-            padding: 12px 0; 
-            border-bottom: 1px solid #f0f0f0; 
-        }
-        .detail-item:last-child {
-            border-bottom: none;
-        }
-        .detail-label { 
-            flex: 0 0 100px; 
-            font-size: 13px; 
-            color: #666666; 
-        }
-        .detail-value { 
-            flex: 1; 
-            font-size: 13px;
-            color: #000000;
-        }
-    </style>`;
     }
     
     getHeader() {
@@ -861,6 +524,10 @@ class ProductGenerator {
         function formatNumber(num) {
             return num.toLocaleString('ja-JP');
         }`;
+    }
+    
+    formatNumber(num) {
+        return parseInt(num).toLocaleString('ja-JP');
     }
     
     getPurchaseFlowScript() {
@@ -1572,3 +1239,165 @@ class ProductGenerator {
             // 注：実際の注文データはメールで管理者に送信されます
             // より高度な注文管理が必要な場合は、バックエンドサーバーの実装が必要です
         }
+        
+        function showOrderComplete(orderData) {
+            closeShippingModal();
+            
+            const completeHtml = \`
+                <div class="modal-overlay" id="completeModal">
+                    <div class="modal-content">
+                        <div class="success-icon">✓</div>
+                        <h2>ご注文ありがとうございました</h2>
+                        
+                        <div class="order-info">
+                            <p><strong>注文番号：</strong>\${orderData.orderId}</p>
+                            <p><strong>お支払い金額：</strong>¥\${formatNumber(orderData.pricing.totalPrice)}</p>
+                        </div>
+                        
+                        <div class="complete-message">
+                            <p>ご注文内容の確認メールをお送りしました。</p>
+                            <p>商品は\${orderData.delivery.date ? '指定された日時' : '3-5営業日以内'}にお届けいたします。</p>
+                            <p>お支払いは商品到着時に配達員にお支払いください。</p>
+                        </div>
+                        
+                        <button class="btn-primary" onclick="closeCompleteModal()">トップページに戻る</button>
+                    </div>
+                </div>
+                
+                <style>
+                .success-icon {
+                    width: 60px;
+                    height: 60px;
+                    background: #28a745;
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 30px;
+                    margin: 0 auto 20px;
+                }
+                .order-info {
+                    background: #f8f8f8;
+                    padding: 15px;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                }
+                .order-info p {
+                    margin-bottom: 5px;
+                    font-size: 14px;
+                }
+                .complete-message {
+                    margin-bottom: 25px;
+                }
+                .complete-message p {
+                    margin-bottom: 10px;
+                    font-size: 14px;
+                    color: #666;
+                }
+                </style>
+            \`;
+            
+            document.body.insertAdjacentHTML('beforeend', completeHtml);
+        }
+        
+        function closeCompleteModal() {
+            const modal = document.getElementById('completeModal');
+            if (modal) modal.remove();
+            window.location.href = '../index.html';
+        }`;
+    }
+    
+    showPostGenerationOptions(generatedProducts) {
+        const postGenerationHtml = `
+            <div class="post-generation-options">
+                <h3>次のステップ</h3>
+                <p>商品ページの生成が完了しました。以下のオプションから選択してください：</p>
+                
+                <div class="option-buttons">
+                    <button onclick="window.indexGenerator.generateIndexPage()" class="btn-option">
+                        <span class="option-icon">🏠</span>
+                        <span class="option-text">
+                            <strong>トップページを生成</strong>
+                            <small>index.htmlを作成・更新します</small>
+                        </span>
+                    </button>
+                    
+                    <button onclick="window.gitHubUploader.showUploadModal()" class="btn-option">
+                        <span class="option-icon">📤</span>
+                        <span class="option-text">
+                            <strong>GitHubにアップロード</strong>
+                            <small>生成したファイルを公開します</small>
+                        </span>
+                    </button>
+                    
+                    <button onclick="window.zipDownloader.downloadAll()" class="btn-option">
+                        <span class="option-icon">📦</span>
+                        <span class="option-text">
+                            <strong>ZIPでダウンロード</strong>
+                            <small>全ファイルをローカルに保存</small>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            
+            <style>
+            .post-generation-options {
+                margin-top: 30px;
+                padding: 20px;
+                background: #f8f9fa;
+                border-radius: 8px;
+            }
+            .post-generation-options h3 {
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+            .post-generation-options p {
+                margin-bottom: 20px;
+                color: #666;
+            }
+            .option-buttons {
+                display: grid;
+                gap: 15px;
+            }
+            .btn-option {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                padding: 15px 20px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-align: left;
+            }
+            .btn-option:hover {
+                border-color: #333;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            .option-icon {
+                font-size: 24px;
+            }
+            .option-text strong {
+                display: block;
+                font-size: 16px;
+                margin-bottom: 4px;
+            }
+            .option-text small {
+                color: #666;
+                font-size: 13px;
+            }
+            </style>`;
+        
+        const container = document.getElementById('generationResults');
+        if (container) {
+            container.innerHTML = postGenerationHtml;
+        } else {
+            const newContainer = document.createElement('div');
+            newContainer.id = 'generationResults';
+            newContainer.innerHTML = postGenerationHtml;
+            document.querySelector('.section-content').appendChild(newContainer);
+        }
+    }
+}
