@@ -1,6 +1,6 @@
 {
-  "generated": "2025-08-03T16:03:29.953Z",
-  "count": 24,
+  "generated": "2025-08-03T18:31:28.485Z",
+  "count": 41,
   "products": [
     {
       "productNumber": "5115-6002",
@@ -512,6 +512,319 @@
       ],
       "sizes": [
         "Material： 表地："
+      ],
+      "material": "-",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-4001",
+      "productName": "ピンタックノースリーブブラウス",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "8900",
+      "originalPrice": "8900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4001-thumb.jpg",
+      "colors": [
+        "01 WHITE",
+        "04 OFFWHITE",
+        "81 SAX"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ｱｸﾘﾙ75％ ﾅｲﾛﾝ25％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-4002",
+      "productName": "ジャガードノースリーブブラウス",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4002-thumb.jpg",
+      "colors": [
+        "04 OFFWHITE 09 BLACK"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾚｰﾖﾝ89％ ﾅｲﾛﾝ11％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-4003",
+      "productName": "ドット柄レースPO",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "8900",
+      "originalPrice": "8900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4003-thumb.jpg",
+      "colors": [
+        "81 SAX",
+        "87 NAVY"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-4004",
+      "productName": "花柄レースPO",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": null,
+      "colors": [
+        "09 BLACK 85 BLUE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-3001",
+      "productName": "ギャザーノースリーブブルゾン",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "11500",
+      "originalPrice": "11500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-3001-thumb.jpg",
+      "colors": [
+        "04 OFFWHITE",
+        "09 BLACK",
+        "51 BEIGE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-5001",
+      "productName": "ロングキャミOP",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg",
+      "colors": [
+        "09 BLACK 54 BROWN 85 BLUE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-5002",
+      "productName": "AラインロングOP",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "12500",
+      "originalPrice": "12500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5002-thumb.jpg",
+      "colors": [
+        "09 BLACK",
+        "54 BROWN",
+        "85 BLUE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾚｰﾖﾝ100％ 別布ﾎﾟﾘｴｽﾃﾙ65％ 綿35％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-5003",
+      "productName": "ギャザーロングOP",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "13900",
+      "originalPrice": "13900",
+      "thumbnail": null,
+      "colors": [
+        "63 CREAM 50 S.BEIGE 87 NAVY"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ｱｸﾘﾙ75％ ﾅｲﾛﾝ25％ 別布綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-7002",
+      "productName": "無地バルーンスカート",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "8500",
+      "originalPrice": "8500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7002-thumb.jpg",
+      "colors": [
+        "04 OFFWHITE",
+        "09 BLAV\\CK",
+        "17 C.GRAY",
+        "87 NAVY"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ90％ ﾚｰﾖﾝ10％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-7003",
+      "productName": "ウエストツータックストレートパンツ",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "9500",
+      "originalPrice": "9500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7003-thumb.jpg",
+      "colors": [
+        "09 BLACK  54 BROWN"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "表地：ｱｸﾘﾙ75％ ﾅｲﾛﾝ25％ 別布綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-7004",
+      "productName": "フェイク前開きイージーパンツ",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "8900",
+      "originalPrice": "8900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7004-thumb.jpg",
+      "colors": [
+        "54 BROWN"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "表地：ｱｸﾘﾙ75％ ﾅｲﾛﾝ25％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-7005",
+      "productName": "ウエストイージーパンツ",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "9500",
+      "originalPrice": "9500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7005-thumb.jpg",
+      "colors": [
+        "01 WHITE 51 BEIGE"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "表地：ﾚｰﾖﾝ89％ ﾅｲﾛﾝ11％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-7006",
+      "productName": "カツラギコクーンパンツ",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "13500",
+      "originalPrice": "13500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7006-thumb.jpg",
+      "colors": [
+        "01 WHITE",
+        "51 BEIGE"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "表地：綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-7007",
+      "productName": "PU入りストレートデニムパンツ",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "15000",
+      "originalPrice": "15000",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7007-thumb.jpg",
+      "colors": [
+        "09 BLACK 81 SAX BACK STYLE"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "表地：綿100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5317-1001",
+      "productName": "スカーフ付き2WAYBAG",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "7900",
+      "originalPrice": "7900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1001-thumb.jpg",
+      "colors": [
+        "09 BLACK 51 BEIGE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "-",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5317-1003",
+      "productName": "2つポーチセットショルダーBAG",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "12500",
+      "originalPrice": "12500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1003-thumb.jpg",
+      "colors": [
+        "09 BLACK 51 BEIGE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "-",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5317-1004",
+      "productName": "2つポーチセットショルダーBAG",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "12500",
+      "originalPrice": "12500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1004-thumb.jpg",
+      "colors": [
+        "04 KINARI",
+        "51 BEIGE"
+      ],
+      "sizes": [
+        "F"
       ],
       "material": "-",
       "origin": "中国"
