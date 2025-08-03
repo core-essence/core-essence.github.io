@@ -1,0 +1,39 @@
+{
+  "slides": [
+    {
+      "imageUrl": "https://aminati-ec.github.io/header-images/header-1.jpg",
+      "linkUrl": "",
+      "alt": "Image_fx (2).jpg",
+      "order": 1
+    },
+    {
+      "imageUrl": "https://aminati-ec.github.io/header-images/header-2.jpg",
+      "linkUrl": "",
+      "alt": "Image_fx.jpg",
+      "order": 2
+    },
+    {
+      "imageUrl": "https://aminati-ec.github.io/header-images/header-3.jpg",
+      "linkUrl": "",
+      "alt": "Image_fx (4).jpg",
+      "order": 3
+    },
+    {
+      "imageUrl": "https://aminati-ec.github.io/header-images/header-4.jpg",
+      "linkUrl": "",
+      "alt": "Image_fx (1).jpg",
+      "order": 4
+    },
+    {
+      "imageUrl": "https://aminati-ec.github.io/header-images/header-5.jpg",
+      "linkUrl": "",
+      "alt": "54.jpg",
+      "order": 5
+    }
+  ],
+  "settings": {
+    "autoplay": true,
+    "interval": 5000
+  },
+  "updatedAt": "2025-08-03T19:58:49.444Z"
+}
