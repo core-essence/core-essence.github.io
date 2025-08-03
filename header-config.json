@@ -2,32 +2,32 @@
   "slides": [
     {
       "imageUrl": "https://aminati-ec.github.io/header-images/header-1.jpg",
-      "linkUrl": "",
-      "alt": "Image_fx (2).jpg",
+      "linkUrl": "https://aminati-ec.github.io/products/5115-6002.html",
+      "alt": "5.png",
       "order": 1
     },
     {
       "imageUrl": "https://aminati-ec.github.io/header-images/header-2.jpg",
-      "linkUrl": "",
-      "alt": "Image_fx.jpg",
+      "linkUrl": "https://aminati-ec.github.io/products/5117-5002.html",
+      "alt": "4.png",
       "order": 2
     },
     {
       "imageUrl": "https://aminati-ec.github.io/header-images/header-3.jpg",
-      "linkUrl": "",
-      "alt": "Image_fx (4).jpg",
+      "linkUrl": "https://aminati-ec.github.io/products/5117-7007.html",
+      "alt": "3.png",
       "order": 3
     },
     {
       "imageUrl": "https://aminati-ec.github.io/header-images/header-4.jpg",
-      "linkUrl": "",
-      "alt": "Image_fx (1).jpg",
+      "linkUrl": "https://aminati-ec.github.io/products/5115-6003.html",
+      "alt": "1.png",
       "order": 4
     },
     {
       "imageUrl": "https://aminati-ec.github.io/header-images/header-5.jpg",
-      "linkUrl": "",
-      "alt": "54.jpg",
+      "linkUrl": "https://aminati-ec.github.io/products/5115-6019.html",
+      "alt": "2.png",
       "order": 5
     }
   ],
@@ -35,5 +35,5 @@
     "autoplay": true,
     "interval": 5000
   },
-  "updatedAt": "2025-08-03T19:58:49.444Z"
+  "updatedAt": "2025-08-03T20:21:53.692Z"
 }
