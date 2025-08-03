@@ -73,7 +73,7 @@
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            aspect-ratio: 16/9;
+            aspect-ratio: 1400/600; /* 7:3の比率 */
             background: #000;
             overflow: hidden;
         }
@@ -90,22 +90,24 @@
             height: 100%;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            pointer-events: none; /* 非表示のスライドはクリック不可 */
         }
         
         .hero-slide.active {
             opacity: 1;
-        }
-        
-        .hero-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            pointer-events: auto; /* アクティブなスライドのみクリック可能 */
         }
         
         .hero-slide a {
             display: block;
             width: 100%;
             height: 100%;
+        }
+        
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         /* スライダーコントロール */
@@ -444,10 +446,11 @@
             headerConfig.slides.forEach((slide, index) => {
                 const slideEl = document.createElement('div');
                 slideEl.className = `hero-slide ${index === 0 ? 'active' : ''}`;
+                slideEl.dataset.slideIndex = index; // インデックスを保存
                 
                 if (slide.linkUrl) {
                     slideEl.innerHTML = `
-                        <a href="${slide.linkUrl}">
+                        <a href="${slide.linkUrl}" data-slide-link="${index}">
                             <img src="${slide.imageUrl}" alt="${slide.alt || ''}">
                         </a>
                     `;
