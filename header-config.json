@@ -2,14 +2,14 @@
   "slides": [
     {
       "imageUrl": "https://aminati-ec.github.io/header-images/header-1.jpg",
-      "linkUrl": "https://aminati-ec.github.io/products/5115-6002.html",
-      "alt": "5.png",
+      "linkUrl": "https://aminati-ec.github.io/products/5117-5002.html",
+      "alt": "4.png",
       "order": 1
     },
     {
       "imageUrl": "https://aminati-ec.github.io/header-images/header-2.jpg",
-      "linkUrl": "https://aminati-ec.github.io/products/5117-5002.html",
-      "alt": "4.png",
+      "linkUrl": "https://aminati-ec.github.io/products/5115-6002.html",
+      "alt": "5.png",
       "order": 2
     },
     {
@@ -35,5 +35,5 @@
     "autoplay": true,
     "interval": 5000
   },
-  "updatedAt": "2025-08-03T20:29:51.492Z"
+  "updatedAt": "2025-08-04T12:50:59.538Z"
 }
