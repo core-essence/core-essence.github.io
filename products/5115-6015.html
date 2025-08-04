@@ -339,7 +339,110 @@
             font-size: 13px;
             color: #000000;
         }
-    </style>
+    
+        
+        /* PC版レイアウト */
+        @media (min-width: 768px) {
+            main {
+                display: flex;
+                gap: 40px;
+                padding: 0 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+                margin-top: 144px;
+                margin-bottom: 20px;
+                position: relative;
+                align-items: flex-start;
+            }
+            
+            .product-images {
+                flex: 0 0 50%;
+                max-width: 50%;
+                margin: 0;
+                background: #f5f5f5;
+            }
+            
+            .main-image {
+                height: auto;
+                min-height: 600px;
+                object-fit: cover;
+            }
+            
+            .product-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                min-height: 600px;
+                position: relative;
+                padding-bottom: 20px;
+            }
+            
+            .product-details {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+            
+            .brand-name {
+                margin-bottom: 15px;
+                font-size: 12px;
+                color: #666666;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            
+            .product-name {
+                font-size: 20px;
+                margin-bottom: 20px;
+                line-height: 1.4;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+                max-width: 100%;
+            }
+            
+            .description-section {
+                margin: 0 0 20px 0;
+                padding: 20px;
+                background: #f8f8f8;
+            }
+            
+            .details-section {
+                margin: 0;
+                padding: 20px;
+                background: #ffffff;
+                flex-grow: 1;
+            }
+            
+            .purchase-section {
+                position: static;
+                width: 100%;
+                background: #ffffff;
+                padding: 20px;
+                box-shadow: none;
+                border-radius: 0;
+                z-index: auto;
+                margin-top: 30px;
+                margin-bottom: 0;
+                border-top: 1px solid #e0e0e0;
+            }
+            
+            @media (max-width: 767px) {
+                main {
+                    margin-top: 64px !important;
+                }
+                
+                .purchase-section {
+                    position: fixed !important;
+                    bottom: 0 !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                    width: auto !important;
+                    margin-top: 0 !important;
+                    border-top: none !important;
+                    box-shadow: 0 -2px 10px rgba(0,0,0,0.1) !important;
+                }
+            }
+        }</style>
 </head>
 <body>
     
@@ -382,6 +485,7 @@
     
     <main>
         
+        
         <div class="product-images">
             <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6015-thumb.jpg" alt="商品画像" class="main-image" id="mainImage">
             
@@ -410,11 +514,12 @@
             
         </div>
         
+        <div class="product-content">
         <div class="product-details">
             <div class="brand-name">MYK FASHION</div>
             <h2 class="product-name">ムラ両面プリントTシャツ</h2>
             
-            <div class="stock-info">在庫 無限</div>
+            
             
             <div class="price-section">
                 <div class="current-price" >¥7500</div>
@@ -477,6 +582,9 @@
                 <span class="detail-label">性別タイプ</span>
                 <span class="detail-value">メンズ・レディース</span>
             </div>
+        </div>
+    
+        
         </div>
     </main>
     
