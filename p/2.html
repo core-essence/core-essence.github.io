@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECサイト構築・運用提案書（詳細解説）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.5;
+        }
+        
+        .container {
+            width: 297mm;
+            height: 210mm;
+            margin: 0 auto;
+            padding: 12mm;
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #2B5797;
+            padding-bottom: 10px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            color: #000000;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 12px;
+            color: #666666;
+            margin-top: 4px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15mm;
+            flex: 1;
+        }
+        
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .section {
+            background: #f8f8f8;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: #000000;
+            color: #ffffff;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .section-content {
+            padding: 12px;
+        }
+        
+        .subsection {
+            margin-bottom: 12px;
+        }
+        
+        .subsection:last-child {
+            margin-bottom: 0;
+        }
+        
+        .subsection h3 {
+            font-size: 12px;
+            color: #2B5797;
+            font-weight: 600;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #2B5797;
+            padding-bottom: 2px;
+        }
+        
+        .subsection p {
+            font-size: 10px;
+            color: #333333;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+        
+        .subsection ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .subsection li {
+            font-size: 10px;
+            color: #333333;
+            line-height: 1.4;
+            margin-bottom: 3px;
+            padding-left: 12px;
+            position: relative;
+        }
+        
+        .subsection li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2B5797;
+            font-weight: bold;
+        }
+        
+        .price-detail {
+            background: #ffffff;
+            border: 1px solid #2B5797;
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .price-detail h4 {
+            font-size: 11px;
+            color: #2B5797;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .price-detail p {
+            font-size: 9px;
+            color: #333333;
+            line-height: 1.3;
+        }
+        
+        .tech-spec {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 6px;
+        }
+        
+        .tech-spec h4 {
+            font-size: 10px;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .tech-spec p {
+            font-size: 9px;
+            color: #666666;
+            line-height: 1.3;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+            margin-top: 6px;
+        }
+        
+        .comparison-table th {
+            background: #2B5797;
+            color: #ffffff;
+            padding: 4px;
+            text-align: left;
+            font-size: 9px;
+        }
+        
+        .comparison-table td {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            padding: 4px;
+            font-size: 8px;
+            line-height: 1.2;
+        }
+        
+        .highlight {
+            background: #fffacd;
+            border-left: 3px solid #2B5797;
+            padding: 8px;
+            margin: 6px 0;
+        }
+        
+        .highlight p {
+            font-size: 9px;
+            color: #333333;
+            font-weight: 500;
+        }
+        
+        @media print {
+            .container {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ECサイト構築・運用提案書（詳細解説）</h1>
+            <p>各項目の技術仕様・導入効果・運用方法について</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <div class="section-header">料金体系 詳細内訳</div>
+                    <div class="section-content">
+                        <div class="price-detail">
+                            <h4>商品登録（¥12,500）</h4>
+                            <p>・50商品の基本情報入力：商品名、価格、在庫数、カテゴリ分類<br>
+                            ・独自構築の商品登録ページにより急ぎの商品登録にも迅速対応<br>
+                            ・管理画面を介さない直接的な商品データ管理<br>
+                            ・緊急時の商品情報変更にも即日対応可能</p>
+                        </div>
+                        
+                        <div class="price-detail">
+                            <h4>画像加工（¥25,000）</h4>
+                            <p>・Photoroom S.A.S.のAPI連携による自動切り抜き処理<br>
+                            ・複数画像の一括処理により大幅な時間短縮を実現<br>
+                            ・平置き商品写真から背景を瞬時に除去<br>
+                            ・手作業では困難な精密な切り抜き品質<br>
+                            ・スピーディーな納品対応が可能</p>
+                        </div>
+                        
+                        <div class="price-detail">
+                            <h4>HP構築（¥30,000）</h4>
+                            <p>・レスポンシブWebデザインの設計・実装<br>
+                            ・GitHub Pagesを活用した高速配信システム<br>
+                            ・Cloudflare R2による画像配信最適化<br>
+                            ・独自ドメインの設定・SSL証明書導入<br>
+                            ・Gmail API連携による自動返信システム<br>
+                            ・SEO最適化（メタタグ・構造化データ）<br>
+                            ・Google Analytics・Search Console設定</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">提供内容 技術仕様</div>
+                    <div class="section-content">
+                        <div class="subsection">
+                            <h3>ECサイト構築仕様</h3>
+                            <div class="tech-spec">
+                                <h4>見た目・操作性</h4>
+                                <p>スマートフォンでも見やすく、操作しやすいデザインを採用。どんな画面サイズでも美しく表示されるよう設計しています。</p>
+                            </div>
+                            <div class="tech-spec">
+                                <h4>システムの安定性</h4>
+                                <p>GitHubという信頼性の高いサービスを使用。サイトが落ちにくく、常に安定してアクセスできる環境を構築しています。</p>
+                            </div>
+                            <div class="tech-spec">
+                                <h4>セキュリティ・安全性</h4>
+                                <p>暗号化通信で情報を保護。不正アクセスやデータ改ざんを防ぐ仕組みを導入し、安心してご利用いただけます。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="subsection">
+                            <h3>自動化機能詳細</h3>
+                            <ul>
+                                <li>Gmail APIを使用した問い合わせ自動返信システム</li>
+                                <li>商品在庫アラート機能（在庫僅少時の自動通知）</li>
+                                <li>注文データのCSV自動出力</li>
+                                <li>Google Sheetsとの連携による在庫管理</li>
+                                <li>定期バックアップの自動実行</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">継続サポート内容</div>
+                    <div class="section-content">
+                        <div class="subsection">
+                            <h3>技術サポート範囲</h3>
+                            <ul>
+                                <li>24時間以内のシステム障害対応</li>
+                                <li>月1回の定期メンテナンス・セキュリティチェック</li>
+                                <li>ブラウザアップデート対応・互換性確保</li>
+                                <li>モバイル端末・新OS対応</li>
+                                <li>サーバー監視・パフォーマンス最適化</li>
+                                <li>SSL証明書の自動更新・管理</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="subsection">
+                            <h3>運用サポート詳細</h3>
+                            <ul>
+                                <li>デザイン微調整・レイアウト変更</li>
+                                <li>Google Analytics レポート月次提供</li>
+                                <li>ドメイン・サーバー管理代行</li>
+                                <li>システム全般の保守・メンテナンス</li>
+                                <li>緊急時の技術対応・復旧作業</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <p><strong>緊急時対応：</strong>システム障害・セキュリティインシデント発生時は、24時間以内に初期対応を実施。復旧まで継続的にサポートいたします。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="section">
+                    <div class="section-header">導入メリット 効果測定</div>
+                    <div class="section-content">
+                        <div class="subsection">
+                            <h3>BtoB対応品質による効果</h3>
+                            <p>取引先からの信頼度向上により、新規取引先開拓が容易になります。プロフェッショナルなデザインにより、商品単価の向上効果も期待できます。</p>
+                            <ul>
+                                <li>取引先への営業資料として活用可能</li>
+                                <li>展示会・商談時のデモサイトとして使用</li>
+                                <li>ブランドイメージの統一・強化</li>
+                                <li>競合他社との差別化要素</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="subsection">
+                            <h3>運用コスト削減効果</h3>
+                            <p>通常、サイトの修正や更新作業を行う際、社内スタッフが月6時間程度の作業時間を要します。時給1,500円で計算すると月9,000円の人件費が発生。本提案では、これらの作業をこちらで代行することにより、人件費を大幅に削減できます。</p>
+                            <table class="comparison-table">
+                                <tr>
+                                    <th>項目</th>
+                                    <th>従来（自社対応）</th>
+                                    <th>提案後</th>
+                                    <th>削減効果</th>
+                                </tr>
+                                <tr>
+                                    <td>月間作業時間</td>
+                                    <td>6時間</td>
+                                    <td>0時間</td>
+                                    <td>6時間削減</td>
+                                </tr>
+                                <tr>
+                                    <td>人件費（月額）</td>
+                                    <td>¥9,000</td>
+                                    <td>¥0</td>
+                                    <td>¥9,000削減</td>
+                                </tr>
+                                <tr>
+                                    <td>外注費（年間目安）</td>
+                                    <td>¥200,000</td>
+                                    <td>¥0</td>
+                                    <td>¥200,000削減</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="subsection">
+                            <h3>リスク回避効果</h3>
+                            <ul>
+                                <li>素人操作によるサイト破損リスクの完全回避</li>
+                                <li>セキュリティインシデント発生時の迅速対応</li>
+                                <li>データ消失・バックアップ失敗のリスク軽減</li>
+                                <li>ブラウザ・OS更新による表示不具合の予防</li>
+                                <li>競合他社による技術的優位性の確保</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">技術的優位性 詳細</div>
+                    <div class="section-content">
+                        <div class="subsection">
+                            <h3>パフォーマンス最適化</h3>
+                            <ul>
+                                <li>軽量設計による高速ページ読み込みを実現</li>
+                                <li>大手ECサイト（ZOZOTOWN等）と比較しても体感的に高速</li>
+                                <li>画像最適化により従来比でファイルサイズを大幅削減</li>
+                                <li>CDN活用による安定した表示速度</li>
+                                <li>モバイル端末での表示速度も最適化済み</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="subsection">
+                            <h3>拡張性・カスタマイズ性</h3>
+                            <ul>
+                                <li>新機能追加時の柔軟な対応（決済システム追加等）</li>
+                                <li>デザインテーマの季節変更・イベント対応</li>
+                                <li>多言語対応・海外展開時の基盤整備</li>
+                                <li>API連携による外部システムとの接続</li>
+                                <li>将来的な事業拡大に合わせたシステム強化</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">付加価値・競合比較</div>
+                    <div class="section-content">
+                        <div class="subsection">
+                            <h3>BASE等プラットフォームとの比較</h3>
+                            <p><strong>※本格的なEC事業展開を検討される場合の機能比較</strong></p>
+                            <table class="comparison-table">
+                                <tr>
+                                    <th>項目</th>
+                                    <th>BASE無料版</th>
+                                    <th>本提案（拡張時）</th>
+                                </tr>
+                                <tr>
+                                    <td>デザイン自由度</td>
+                                    <td>制限あり</td>
+                                    <td>完全自由</td>
+                                </tr>
+                                <tr>
+                                    <td>独自ドメイン</td>
+                                    <td>有料オプション</td>
+                                    <td>切り替え対応可能</td>
+                                </tr>
+                                <tr>
+                                    <td>手数料</td>
+                                    <td>3.6%+40円</td>
+                                    <td>0円</td>
+                                </tr>
+                                <tr>
+                                    <td>技術サポート</td>
+                                    <td>なし</td>
+                                    <td>24時間対応</td>
+                                </tr>
+                                <tr>
+                                    <td>カスタマイズ</td>
+                                    <td>制限あり</td>
+                                    <td>無制限</td>
+                                </tr>
+                            </table>
+                            <p style="font-size: 9px; color: #666666; margin-top: 6px;">※現在は展示用サイトとしての機能ですが、本格展開時には上記機能への拡張が可能です。</p>
+                        </div>
+                        
+                        <div class="subsection">
+                            <h3>外注制作会社との比較</h3>
+                            <ul>
+                                <li>初期費用：一般的な50-100万円 → 本提案67,500円</li>
+                                <li>月額保守：一般的な5-10万円 → 本提案無料（初期費用に含む）</li>
+                                <li>修正対応：都度見積もり → 小修正は無料対応</li>
+                                <li>技術者との距離：間接的 → 直接コミュニケーション</li>
+                                <li>対応速度：数日-数週間 → 24時間以内</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight">
+                            <p><strong>総合的なコストパフォーマンス：</strong>3年間運用時の総費用比較では、一般的な外注の約1/10のコストで、同等以上の品質とサポートを提供します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

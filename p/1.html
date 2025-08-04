@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECサイト構築・運用提案書</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.4;
+        }
+        
+        .container {
+            width: 297mm;
+            height: 210mm;
+            margin: 0 auto;
+            padding: 12mm;
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #2B5797;
+            padding-bottom: 12px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #000000;
+            font-weight: 700;
+        }
+        
+        .price-section {
+            background: #2B5797;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        
+        .price-section h2 {
+            color: #ffffff;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .price-item {
+            background: rgba(255,255,255,0.15);
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .price-item h3 {
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        
+        .price-item .details {
+            font-size: 12px;
+            color: #e0e0e0;
+            margin-bottom: 6px;
+        }
+        
+        .price-item .amount {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        
+        .price-item.total {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .price-item.total .amount {
+            font-size: 20px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            flex: 1;
+        }
+        
+        .section {
+            background: #f8f8f8;
+            padding: 0;
+            border-radius: 6px;
+            height: fit-content;
+        }
+        
+        .section-header {
+            background: #000000;
+            color: #ffffff;
+            padding: 12px 15px;
+            border-radius: 6px 6px 0 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .section-content {
+            padding: 15px;
+        }
+        
+        .section h2 {
+            font-size: 16px;
+            color: #000000;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .section-icon {
+            width: 6px;
+            height: 6px;
+            background: #2B5797;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .deliverables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .deliverable-item {
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #dddddd;
+            text-align: center;
+        }
+        
+        .deliverable-item h3 {
+            font-size: 12px;
+            color: #000000;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .deliverable-item p {
+            font-size: 10px;
+            color: #666666;
+        }
+        
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .benefit-item {
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #dddddd;
+            font-size: 11px;
+        }
+        
+        .benefit-item strong {
+            color: #000000;
+            display: block;
+            margin-bottom: 3px;
+            font-size: 12px;
+        }
+        
+        .benefit-item span {
+            color: #666666;
+        }
+        
+        .support-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .support-item {
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #dddddd;
+            text-align: center;
+            font-size: 10px;
+        }
+        
+        .support-item .icon {
+            font-size: 14px;
+            margin-bottom: 3px;
+            display: block;
+        }
+        
+        .support-item div {
+            color: #666666;
+        }
+        
+        .tech-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tech-list li {
+            margin-bottom: 6px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 11px;
+            color: #666666;
+        }
+        
+        .tech-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2B5797;
+            font-weight: bold;
+            font-size: 10px;
+        }
+        
+        .highlight-box {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #2B5797;
+            margin-top: 15px;
+        }
+        
+        .highlight-box h3 {
+            color: #2B5797;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        
+        .highlight-box p {
+            font-size: 11px;
+            color: #666666;
+            line-height: 1.3;
+        }
+        
+        .footer {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid #dddddd;
+            color: #888888;
+            font-size: 11px;
+            margin-top: 15px;
+        }
+        
+        @media print {
+            .container {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ECサイト構築・運用提案書</h1>
+        </div>
+        
+        <div class="price-section">
+            <h2>料金体系</h2>
+            <div class="price-grid">
+                <div class="price-item">
+                    <h3>商品登録</h3>
+                    <div class="details">50商品 × 単価¥250</div>
+                    <div class="amount">¥12,500</div>
+                </div>
+                <div class="price-item">
+                    <h3>画像加工</h3>
+                    <div class="details">50商品 × 単価¥500</div>
+                    <div class="amount">¥25,000</div>
+                </div>
+                <div class="price-item">
+                    <h3>HP構築</h3>
+                    <div class="details">設計・開発・設定</div>
+                    <div class="amount">¥30,000</div>
+                </div>
+                <div class="price-item total">
+                    <h3>合計金額</h3>
+                    <div class="details">税抜き価格</div>
+                    <div class="amount">¥67,500</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="section">
+                <div class="section-header">提供内容</div>
+                <div class="section-content">
+                    <div class="deliverables">
+                        <div class="deliverable-item">
+                            <h3>商品登録</h3>
+                            <p>50商品の画像加工<br>切り抜き・EC登録</p>
+                        </div>
+                        <div class="deliverable-item">
+                            <h3>ECサイト構築</h3>
+                            <p>オリジナルデザイン<br>レスポンシブ対応</p>
+                        </div>
+                        <div class="deliverable-item">
+                            <h3>技術インフラ</h3>
+                            <p>GitHub + R2<br>独自ドメイン対応</p>
+                        </div>
+                        <div class="deliverable-item">
+                            <h3>自動化機能</h3>
+                            <p>Gmail連携<br>お問い合わせ自動返信</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-header" style="border-radius: 0;">継続サポート</div>
+                <div class="section-content">
+                    <div class="support-features">
+                        <div class="support-item">
+                            <span class="icon">⚙️</span>
+                            <div>システム監視</div>
+                        </div>
+                        <div class="support-item">
+                            <span class="icon">🔧</span>
+                            <div>技術サポート</div>
+                        </div>
+                        <div class="support-item">
+                            <span class="icon">🌐</span>
+                            <div>ドメイン管理</div>
+                        </div>
+                        <div class="support-item">
+                            <span class="icon">📱</span>
+                            <div>レスポンシブ対応</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">導入メリット</div>
+                <div class="section-content">
+                    <div class="benefits">
+                        <div class="benefit-item">
+                            <strong>BtoB対応品質</strong>
+                            <span>取引先への印象を損なわない、プロフェッショナルなデザイン</span>
+                        </div>
+                        <div class="benefit-item">
+                            <strong>運用コスト削減</strong>
+                            <span>月6時間の管理作業を技術者がサポート（人件費削減効果）</span>
+                        </div>
+                        <div class="benefit-item">
+                            <strong>柔軟なカスタマイズ</strong>
+                            <span>BASE制約なし。機能追加・デザイン変更が容易</span>
+                        </div>
+                        <div class="benefit-item">
+                            <strong>リスク回避</strong>
+                            <span>技術トラブル時の即座対応。素人操作によるリスク回避</span>
+                        </div>
+                        <div class="benefit-item">
+                            <strong>保守サポート</strong>
+                            <span>ドメイン変更・機能追加など、都度対応可能</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">技術的優位性</div>
+                <div class="section-content">
+                    <ul class="tech-list">
+                        <li>独自ドメインでのブランディング強化</li>
+                        <li>プラットフォーム制約からの解放</li>
+                        <li>高速表示・SEO最適化済み</li>
+                        <li>セキュリティ対策・SSL対応</li>
+                        <li>モバイルファースト設計</li>
+                        <li>Google Analytics連携対応</li>
+                        <li>SNS連携・シェア機能</li>
+                        <li>管理画面不要の簡単運用</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <h3>付加価値</h3>
+                        <p>
+                            BASE無料版では実現できない高品質なデザインと機能性を提供。
+                            外注依頼時の「すり合わせコスト」「時間的ロス」を削減し、
+                            継続的な技術サポートにより安心してご利用いただけます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>本提案は長期的なパートナーシップを前提とした、技術サポート込みの特別価格です。</p>
+        </div>
+    </div>
+</body>
+</html>

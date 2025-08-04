@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技術力・開発実績 PR資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.4;
+        }
+        
+        .container {
+            width: 297mm;
+            height: 210mm;
+            margin: 0 auto;
+            padding: 12mm;
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4A6741;
+            padding-bottom: 12px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            color: #000000;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .header p {
+            font-size: 12px;
+            color: #666666;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15mm;
+            flex: 1;
+        }
+        
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .section {
+            background: #f8f8f8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: #000000;
+            color: #ffffff;
+            padding: 10px 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .section-content {
+            padding: 12px;
+        }
+        
+        .project-item {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .project-item h3 {
+            font-size: 12px;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #4A6741;
+            padding-bottom: 2px;
+        }
+        
+        .project-item p {
+            font-size: 10px;
+            color: #333333;
+            line-height: 1.4;
+        }
+        
+        .skill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .skill-item {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .skill-item h4 {
+            font-size: 12px;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .skill-item p {
+            font-size: 10px;
+            color: #666666;
+        }
+        
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .achievement-list li {
+            font-size: 12px;
+            color: #333333;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .achievement-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4A6741;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .highlight-box {
+            background: #ffffff;
+            border: 2px solid #4A6741;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            font-size: 16px;
+            color: #4A6741;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box p {
+            font-size: 12px;
+            color: #333333;
+            line-height: 1.4;
+        }
+        
+        .tool-showcase {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .tool-showcase h4 {
+            font-size: 13px;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .tool-icon {
+            width: 8px;
+            height: 8px;
+            background: #4A6741;
+            border-radius: 50%;
+        }
+        
+        .tool-showcase p {
+            font-size: 11px;
+            color: #333333;
+            line-height: 1.3;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .stat-item {
+            background: #888888;
+            color: #ffffff;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 9px;
+            margin-top: 2px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 2px solid #f1f3f4;
+            color: #666666;
+            font-size: 11px;
+            margin-top: 20px;
+        }
+        
+        @media print {
+            .container {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>技術力・開発実績 PR資料</h1>
+            <p>業務効率化・自動化ソリューションの開発・導入実績</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <div class="section-header">今回の開発実績</div>
+                    <div class="section-content">
+                        <div class="project-item">
+                            <h3>ECサイト・ホームページ構築</h3>
+                            <p>GitHub + Cloudflare R2を活用した高速・安定なWebサイト構築。レスポンシブデザイン対応、Gmail API連携による自動返信システムも実装。</p>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>PDFデータ抽出・Excel変換ソフト</h3>
+                            <p>PDF形式の商品資料から必要な情報を自動抽出し、Excel形式で整理・出力するツールを開発。手作業による時間を大幅短縮。</p>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>画像一括切り抜きシステム</h3>
+                            <p>Photoroom S.A.S. APIを活用した画像の自動背景除去システム。複数画像の一括処理により、従来の手作業時間を90%以上削減。</p>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>PDF商品カタログ自動生成</h3>
+                            <p>切り抜き済み画像と商品データを組み合わせ、実行ボタン一つで完成度の高いPDFカタログを自動生成。急ぎの展示会対応を実現。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">開発ツール・技術</div>
+                    <div class="section-content">
+                        <div class="skill-grid">
+                            <div class="skill-item">
+                                <h4>フロントエンド</h4>
+                                <p>HTML/CSS<br>JavaScript</p>
+                            </div>
+                            <div class="skill-item">
+                                <h4>バックエンド</h4>
+                                <p>API連携<br>自動化処理</p>
+                            </div>
+                            <div class="skill-item">
+                                <h4>インフラ</h4>
+                                <p>GitHub<br>Cloudflare</p>
+                            </div>
+                            <div class="skill-item">
+                                <h4>AI活用</h4>
+                                <p>Claude<br>効率的開発</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Claude AI × 開発力</h3>
+                    <p>最新のAI技術「Claude」との協働により、従来では困難だった複雑なシステム開発も短期間で実現。アイデアから実装まで、スピーディーな課題解決を提供します。</p>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="section">
+                    <div class="section-header">過去の開発実績</div>
+                    <div class="section-content">
+                        <div class="tool-showcase">
+                            <h4><span class="tool-icon"></span>ファイル名一括変更ソフト</h4>
+                            <p>フォルダ内の大量ファイルの品番・名称を一括で規則的に変更。手作業では数時間かかる作業を数秒で完了。</p>
+                        </div>
+                        
+                        <div class="tool-showcase">
+                            <h4><span class="tool-icon"></span>ZIP一括展開ソフト</h4>
+                            <p>複数のZIPファイルを同時に展開・整理するツール。大量の圧縮ファイル処理作業を自動化。</p>
+                        </div>
+                        
+                        <div class="tool-showcase">
+                            <h4><span class="tool-icon"></span>販売データ分析・分別ソフト</h4>
+                            <p>南谷様向けに開発。取引先からの販売点数Excelデータを店舗別・週報別に自動分別・集計するシステム。</p>
+                        </div>
+                        
+                        <div class="tool-showcase">
+                            <h4><span class="tool-icon"></span>業務効率化ツール群</h4>
+                            <p>各種定型作業の自動化、データ整理・変換ツール、レポート自動生成システムなど多数の実績。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">開発における強み</div>
+                    <div class="section-content">
+                        <ul class="achievement-list">
+                            <li>時短・効率化のアイデア創出が得意分野</li>
+                            <li>Claude AIとの協働による高速開発</li>
+                            <li>外部サービス非連携システムは特に得意</li>
+                            <li>複雑な業務フローの自動化・システム化</li>
+                            <li>Excel・PDF等のデータ処理・変換</li>
+                            <li>一括処理・バッチ処理ツールの開発</li>
+                            <li>直感的で使いやすいUI設計</li>
+                            <li>既存業務への無理のない導入・移行</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">開発可能な領域</div>
+                    <div class="section-content">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-number">90%</span>
+                                <div class="stat-label">時短効果</div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">短期</span>
+                                <div class="stat-label">開発期間</div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">高品質</span>
+                                <div class="stat-label">成果物</div>
+                            </div>
+                        </div>
+                        
+                        <ul class="achievement-list">
+                            <li>Webサイト・ECサイト構築</li>
+                            <li>データ処理・変換ツール開発</li>
+                            <li>業務自動化システム構築</li>
+                            <li>API連携・外部サービス活用</li>
+                            <li>レポート・資料自動生成</li>
+                            <li>ファイル管理・整理ツール</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>「アイデア × 技術力 × AI」で、あらゆる業務効率化課題を解決いたします。</p>
+        </div>
+    </div>
+</body>
+</html>
