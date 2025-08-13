@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ã­ã³ã°ã­ã£ãOP - AMINATI_EC</title>
+    <title>ロングキャミOP - AMINATI_EC</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -122,7 +122,7 @@
             padding-left: 30px;
         }
         .menu-item::after {
-            content: 'â';
+            content: '→';
             position: absolute;
             right: 20px;
             opacity: 0.5;
@@ -341,7 +341,7 @@
         }
     
         
-        /* PCçã¬ã¤ã¢ã¦ã */
+        /* PC版レイアウト */
         @media (min-width: 768px) {
             main {
                 display: flex;
@@ -453,36 +453,6 @@
                 <span></span>
                 <span></span>
             </div>
-            
-            <!-- サイズ詳細表を追加 -->
-            <div class="size-chart-section">
-                <h3 class="section-title">サイズ詳細</h3>
-                <div class="size-table-wrapper">
-                    <table class="size-table">
-                        <thead>
-                            <tr>
-                                <th>サイズ</th><th>身幅</th><th>着丈</th><th>総丈</th><th>ゆき</th><th>胸囲</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="size-label">M</td><td>68.75</td><td>67</td><td>69</td><td>43</td><td>137.5</td>
-                            </tr>
-                            <tr>
-                                <td class="size-label">L</td><td>71.25</td><td>69.5</td><td>71.5</td><td>45.5</td><td>140</td>
-                            </tr>
-                            <tr>
-                                <td class="size-label">XL</td><td>73.75</td><td>72</td><td>74</td><td>48</td><td>142.5</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p class="size-note">
-                    ※単位：cm<br>
-                    ※平置き採寸のため、多少の誤差はご了承ください。
-                </p>
-            </div>
-            
             <h1 class="logo">AMINATI</h1>
             <div class="cart-icon"></div>
         </div>
@@ -494,17 +464,17 @@
             <div class="menu-subtitle">WHOLESALE CATALOG</div>
         </div>
         <nav class="menu-nav">
-            <a href="#" class="menu-item" onclick="goToTopPage(); return false;">ããããã¼ã¸</a>
-            <a href="#" class="menu-item" onclick="showAllProducts(); return false;">ãã¹ã¦ã®åå</a>
-            <a href="#" class="menu-item" onclick="showNewProducts(); return false;">æ°çåå</a>
-            <a href="#" class="menu-item" onclick="showCategories(); return false;">ã«ãã´ãªã¼</a>
-            <a href="#" class="menu-item" onclick="showAboutTrade(); return false;">ãåå¼ã«ã¤ãã¦</a>
-            <a href="#" class="menu-item" onclick="showCompanyInfo(); return false;">ä¼ç¤¾æ¦è¦</a>
-            <a href="#" class="menu-item" onclick="showContact(); return false;">ãåãåãã</a>
+            <a href="#" class="menu-item" onclick="goToTopPage(); return false;">トップページ</a>
+            <a href="#" class="menu-item" onclick="showAllProducts(); return false;">すべての商品</a>
+            <a href="#" class="menu-item" onclick="showNewProducts(); return false;">新着商品</a>
+            <a href="#" class="menu-item" onclick="showCategories(); return false;">カテゴリー</a>
+            <a href="#" class="menu-item" onclick="showAboutTrade(); return false;">お取引について</a>
+            <a href="#" class="menu-item" onclick="showCompanyInfo(); return false;">会社概要</a>
+            <a href="#" class="menu-item" onclick="showContact(); return false;">お問い合わせ</a>
         </nav>
         <div class="menu-footer">
             <p class="menu-footer-text">
-                å¶æ¥­æé: å¹³æ¥ 9:00-18:00<br>
+                営業時間: 平日 9:00-18:00<br>
                 TEL: 03-XXXX-XXXX<br>
                 FAX: 03-XXXX-XXXX
             </p>
@@ -517,23 +487,23 @@
         
         
         <div class="product-images">
-            <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg" alt="ååç»å" class="main-image" id="mainImage">
+            <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg" alt="商品画像" class="main-image" id="mainImage">
             
             <div class="image-carousel">
                 <div class="carousel-item active" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg', this)">
-                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg" alt="ã¡ã¤ã³ç»å">
+                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg" alt="メイン画像">
                 </div>
                 
                 <div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-1.jpg', this)">
-                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-1.jpg" alt="ç»å2">
+                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-1.jpg" alt="画像2">
                 </div>
                 
                 <div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-2.jpg', this)">
-                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-2.jpg" alt="ç»å3">
+                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-2.jpg" alt="画像3">
                 </div>
                 
                 <div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-3.jpg', this)">
-                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-3.jpg" alt="ç»å4">
+                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-detail-3.jpg" alt="画像4">
                 </div>
                 
             </div>
@@ -543,18 +513,18 @@
         <div class="product-content">
         <div class="product-details">
             <div class="brand-name">MYK FASHION</div>
-            <h2 class="product-name">ã­ã³ã°ã­ã£ãOP</h2>
+            <h2 class="product-name">ロングキャミOP</h2>
             
             
             
             <div class="price-section">
-                <div class="current-price" >Â¥10500</div>
+                <div class="current-price" >¥10500</div>
                 
             </div>
 
             
             <div class="selection-section">
-                <h3 class="section-title">ã«ã©ã¼</h3>
+                <h3 class="section-title">カラー</h3>
                 <div class="color-options">
                     
                     <div class="option-item color-option active" data-value="09 BLACK 54 BROWN 85 BLUE">09 BLACK 54 BROWN 85 BLUE</div>
@@ -565,7 +535,7 @@
 
             
             <div class="selection-section">
-                <h3 class="section-title">ãµã¤ãº</h3>
+                <h3 class="section-title">サイズ</h3>
                 <div class="size-options">
                     
                     <div class="option-item size-option active" data-value="F">F</div>
@@ -576,27 +546,27 @@
         </div>
         
         <div class="description-section">
-            <h3 class="section-title">ååèª¬æ</h3>
-            <p class="description-text">ã­ã³ã°ã­ã£ãOPã¯ãMYK FASHIONã®äººæ°ã¢ã¤ãã ã§ãã<br>ç´ æã«ã¯è¡¨å°ï¼ï¾ï¾ï¾ï½´ï½½ï¾ï¾72ï¼ ç¶¿28ï¼ è£å°ï¼ï¾ï¾ï¾ï½´ï½½ï¾ï¾100ï¼ãä½¿ç¨ããåè³ªã«ãã ãã£ã¦è£½ä½ããã¦ãã¾ãã<br>ãµã¤ãºã¯Fããç¨æãã¦ãã¾ãã<br>ãã²ãã®æ©ä¼ã«ãè²·ãæ±ããã ããã</p>
+            <h3 class="section-title">商品説明</h3>
+            <p class="description-text">ロングキャミOPは、MYK FASHIONの人気アイテムです。<br>素材には表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％を使用し、品質にこだわって製作されています。<br>サイズはFをご用意しています。<br>ぜひこの機会にお買い求めください。</p>
         </div>
         
         <div class="details-section">
-            <h3 class="section-title">ååè©³ç´°</h3>
+            <h3 class="section-title">商品詳細</h3>
             <div class="detail-item">
-                <span class="detail-label">ç´ æ</span>
-                <span class="detail-value">è¡¨å°ï¼ï¾ï¾ï¾ï½´ï½½ï¾ï¾72ï¼ ç¶¿28ï¼ è£å°ï¼ï¾ï¾ï¾ï½´ï½½ï¾ï¾100ï¼</span>
+                <span class="detail-label">素材</span>
+                <span class="detail-value">表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">åç£å½</span>
-                <span class="detail-value">ä¸­å½</span>
+                <span class="detail-label">原産国</span>
+                <span class="detail-value">中国</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">åçª</span>
+                <span class="detail-label">品番</span>
                 <span class="detail-value">5117-5001</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">æ§å¥ã¿ã¤ã</span>
-                <span class="detail-value">ã¡ã³ãºã»ã¬ãã£ã¼ã¹</span>
+                <span class="detail-label">性別タイプ</span>
+                <span class="detail-value">メンズ・レディース</span>
             </div>
         </div>
     
@@ -607,19 +577,19 @@
     
     <div class="purchase-section">
         <div class="purchase-buttons">
-            <button class="btn-add-cart" onclick="startPurchaseFlow()">æ³¨æããï¼ä»£å¼ãã®ã¿ï¼</button>
+            <button class="btn-add-cart" onclick="startPurchaseFlow()">注文する（代引きのみ）</button>
         </div>
     </div>
     
 <script>
     
-        // AdminSettings ã°ã­ã¼ãã«ãªãã¸ã§ã¯ãã®ç¢ºèª
+        // AdminSettings グローバルオブジェクトの確認
         if (typeof window.adminSettings === 'undefined') {
-            console.warn('AdminSettings ãè¦ã¤ããã¾ãããããã©ã«ãè¨­å®ãä½¿ç¨ãã¾ãã');
+            console.warn('AdminSettings が見つかりません。デフォルト設定を使用します。');
         }
-          // â ãããåé¤ãããã
+          // ← これを削除するかも
     
-        // ã¡ãã¥ã¼ã®éé
+        // メニューの開閉
         const menuBtn = document.getElementById('menuBtn');
         const slideMenu = document.getElementById('slideMenu');
         const overlay = document.getElementById('overlay');
@@ -636,7 +606,7 @@
             overlay.classList.remove('active');
         });
         
-        // ã¡ãã¥ã¼é ç®ã®å¦çï¼ç¸å¯¾ãã¹ãä½¿ç¨ï¼
+        // メニュー項目の処理（相対パスを使用）
         function goToTopPage() {
             window.location.href = '../index.html';
         }
@@ -665,7 +635,7 @@
             window.location.href = '../contact.html';
         }
         
-        // ç»ååãæ¿ã
+        // 画像切り替え
         function changeImage(src, element) {
             document.getElementById('mainImage').src = src;
             document.querySelectorAll('.carousel-item').forEach(item => {
@@ -674,7 +644,7 @@
             element.classList.add('active');
         }
         
-        // ãªãã·ã§ã³é¸æ
+        // オプション選択
         document.querySelectorAll('.option-item').forEach(option => {
             option.addEventListener('click', function() {
                 const siblings = this.parentElement.querySelectorAll('.option-item');
@@ -683,26 +653,26 @@
             });
         });
         
-        // ååãã¼ã¿
+        // 商品データ
         const currentProduct = {
             productNumber: '5117-5001',
-            productName: 'ã­ã³ã°ã­ã£ãOP',
+            productName: 'ロングキャミOP',
             brandName: 'MYK FASHION',
             price: 10500,
             originalPrice: 10500,
-            material: 'è¡¨å°ï¼ï¾ï¾ï¾ï½´ï½½ï¾ï¾72ï¼ ç¶¿28ï¼ è£å°ï¼ï¾ï¾ï¾ï½´ï½½ï¾ï¾100ï¼',
-            origin: 'ä¸­å½',
+            material: '表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％',
+            origin: '中国',
             colors: ["09 BLACK 54 BROWN 85 BLUE"],
             sizes: ["F"],
             thumbnail: 'https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg'
         };
         
-        // æ°å¤ãã©ã¼ããã
+        // 数値フォーマット
         function formatNumber(num) {
             return num.toLocaleString('ja-JP');
         }
     
-        // EmailNotificationServiceï¼Google Apps Scriptçï¼
+        // EmailNotificationService（Google Apps Script版）
         class EmailNotificationService {
             constructor() {
                 this.apiUrl = 'https://script.google.com/macros/s/AKfycbw8XWKX56Kioxp0xJH2Vc5qiWDv-Y-XlIQzQ5LkJCbDoEEoIwx_-92gHFjj3MHFnQvO/exec';
@@ -710,63 +680,63 @@
             
             async sendOrderNotification(orderData) {
                 try {
-                    console.log('ð§ ã¡ã¼ã«éä¿¡éå§...', orderData);
+                    console.log('📧 メール送信開始...', orderData);
                     
-                    // Adminè¨­å®ããã¡ã¼ã«ã¢ãã¬ã¹ãåå¾
+                    // Admin設定からメールアドレスを取得
                     let adminEmail = this.getAdminEmail();
                     
-                    // ç®¡çèã¡ã¼ã«ã¢ãã¬ã¹ãåå¾ã§ããªãå ´åã¯ããã©ã«ããä½¿ç¨
+                    // 管理者メールアドレスが取得できない場合はデフォルトを使用
                     if (!adminEmail) {
-                        console.warn('â ï¸ ç®¡çèã¡ã¼ã«ã¢ãã¬ã¹ãè¨­å®ããã¦ããªããããããã©ã«ãã¢ãã¬ã¹ãä½¿ç¨ãã¾ã');
+                        console.warn('⚠️ 管理者メールアドレスが設定されていないため、デフォルトアドレスを使用します');
                         adminEmail = 'aminati.ec@gmail.com';
                     }
                     
-                    // APIã«éä¿¡ãããã¼ã¿å½¢å¼ã«å¤æ
+                    // APIに送信するデータ形式に変換
                     const emailData = this.formatEmailData(orderData, adminEmail);
                     
-                    console.log('ð GASå¼ã³åºã:', this.apiUrl);
-                    console.log('ð éä¿¡ãã¼ã¿:', emailData);
+                    console.log('🌐 GAS呼び出し:', this.apiUrl);
+                    console.log('📝 送信データ:', emailData);
                     
-                    // Google Apps Script ãå¼ã³åºã
+                    // Google Apps Script を呼び出し
                     const response = await fetch(this.apiUrl, {
                         method: 'POST',
-                        mode: 'no-cors', // CORSåé¿
+                        mode: 'no-cors', // CORS回避
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(emailData)
                     });
                     
-                    // no-corsã¢ã¼ãã§ã¯responseã®ä¸­èº«ãè¦ããªããããæåã¨ä»®å®
-                    console.log('â GASå¼ã³åºãå®äºï¼no-corsã¢ã¼ãï¼');
+                    // no-corsモードではresponseの中身が見えないため、成功と仮定
+                    console.log('✅ GAS呼び出し完了（no-corsモード）');
                     
-                    // ã·ã³ãã«ãªæåéç¥
-                    alert('ã¡ã¼ã«éä¿¡ãªã¯ã¨ã¹ããéä¿¡ãã¾ããï¼');
+                    // シンプルな成功通知
+                    alert('メール送信リクエストを送信しました！');
                     
                     return { success: true };
                     
                 } catch (error) {
-                    console.error('â ã¡ã¼ã«éä¿¡ã¨ã©ã¼:', error);
-                    alert('ã¡ã¼ã«éä¿¡ä¸­ã«ã¨ã©ã¼ãçºçãã¾ãã: ' + error.message);
+                    console.error('❌ メール送信エラー:', error);
+                    alert('メール送信中にエラーが発生しました: ' + error.message);
                     return { success: false, error: error.message };
                 }
             }
             
-            // ç®¡çèã¡ã¼ã«ã¢ãã¬ã¹ãåå¾
+            // 管理者メールアドレスを取得
             getAdminEmail() {
                 if (window.adminSettings && typeof window.adminSettings.get === 'function') {
                     try {
                         const email = window.adminSettings.get('email');
                         if (email && email.trim() !== '') {
-                            console.log('â AdminSettingsèª­ã¿è¾¼ã¿æå: ' + email);
+                            console.log('✅ AdminSettings読み込み成功: ' + email);
                             return email;
                         }
                     } catch (e) {
-                        console.warn('â ï¸ AdminSettings.get()ã¨ã©ã¼:', e);
+                        console.warn('⚠️ AdminSettings.get()エラー:', e);
                     }
                 }
                 
-                console.warn('â ï¸ ç®¡çèã¡ã¼ã«ã¢ãã¬ã¹ãæªè¨­å®ãããã©ã«ããä½¿ç¨');
+                console.warn('⚠️ 管理者メールアドレスが未設定、デフォルトを使用');
                 return null;
             }
             
@@ -806,15 +776,15 @@
             }
         }
         
-        // ã°ã­ã¼ãã«ã¤ã³ã¹ã¿ã³ã¹ä½æ
+        // グローバルインスタンス作成
         const emailNotificationService = new EmailNotificationService();
         
-        // æ¢å­ã®ã³ã¼ãã¨ã®äºææ§ãä¿ã¤ããã®ã©ããã¼é¢æ°
+        // 既存のコードとの互換性を保つためのラッパー関数
         function sendOrderNotification(orderData) {
             return emailNotificationService.sendOrderNotification(orderData);
         }
         
-        // è³¼å¥ãã­ã¼éå§
+        // 購入フロー開始
         function startPurchaseFlow() {
             const selectedColor = document.querySelector('.color-option.active')?.dataset.value || '';
             const selectedSize = document.querySelector('.size-option.active')?.dataset.value || '';
@@ -830,7 +800,7 @@
             showEstimateModal(purchaseData);
         }
         
-        // æ¦ç®ç¢ºèªã¢ã¼ãã«
+        // 概算確認モーダル
         function showEstimateModal(purchaseData) {
             const shippingFee = 500;
             const codFee = 330;
@@ -839,44 +809,44 @@
             const modalHtml = `
                 <div class="modal-overlay" id="estimateModal">
                     <div class="modal-content">
-                        <h2>ãæ³¨æåå®¹ã®ç¢ºèª</h2>
+                        <h2>ご注文内容の確認</h2>
                         
                         <div class="order-summary">
                             <div class="product-info">
                                 <h3>${purchaseData.productName}</h3>
-                                <p>ãã©ã³ã: ${purchaseData.brandName}</p>
-                                <p>ã«ã©ã¼: ${purchaseData.selectedColor}</p>
-                                <p>ãµã¤ãº: ${purchaseData.selectedSize}</p>
+                                <p>ブランド: ${purchaseData.brandName}</p>
+                                <p>カラー: ${purchaseData.selectedColor}</p>
+                                <p>サイズ: ${purchaseData.selectedSize}</p>
                             </div>
                             
                             <div class="price-breakdown">
                                 <div class="price-item">
-                                    <span>ååä»£é</span>
-                                    <span>Â¥${formatNumber(purchaseData.price)}</span>
+                                    <span>商品代金</span>
+                                    <span>¥${formatNumber(purchaseData.price)}</span>
                                 </div>
                                 <div class="price-item">
-                                    <span>ééæ</span>
-                                    <span>Â¥${formatNumber(shippingFee)}</span>
+                                    <span>配送料</span>
+                                    <span>¥${formatNumber(shippingFee)}</span>
                                 </div>
                                 <div class="price-item">
-                                    <span>ä»£å¼ãææ°æ</span>
-                                    <span>Â¥${formatNumber(codFee)}</span>
+                                    <span>代引き手数料</span>
+                                    <span>¥${formatNumber(codFee)}</span>
                                 </div>
                                 <div class="price-total">
-                                    <span>åè¨éé¡</span>
-                                    <span>Â¥${formatNumber(totalPrice)}</span>
+                                    <span>合計金額</span>
+                                    <span>¥${formatNumber(totalPrice)}</span>
                                 </div>
                             </div>
                             
                             <div class="payment-info">
-                                <p><strong>ãæ¯æãæ¹æ³:</strong> ä»£éå¼æï¼ç¾éã®ã¿ï¼</p>
-                                <p><small>â»ååå°çæã«ééå¡ã«ãæ¯æããã ãã</small></p>
+                                <p><strong>お支払い方法:</strong> 代金引換（現金のみ）</p>
+                                <p><small>※商品到着時に配達員にお支払いください</small></p>
                             </div>
                         </div>
                         
                         <div class="modal-buttons">
-                            <button class="btn-secondary" onclick="closeEstimateModal()">æ»ã</button>
-                            <button class="btn-primary" onclick="proceedToShipping()">ãã®åå®¹ã§æ³¨æãã</button>
+                            <button class="btn-secondary" onclick="closeEstimateModal()">戻る</button>
+                            <button class="btn-primary" onclick="proceedToShipping()">この内容で注文する</button>
                         </div>
                     </div>
                 </div>
@@ -1011,55 +981,55 @@
             showShippingForm();
         }
         
-        // ééåå¥åãã©ã¼ã 
+        // 配送先入力フォーム
         function showShippingForm() {
             const modalHtml = `
                 <div class="modal-overlay" id="shippingModal">
                     <div class="modal-content shipping-form">
-                        <h2>ééåæå ±ã®å¥å</h2>
+                        <h2>配送先情報の入力</h2>
                         
                         <form id="shippingForm">
                             <div class="form-group">
-                                <label for="customerName">ãåå <span class="required">*</span></label>
+                                <label for="customerName">お名前 <span class="required">*</span></label>
                                 <input type="text" id="customerName" name="customerName" required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="customerKana">ãååï¼ããªã¬ãï¼ <span class="required">*</span></label>
+                                <label for="customerKana">お名前（フリガナ） <span class="required">*</span></label>
                                 <input type="text" id="customerKana" name="customerKana" required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="customerPhone">é»è©±çªå· <span class="required">*</span></label>
-                                <input type="tel" id="customerPhone" name="customerPhone" required placeholder="ä¾: 090-1234-5678">
+                                <label for="customerPhone">電話番号 <span class="required">*</span></label>
+                                <input type="tel" id="customerPhone" name="customerPhone" required placeholder="例: 090-1234-5678">
                             </div>
                             
                             <div class="form-group">
-                                <label for="customerEmail">ã¡ã¼ã«ã¢ãã¬ã¹</label>
-                                <input type="email" id="customerEmail" name="customerEmail" placeholder="ä¾: example@email.com">
+                                <label for="customerEmail">メールアドレス</label>
+                                <input type="email" id="customerEmail" name="customerEmail" placeholder="例: example@email.com">
                             </div>
                             
                             <div class="form-group">
-                                <label for="customerZip">éµä¾¿çªå· <span class="required">*</span></label>
-                                <input type="text" id="customerZip" name="customerZip" required placeholder="ä¾: 123-4567">
+                                <label for="customerZip">郵便番号 <span class="required">*</span></label>
+                                <input type="text" id="customerZip" name="customerZip" required placeholder="例: 123-4567">
                             </div>
                             
                             <div class="form-group">
-                                <label for="customerAddress">ä½æ <span class="required">*</span></label>
-                                <textarea id="customerAddress" name="customerAddress" required placeholder="é½éåºçå¸åºçºæçªå°"></textarea>
+                                <label for="customerAddress">住所 <span class="required">*</span></label>
+                                <textarea id="customerAddress" name="customerAddress" required placeholder="都道府県市区町村番地"></textarea>
                             </div>
                             
                             <div class="form-group">
-                                <label for="deliveryDate">å¸æééæ¥</label>
+                                <label for="deliveryDate">希望配達日</label>
                                 <input type="date" id="deliveryDate" name="deliveryDate">
-                                <small>â»æç­5æ¥å¾ããæå®å¯è½</small>
+                                <small>※最短5日後から指定可能</small>
                             </div>
                             
                             <div class="form-group">
-                                <label for="deliveryTime">å¸æééæé</label>
+                                <label for="deliveryTime">希望配達時間</label>
                                 <select id="deliveryTime" name="deliveryTime">
-                                    <option value="">æå®ãªã</option>
-                                    <option value="ååä¸­">ååä¸­</option>
+                                    <option value="">指定なし</option>
+                                    <option value="午前中">午前中</option>
                                     <option value="12-14">12:00-14:00</option>
                                     <option value="14-16">14:00-16:00</option>
                                     <option value="16-18">16:00-18:00</option>
@@ -1069,14 +1039,14 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="orderNote">ãè¦æã»åè</label>
-                                <textarea id="orderNote" name="orderNote" placeholder="ãã®ä»ãè¦æããããã¾ããããè¨å¥ãã ãã"></textarea>
+                                <label for="orderNote">ご要望・備考</label>
+                                <textarea id="orderNote" name="orderNote" placeholder="その他ご要望がございましたらご記入ください"></textarea>
                             </div>
                         </form>
                         
                         <div class="modal-buttons">
-                            <button class="btn-secondary" onclick="closeShippingModal()">æ»ã</button>
-                            <button class="btn-primary" onclick="submitOrder()">æ³¨æãç¢ºå®ãã</button>
+                            <button class="btn-secondary" onclick="closeShippingModal()">戻る</button>
+                            <button class="btn-primary" onclick="submitOrder()">注文を確定する</button>
                         </div>
                     </div>
                 </div>
@@ -1150,7 +1120,7 @@
             });
             
             if (!isValid) {
-                alert('å¿é é ç®ããã¹ã¦å¥åãã¦ãã ããã');
+                alert('必須項目をすべて入力してください。');
                 return;
             }
             
@@ -1193,19 +1163,19 @@
         }
         
         function saveOrder(orderData) {
-            // GitHub Pagesçï¼IndexedDBã¯ä½¿ç¨ãããã¡ã¼ã«éç¥ã®ã¿
-            console.log('æ³¨æãã¼ã¿:', orderData);
+            // GitHub Pages版：IndexedDBは使用せず、メール通知のみ
+            console.log('注文データ:', orderData);
             
-            // ã¡ã¼ã«éç¥éä¿¡
+            // メール通知送信
             sendOrderNotification(orderData);
             
-            // æ³¨æå®äºç»é¢ãè¡¨ç¤º
+            // 注文完了画面を表示
             showOrderComplete(orderData);
             sessionStorage.removeItem('purchaseData');
             sessionStorage.removeItem('estimateData');
             
-            // æ³¨ï¼å®éã®æ³¨æãã¼ã¿ã¯ã¡ã¼ã«ã§ç®¡çèã«éä¿¡ããã¾ã
-            // ããé«åº¦ãªæ³¨æç®¡çãå¿è¦ãªå ´åã¯ãããã¯ã¨ã³ããµã¼ãã¼ã®å®è£ãå¿è¦ã§ã
+            // 注：実際の注文データはメールで管理者に送信されます
+            // より高度な注文管理が必要な場合は、バックエンドサーバーの実装が必要です
         }
         
         function showOrderComplete(orderData) {
@@ -1214,23 +1184,23 @@
             const modalHtml = `
                 <div class="modal-overlay" id="completeModal">
                     <div class="modal-content">
-                        <div class="complete-icon">â</div>
-                        <h2>ãæ³¨æãããã¨ããããã¾ãã</h2>
+                        <div class="complete-icon">✓</div>
+                        <h2>ご注文ありがとうございました</h2>
                         
                         <div class="order-info">
-                            <p><strong>æ³¨æçªå·:</strong> ${orderData.orderId}</p>
-                            <p><strong>æ³¨ææ¥æ:</strong> ${new Date(orderData.orderDate).toLocaleString('ja-JP')}</p>
-                            <p><strong>åè¨éé¡:</strong> Â¥${formatNumber(orderData.pricing.totalPrice)}</p>
+                            <p><strong>注文番号:</strong> ${orderData.orderId}</p>
+                            <p><strong>注文日時:</strong> ${new Date(orderData.orderDate).toLocaleString('ja-JP')}</p>
+                            <p><strong>合計金額:</strong> ¥${formatNumber(orderData.pricing.totalPrice)}</p>
                         </div>
                         
                         <div class="complete-message">
-                            <p>ãæ³¨æãæ¿ãã¾ããã</p>
-                            <p>ååã¯ä»£éå¼æã§ãå±ããããã¾ãã</p>
-                            <p>ééã«ã¤ãã¦è©³ç´°ããé»è©±ã«ã¦ãé£çµ¡ããå ´åããããã¾ãã</p>
+                            <p>ご注文を承りました。</p>
+                            <p>商品は代金引換でお届けいたします。</p>
+                            <p>配送について詳細をお電話にてご連絡する場合がございます。</p>
                         </div>
                         
                         <div class="modal-buttons">
-                            <button class="btn-primary" onclick="closeCompleteModal()">éãã</button>
+                            <button class="btn-primary" onclick="closeCompleteModal()">閉じる</button>
                         </div>
                     </div>
                 </div>
