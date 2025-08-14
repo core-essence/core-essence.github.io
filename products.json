@@ -1,5 +1,5 @@
 {
-  "generated": "2025-08-13T14:58:26.913Z",
+  "generated": "2025-08-14T08:12:01.360Z",
   "count": 41,
   "products": [
     {
@@ -615,7 +615,9 @@
       "originalPrice": "10500",
       "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg",
       "colors": [
-        "09 BLACK 54 BROWN 85 BLUE"
+        "09 BLACK",
+        "54 BROWN",
+        "85 BLUE"
       ],
       "sizes": [
         "F"
