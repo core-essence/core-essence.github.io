@@ -1230,5 +1230,20 @@
             if (modal) modal.remove();
         }
 </script>
+
+       // 手動で在庫切れを適用するテスト
+fetch('https://aminati-ec.github.io/data/color-stock.json?t=' + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    console.log('データ:', data);
+    // 09 BLACKを探して無効化
+    document.querySelectorAll('.color-option').forEach(option => {
+      if (option.dataset.value === '09 BLACK') {
+        option.style.opacity = '0.3';
+        option.style.border = '2px solid red';
+        console.log('09 BLACK found and styled!');
+      }
+    });
+  });
 </body>
 </html>
