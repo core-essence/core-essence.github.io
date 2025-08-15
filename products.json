@@ -1,6 +1,6 @@
 {
-  "generated": "2025-08-14T08:12:01.360Z",
-  "count": 41,
+  "generated": "2025-08-15T12:04:22.631Z",
+  "count": 43,
   "products": [
     {
       "productNumber": "5115-6002",
@@ -829,6 +829,44 @@
         "F"
       ],
       "material": "-",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "test",
+      "productName": "ロングキャミOP",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": null,
+      "colors": [
+        "09 BLACK",
+        "54 BROWN",
+        "85 BLUE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％",
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5771-70083",
+      "productName": "ロングキャミOP",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": null,
+      "colors": [
+        "09 BLACK",
+        "54 BROWN",
+        "85 BLUE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％",
       "origin": "中国"
     }
   ]
