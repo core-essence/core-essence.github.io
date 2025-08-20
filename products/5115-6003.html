@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/><link href="../css/product-custom.css" rel="stylesheet"/>
-<title>ボーダー立体ポケ付Tシャツ - AMINATI_EC</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../css/product-custom.css">
+    <title>ボーダー立体ポケ付Tシャツ - AMINATI_EC</title>
+    <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; 
@@ -443,225 +443,148 @@
                     box-shadow: 0 -2px 10px rgba(0,0,0,0.1) !important;
                 }
             }
-        }
-        /* サイズ詳細表のスタイル */
-        .size-chart-section {
-            padding: 20px;
-            background: transparent;
-            margin: 20px 0;
-        }
-        
-        .size-chart-section h3 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        
-        .size-table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .size-table {
-            width: 100%;
-            min-width: 350px;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        
-        .size-table th,
-        .size-table td {
-            padding: 10px 8px;
-            text-align: center;
-            font-size: 13px;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .size-table thead {
-            background: #f5f5f5;
-        }
-        
-        .size-table th {
-            font-weight: 600;
-            color: #666;
-            font-size: 12px;
-        }
-        
-        .size-table tbody tr:hover {
-            background: #fafafa;
-        }
-        
-        .size-table .size-label {
-            font-weight: 600;
-            color: #000;
-            background: #f8f8f8;
-        }
-        
-        .size-note {
-            margin-top: 10px;
-            font-size: 11px;
-            color: #888;
-            line-height: 1.5;
-        }
-    </style>
+        }</style>
 </head>
 <body>
-<header>
-<div class="header-content">
-<div class="menu-btn" id="menuBtn">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<h1 class="logo">AMINATI</h1>
-<div class="cart-icon"></div>
-</div>
-</header>
-<div class="slide-menu" id="slideMenu">
-<div class="menu-header">
-<div class="menu-title">MENU</div>
-<div class="menu-subtitle">WHOLESALE CATALOG</div>
-</div>
-<nav class="menu-nav">
-<a class="menu-item" href="#" onclick="goToTopPage(); return false;">トップページ</a>
-<a class="menu-item" href="#" onclick="showAllProducts(); return false;">すべての商品</a>
-<a class="menu-item" href="#" onclick="showNewProducts(); return false;">新着商品</a>
-<a class="menu-item" href="#" onclick="showCategories(); return false;">カテゴリー</a>
-<a class="menu-item" href="#" onclick="showAboutTrade(); return false;">お取引について</a>
-<a class="menu-item" href="#" onclick="showCompanyInfo(); return false;">会社概要</a>
-<a class="menu-item" href="#" onclick="showContact(); return false;">お問い合わせ</a>
-</nav>
-<div class="menu-footer">
-<p class="menu-footer-text">
-                営業時間: 平日 9:00-18:00<br/>
-                TEL: 03-XXXX-XXXX<br/>
+    
+    <header>
+        <div class="header-content">
+            <div class="menu-btn" id="menuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h1 class="logo">AMINATI</h1>
+            <div class="cart-icon"></div>
+        </div>
+    </header>
+    
+    <div class="slide-menu" id="slideMenu">
+        <div class="menu-header">
+            <div class="menu-title">MENU</div>
+            <div class="menu-subtitle">WHOLESALE CATALOG</div>
+        </div>
+        <nav class="menu-nav">
+            <a href="#" class="menu-item" onclick="goToTopPage(); return false;">トップページ</a>
+            <a href="#" class="menu-item" onclick="showAllProducts(); return false;">すべての商品</a>
+            <a href="#" class="menu-item" onclick="showNewProducts(); return false;">新着商品</a>
+            <a href="#" class="menu-item" onclick="showCategories(); return false;">カテゴリー</a>
+            <a href="#" class="menu-item" onclick="showAboutTrade(); return false;">お取引について</a>
+            <a href="#" class="menu-item" onclick="showCompanyInfo(); return false;">会社概要</a>
+            <a href="#" class="menu-item" onclick="showContact(); return false;">お問い合わせ</a>
+        </nav>
+        <div class="menu-footer">
+            <p class="menu-footer-text">
+                営業時間: 平日 9:00-18:00<br>
+                TEL: 03-XXXX-XXXX<br>
                 FAX: 03-XXXX-XXXX
             </p>
-</div>
-</div>
-<div class="overlay" id="overlay"></div>
-<main>
-<div class="product-images">
-<img alt="商品画像" class="main-image" id="mainImage" src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg"/>
-<div class="image-carousel">
-<div class="carousel-item active" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg', this)">
-<img alt="メイン画像" src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg"/>
-</div>
-<div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-1.jpg', this)">
-<img alt="画像2" src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-1.jpg"/>
-</div>
-<div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-2.jpg', this)">
-<img alt="画像3" src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-2.jpg"/>
-</div>
-<div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-3.jpg', this)">
-<img alt="画像4" src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-3.jpg"/>
-</div>
-</div>
-</div>
-<div class="product-content">
-<div class="product-details">
-<div class="brand-name">MYK FASHION</div>
-<h2 class="product-name">ボーダー立体ポケ付Tシャツ</h2>
-<div class="price-section">
-<div class="current-price">¥9800</div>
-</div>
-<div class="selection-section">
-<h3 class="section-title">カラー</h3>
-<div class="color-options">
-<div class="option-item color-option active" data-value="01 WHITE">01 WHITE</div>
-<div class="option-item color-option" data-value="09 BLACK">09 BLACK</div>
-<div class="option-item color-option" data-value="54 BROWN">54 BROWN</div>
-</div>
-</div>
-<div class="selection-section">
-<h3 class="section-title">サイズ</h3>
-<div class="size-options">
-<div class="option-item size-option active" data-value="S">S</div>
-<div class="option-item size-option" data-value="L">L</div>
-<div class="option-item size-option" data-value="XL">XL</div>
-<div class="option-item size-option" data-value="XXL">XXL</div>
-</div>
-</div>
-</div>
-<div class="description-section">
-<h3 class="section-title">商品説明</h3>
-<p class="description-text">ボーダー立体ポケ付Tシャツは、MYK FASHIONの人気アイテムです。<br/>素材には表地：綿52％ ポリエステル48％ 別布ポリ100％を使用し、品質にこだわって製作されています。<br/>3色のカラーバリエーションからお選びいただけます。<br/>サイズはS、L、XL、XXLをご用意しています。<br/>ぜひこの機会にお買い求めください。</p>
-</div>
+        </div>
+    </div>
 
-            <!-- サイズ詳細表を追加 -->
-            <div class="size-chart-section">
-                <h3 class="section-title">サイズ詳細</h3>
-                <div class="size-table-wrapper">
-                    <table class="size-table">
-                        <thead>
-                            <tr>
-                                <th>サイズ</th>
-                                <th>着丈</th>
-                                <th>身幅</th>
-                                <th>肩幅</th>
-                                <th>袖丈</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="size-label">M</td>
-                                <td>69.0</td>
-                                <td>55.0</td>
-                                <td>52.0</td>
-                                <td>22.0</td>
-                            </tr>
-                            <tr>
-                                <td class="size-label">L</td>
-                                <td>71.5</td>
-                                <td>57.5</td>
-                                <td>54.5</td>
-                                <td>24.5</td>
-                            </tr>
-                            <tr>
-                                <td class="size-label">XL</td>
-                                <td>74.0</td>
-                                <td>60.0</td>
-                                <td>57.0</td>
-                                <td>27.0</td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div class="overlay" id="overlay"></div>
+    
+    <main>
+        
+        <div class="product-images">
+            <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg" alt="商品画像" class="main-image" id="mainImage">
+            
+            <div class="image-carousel">
+                <div class="carousel-item active" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg', this)">
+                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg" alt="メイン画像">
                 </div>
-                <p class="size-note">
-                    ※単位：cm<br>
-                    ※平置き採寸のため、多少の誤差はご了承ください。
-                </p>
+                
+                <div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-1.jpg', this)">
+                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-1.jpg" alt="画像2">
+                </div>
+                
+                <div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-2.jpg', this)">
+                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-2.jpg" alt="画像3">
+                </div>
+                
+                <div class="carousel-item" onclick="changeImage('https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-3.jpg', this)">
+                    <img src="https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-detail-3.jpg" alt="画像4">
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="product-content">
+            
+        <div class="product-details">
+            <div class="brand-name">MYK FASHION</div>
+            <h2 class="product-name">ボーダー立体ポケ付Tシャツ</h2>
+            
+            <div class="price-section">
+                <div class="current-price" >¥9800</div>
+                
             </div>
 
-<div class="details-section">
-<h3 class="section-title">商品詳細</h3>
-<div class="detail-item">
-<span class="detail-label">素材</span>
-<span class="detail-value">表地：綿52％ ポリエステル48％ 別布ポリ100％</span>
-</div>
-<div class="detail-item">
-<span class="detail-label">原産国</span>
-<span class="detail-value">中国</span>
-</div>
-<div class="detail-item">
-<span class="detail-label">品番</span>
-<span class="detail-value">5115-6003</span>
-</div>
-<div class="detail-item">
-<span class="detail-label">性別タイプ</span>
-<span class="detail-value">メンズ・レディース</span>
-</div>
-</div>
-</div>
-</main>
-<div class="purchase-section">
-<div class="purchase-buttons">
-<button class="btn-add-cart" onclick="startPurchaseFlow()">注文する（代引きのみ）</button>
-</div>
-</div>
+            
+            <div class="selection-section">
+                <h3 class="section-title">カラー</h3>
+                <div class="color-options">
+                    
+                    <div class="option-item color-option active" data-value="01 WHITE">01 WHITE</div>
+                    
+                    <div class="option-item color-option " data-value="09 BLACK">09 BLACK</div>
+                    
+                    <div class="option-item color-option " data-value="54 BROWN">54 BROWN</div>
+                    
+                </div>
+            </div>
+            
+
+            
+            <div class="selection-section">
+                <h3 class="section-title">サイズ</h3>
+                <div class="size-options">
+                    
+                    <div class="option-item size-option active" data-value="M">M</div>
+                    
+                    <div class="option-item size-option " data-value="L">L</div>
+                    
+                    <div class="option-item size-option " data-value="XL">XL</div>
+                    
+                </div>
+            </div>
+            
+        </div>
+            
+        <div class="description-section">
+            <h3 class="section-title">商品説明</h3>
+            <p class="description-text">ボーダー立体ポケ付Tシャツは、MYK FASHIONの人気アイテムです。<br>素材には表地：綿52％ ポリエステル48％ 別布ポリ100％を使用し、品質にこだわって製作されています。<br>3色のカラーバリエーションからお選びいただけます。<br>サイズはM、L、XLをご用意しています。<br>ぜひこの機会にお買い求めください。</p>
+        </div>
+            
+        <div class="details-section">
+            <h3 class="section-title">商品詳細</h3>
+            <div class="detail-item">
+                <span class="detail-label">素材</span>
+                <span class="detail-value">表地：綿52％ ポリエステル48％ 別布ポリ100％</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">原産国</span>
+                <span class="detail-value">中国</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">品番</span>
+                <span class="detail-value">5115-6003</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">性別タイプ</span>
+                <span class="detail-value">メンズ・レディース</span>
+            </div>
+        </div>
+        </div>
+    </main>
+    
+    
+    <div class="purchase-section">
+        <div class="purchase-buttons">
+            <button class="btn-add-cart" onclick="startPurchaseFlow()">注文する（代引きのみ）</button>
+        </div>
+    </div>
+    
 <script>
     
         // AdminSettings グローバルオブジェクトの確認
@@ -669,6 +592,7 @@
             console.warn('AdminSettings が見つかりません。デフォルト設定を使用します。');
         }
           // ← これを削除するかも
+    
     
         // メニューの開閉
         const menuBtn = document.getElementById('menuBtn');
@@ -734,110 +658,19 @@
             });
         });
         
-        // 商品データ（GitHub products.jsonから動的読み込み）
-        let currentProduct = null;
-        
-        // GitHub Pagesからproducts.jsonを読み込む
-        async function loadProductData() {
-            try {
-                // GitHubから直接読み込み（CORS対応済み）
-                const response = await fetch('https://aminati-ec.github.io/products.json');
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                
-                // この商品のデータを検索
-                currentProduct = data.products.find(p => p.productNumber === '5115-6003');
-                
-                if (!currentProduct) {
-                    throw new Error(`商品番号 5115-6003 が見つかりません`);
-                }
-                
-                // 商品情報をページに反映
-                updatePageWithProductData();
-                
-            } catch (error) {
-                console.error('データ読み込みエラー:', error);
-                // エラー時は何もしない（既存のHTML表示を維持）
-            }
-        }
-        
-        // 商品データをページに反映
-        function updatePageWithProductData() {
-            if (!currentProduct) return;
-            
-            // サイズボタンを動的更新
-            const sizeContainer = document.querySelector('.size-options');
-            if (sizeContainer && currentProduct.sizes) {
-                sizeContainer.innerHTML = '';
-                currentProduct.sizes.forEach((size, index) => {
-                    const sizeBtn = document.createElement('div');
-                    sizeBtn.className = `option-item size-option${index === 0 ? ' active' : ''}`;
-                    sizeBtn.setAttribute('data-value', size);
-                    sizeBtn.textContent = size;
-                    sizeBtn.onclick = function() {
-                        document.querySelectorAll('.size-option').forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    };
-                    sizeContainer.appendChild(sizeBtn);
-                });
-            }
-            
-            // カラーボタンを動的更新
-            const colorContainer = document.querySelector('.color-options');
-            if (colorContainer && currentProduct.colors) {
-                colorContainer.innerHTML = '';
-                currentProduct.colors.forEach((color, index) => {
-                    const colorBtn = document.createElement('div');
-                    colorBtn.className = `option-item color-option${index === 0 ? ' active' : ''}`;
-                    colorBtn.setAttribute('data-value', color);
-                    colorBtn.textContent = color;
-                    colorBtn.onclick = function() {
-                        document.querySelectorAll('.color-option').forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    };
-                    colorContainer.appendChild(colorBtn);
-                });
-            }
-            
-            // 価格を更新
-            const priceElements = document.querySelectorAll('.price, .current-price');
-            priceElements.forEach(elem => {
-                if (currentProduct.salePrice) {
-                    elem.textContent = `¥${parseInt(currentProduct.salePrice).toLocaleString()}`;
-                }
-            });
-            
-            // 商品名を更新
-            const nameElements = document.querySelectorAll('.product-title, .product-name, h1.product-title');
-            nameElements.forEach(elem => {
-                if (currentProduct.productName) {
-                    elem.textContent = currentProduct.productName;
-                }
-            });
-            
-            // ブランド名を更新
-            const brandElements = document.querySelectorAll('.brand-name, .brand');
-            brandElements.forEach(elem => {
-                if (currentProduct.brandName) {
-                    elem.textContent = currentProduct.brandName;
-                }
-            });
-        }
-        
-        // ページ読み込み完了後に実行
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadProductData);
-        } else {
-            loadProductData();
-        }
+        // 商品データ
+        const currentProduct = {
+            productNumber: '5115-6003',
+            productName: 'ボーダー立体ポケ付Tシャツ',
+            brandName: 'MYK FASHION',
+            price: 9800,
+            originalPrice: 9800,
+            material: '表地：綿52％ ポリエステル48％ 別布ポリ100％',
+            origin: '中国',
+            colors: ["01 WHITE","09 BLACK","54 BROWN"],
+            sizes: ["M","L","XL"],
+            thumbnail: 'https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg'
+        };
         
         // 数値フォーマット
         function formatNumber(num) {
@@ -1421,5 +1254,9 @@
             if (modal) modal.remove();
         }
 </script>
+
+
+<!-- 在庫管理システム -->
+<script src="../js/inventory-manager.js"></script>
 </body>
 </html>
