@@ -1,0 +1,15 @@
+{
+  "generated": "2025-08-20T09:28:24.899Z",
+  "count": 1,
+  "products": [
+    {
+      "productNumber": "TEST-001",
+      "productName": "テスト商品",
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ]
+    }
+  ]
+}
