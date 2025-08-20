@@ -1,381 +1,512 @@
 {
-  "generated": "2025-08-20T09:59:04.751Z",
+  "generated": "2025-08-15T12:04:22.631Z",
   "count": 43,
   "products": [
     {
       "productNumber": "5115-6002",
       "productName": "硫化染め無地Tシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 6900,
-      "originalPrice": 6900,
+      "category": "その他",
+      "salePrice": "6900",
+      "originalPrice": "6900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6002-thumb.jpg",
       "colors": [
-        "09 BLACK"
+        "09 BLACK",
+        "17 C.GRAY",
+        "50 S.BEIGE",
+        "54 BROWN",
+        "74 GREEN",
+        "86 R.BLUE"
       ],
       "sizes": [
-        "50 S.BEIGE"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "54 BROWN",
-      "origin": "74 GREEN",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6002-thumb.jpg"
+      "material": "表地：綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6018",
       "productName": "ラメ入りTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 7300,
-      "originalPrice": 7300,
+      "category": "その他",
+      "salePrice": "7300",
+      "originalPrice": "7300",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6018-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6018-thumb.jpg"
+      "material": "表地：綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6015",
       "productName": "ムラ両面プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 7500,
-      "originalPrice": 7500,
+      "category": "その他",
+      "salePrice": "7500",
+      "originalPrice": "7500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6015-thumb.jpg",
       "colors": [
-        "01 WHITE"
-      ],
-      "sizes": [
+        "01 WHITE",
+        "09 BLACK",
         "17 C.GRAY"
       ],
-      "material": "01 WHITE:在庫あり|09 BLACK:在庫あり|17 C.GRAY:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6015-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "表地：綿60％ ポリエステル40％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6016",
       "productName": "プリント入りムラTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 7500,
-      "originalPrice": 7500,
+      "category": "その他",
+      "salePrice": "7500",
+      "originalPrice": "7500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6016-thumb.jpg",
       "colors": [
-        "09 BLACK"
+        "09 BLACK",
+        "54 BROWN"
       ],
       "sizes": [
-        "09 BLACK:在庫あり|54 BROWN:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6016-thumb.jpg"
+      "material": "表地：綿85％ ポリエステル15％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6008",
       "productName": "両面プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 7900,
-      "originalPrice": 7900,
+      "category": "その他",
+      "salePrice": "7900",
+      "originalPrice": "7900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6008-thumb.jpg",
       "colors": [
-        "01 WHITE"
-      ],
-      "sizes": [
+        "01 WHITE",
+        "09 BLACK",
         "54 BROWN"
       ],
-      "material": "01 WHITE:在庫あり|09 BLACK:在庫あり|54 BROWN:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6008-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "表地：綿71％ ポリエステル24％ ポリウレタン5％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6009",
       "productName": "両面刺繍プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 7900,
-      "originalPrice": 7900,
+      "category": "その他",
+      "salePrice": "7900",
+      "originalPrice": "7900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6009-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6009-thumb.jpg"
+      "material": "表地：綿71％ ポリエステル24％ ポリウレタン5％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6010",
       "productName": "両面刺繍Tシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 7900,
-      "originalPrice": 7900,
+      "category": "その他",
+      "salePrice": "7900",
+      "originalPrice": "7900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6010-thumb.jpg",
       "colors": [
-        "01 WHITE"
-      ],
-      "sizes": [
+        "01 WHITE",
+        "09 BLACK",
         "54 BROWN"
       ],
-      "material": "01 WHITE:在庫あり|09 BLACK:在庫あり|54 BROWN:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6010-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "表地：綿72％ ポリエステル28％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6012",
       "productName": "両面刺繍プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 7900,
-      "originalPrice": 7900,
+      "category": "その他",
+      "salePrice": "7900",
+      "originalPrice": "7900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6012-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6012-thumb.jpg"
+      "material": "表地：綿72％ ポリエステル28％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6004",
       "productName": "変形プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 8500,
-      "originalPrice": 8500,
+      "category": "その他",
+      "salePrice": "8500",
+      "originalPrice": "8500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6004-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6004-thumb.jpg"
+      "material": "表地：綿80％ ポリエステル20％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6019",
       "productName": "両面プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 8700,
-      "originalPrice": 8700,
+      "category": "その他",
+      "salePrice": "8700",
+      "originalPrice": "8700",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6019-thumb.jpg",
       "colors": [
-        "01 WHITE"
-      ],
-      "sizes": [
+        "01 WHITE",
+        "09 BLACK",
         "51 BEIGE"
       ],
-      "material": "01 WHITE:在庫あり|09 BLACK:在庫あり|51 BEIGE:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6019-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "表地：綿55％ ポリエステル45％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6020",
       "productName": "両面プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 8700,
-      "originalPrice": 8700,
+      "category": "その他",
+      "salePrice": "8700",
+      "originalPrice": "8700",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6020-thumb.jpg",
       "colors": [
-        "01 WHITE"
-      ],
-      "sizes": [
+        "01 WHITE",
+        "09 BLACK",
         "51 BEIGE"
       ],
-      "material": "01 WHITE:在庫あり|09 BLACK:在庫あり|51 BEIGE:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6020-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "表地：綿55％ ポリエステル45％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-7001",
       "productName": "ポリエステルデザインカーゴショーツ",
       "brandName": "MYK FASHION",
-      "salePrice": 8800,
-      "originalPrice": 8800,
+      "category": "その他",
+      "salePrice": "8800",
+      "originalPrice": "8800",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-7001-thumb.jpg",
       "colors": [
-        "09 BLACK"
-      ],
-      "sizes": [
+        "09 BLACK",
+        "54 BROWN",
         "78 KHAKI"
       ],
-      "material": "09 BLACK:在庫あり|54 BROWN:在庫あり|78 KHAKI:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-7001-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "ポリエステル100%",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-7003",
       "productName": "ポリエステルデザインカーゴショーツ",
       "brandName": "MYK FASHION",
-      "salePrice": 8800,
-      "originalPrice": 8800,
+      "category": "その他",
+      "salePrice": "8800",
+      "originalPrice": "8800",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-7003-thumb.jpg",
       "colors": [
-        "09 BLACK"
-      ],
-      "sizes": [
+        "09 BLACK",
+        "50 S.BEIGE",
         "78 KHAKI"
       ],
-      "material": "09 BLACK:在庫あり|50 S.BEIGE:在庫あり|78 KHAKI:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-7003-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "ポリエステル100%",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6005",
       "productName": "両面プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 8900,
-      "originalPrice": 8900,
+      "category": "その他",
+      "salePrice": "8900",
+      "originalPrice": "8900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6005-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6005-thumb.jpg"
+      "material": "表地：綿80％ ポリエステル20％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6006",
       "productName": "両面プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 8900,
-      "originalPrice": 8900,
+      "category": "その他",
+      "salePrice": "8900",
+      "originalPrice": "8900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6006-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6006-thumb.jpg"
+      "material": "表地：綿75％ ポリエステル25％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6003",
       "productName": "ボーダー立体ポケ付Tシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 9800,
-      "originalPrice": 9800,
+      "category": "その他",
+      "salePrice": "9800",
+      "originalPrice": "9800",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg",
       "colors": [
-        "01 WHITE"
-      ],
-      "sizes": [
+        "01 WHITE",
+        "09 BLACK",
         "54 BROWN"
       ],
-      "material": "01 WHITE:在庫あり|09 BLACK:在庫あり|54 BROWN:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6003-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "表地：綿52％ ポリエステル48％ 別布ポリ100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-7002",
       "productName": "ポリエステルデザインポケ付ショーツ",
       "brandName": "MYK FASHION",
-      "salePrice": 9800,
-      "originalPrice": 9800,
+      "category": "その他",
+      "salePrice": "9800",
+      "originalPrice": "9800",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-7002-thumb.jpg",
       "colors": [
-        "09 BLACK"
-      ],
-      "sizes": [
+        "09 BLACK",
+        "51 BEIGE",
         "78 KHAKI BACK DESIGN"
       ],
-      "material": "09 BLACK:在庫あり|51 BEIGE:在庫あり|78 KHAKI BACK DESIGN:在庫あり",
-      "origin": "S",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-7002-thumb.jpg"
+      "sizes": [
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "material": "ポリエステル100%",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6007",
       "productName": "両面プリントTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 10800,
-      "originalPrice": 10800,
+      "category": "その他",
+      "salePrice": "10800",
+      "originalPrice": "10800",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6007-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6007-thumb.jpg"
+      "material": "表地：綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5315-7032",
       "productName": "4ポケカーゴワイドデニムイージーパンツ",
       "brandName": "MYK FASHION",
-      "salePrice": 10800,
-      "originalPrice": 10800,
+      "category": "その他",
+      "salePrice": "10800",
+      "originalPrice": "10800",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5315-7032-thumb.jpg",
       "colors": [
         "09 BLACK"
       ],
       "sizes": [
-        "S"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "L",
-      "origin": "XL",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5315-7032-thumb.jpg"
+      "material": "表地：綿85％ ポリエステル/15％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6026",
       "productName": "フロント切替ワッペン付きTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 11000,
-      "originalPrice": 11000,
+      "category": "その他",
+      "salePrice": "11000",
+      "originalPrice": "11000",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6026-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6026-thumb.jpg"
+      "material": "表地：綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-6025",
       "productName": "切替ドルマンスリーブTシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 11800,
-      "originalPrice": 11800,
+      "category": "その他",
+      "salePrice": "11800",
+      "originalPrice": "11800",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6025-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|09 BLACK:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-6025-thumb.jpg"
+      "material": "表地：綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-4002",
       "productName": "とろみ裾ドローコード両胸ポケシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 12000,
-      "originalPrice": 12000,
+      "category": "その他",
+      "salePrice": "12000",
+      "originalPrice": "12000",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-4002-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "09 BLACK",
+        "17 C.GRAY",
+        "51 BEIGE"
       ],
       "sizes": [
-        "17 C.GRAY"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "51 BEIGE",
-      "origin": "01 WHITE:在庫あり|09 BLACK:在庫あり|17 C.GRAY:在庫あり|51 BEIGE:在庫あり",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-4002-thumb.jpg"
+      "material": "表地：レーヨン70％ ナイロン30％",
+      "origin": "中国"
     },
     {
       "productNumber": "5115-4003",
       "productName": "メッシュポケット付きシャツ",
       "brandName": "MYK FASHION",
-      "salePrice": 12800,
-      "originalPrice": 12800,
+      "category": "その他",
+      "salePrice": "12800",
+      "originalPrice": "12800",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-4003-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "87 NAVY POCKET"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|87 NAVY POCKET:在庫あり"
+        "S",
+        "L",
+        "XL",
+        "XXL"
       ],
-      "material": "S",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5115-4003-thumb.jpg"
+      "material": "表地：ポリエステル100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5315-1003",
       "productName": "ポケット多彩リュック",
       "brandName": "MYK FASHION",
-      "salePrice": 14000,
-      "originalPrice": 14000,
+      "category": "その他",
+      "salePrice": "14000",
+      "originalPrice": "14000",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5315-1003-thumb.jpg",
       "colors": [
         "17 C.GRAY"
       ],
@@ -383,312 +514,369 @@
         "F"
       ],
       "material": "-",
-      "origin": "中国",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5315-1003-thumb.jpg"
+      "origin": "中国"
     },
     {
       "productNumber": "5117-4001",
       "productName": "ピンタックノースリーブブラウス",
       "brandName": "MYK FASHION",
-      "salePrice": 8900,
-      "originalPrice": 8900,
+      "category": "その他",
+      "salePrice": "8900",
+      "originalPrice": "8900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4001-thumb.jpg",
       "colors": [
-        "01 WHITE"
-      ],
-      "sizes": [
+        "01 WHITE",
+        "04 OFFWHITE",
         "81 SAX"
       ],
-      "material": "01 WHITE:在庫あり|04 OFFWHITE:在庫あり|81 SAX:在庫あり",
-      "origin": "F",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4001-thumb.jpg"
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ｱｸﾘﾙ75％ ﾅｲﾛﾝ25％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-4002",
       "productName": "ジャガードノースリーブブラウス",
       "brandName": "MYK FASHION",
-      "salePrice": 10500,
-      "originalPrice": 10500,
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4002-thumb.jpg",
       "colors": [
-        "04 OFFWHITE 09 BLACK"
+        "04 OFFWHITE",
+        "09 BLACK"
       ],
       "sizes": [
         "F"
       ],
       "material": "表地：ﾚｰﾖﾝ89％ ﾅｲﾛﾝ11％",
-      "origin": "中国",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4002-thumb.jpg"
+      "origin": "中国"
     },
     {
       "productNumber": "5117-4003",
       "productName": "ドット柄レースPO",
       "brandName": "MYK FASHION",
-      "salePrice": 8900,
-      "originalPrice": 8900,
+      "category": "その他",
+      "salePrice": "8900",
+      "originalPrice": "8900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4003-thumb.jpg",
       "colors": [
-        "81 SAX"
-      ],
-      "sizes": [
-        "81 SAX:在庫あり|87 NAVY:在庫あり"
-      ],
-      "material": "F",
-      "origin": "表地：綿100％",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4003-thumb.jpg"
-    },
-    {
-      "productNumber": "5117-4004",
-      "productName": "花柄レースPO",
-      "brandName": "MYK FASHION",
-      "salePrice": 10500,
-      "originalPrice": 10500,
-      "colors": [
-        "09 BLACK 85 BLUE"
+        "81 SAX",
+        "87 NAVY"
       ],
       "sizes": [
         "F"
       ],
       "material": "表地：綿100％",
-      "origin": "中国",
-      "thumbnail": ""
+      "origin": "中国"
+    },
+    {
+      "productNumber": "5117-4004",
+      "productName": "花柄レースPO",
+      "brandName": "MYK FASHION",
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": null,
+      "colors": [
+        "09 BLACK",
+        "85 BLUE"
+      ],
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-3001",
       "productName": "ギャザーノースリーブブルゾン",
       "brandName": "MYK FASHION",
-      "salePrice": 11500,
-      "originalPrice": 11500,
+      "category": "その他",
+      "salePrice": "11500",
+      "originalPrice": "11500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-3001-thumb.jpg",
       "colors": [
-        "04 OFFWHITE"
-      ],
-      "sizes": [
+        "04 OFFWHITE",
+        "09 BLACK",
         "51 BEIGE"
       ],
-      "material": "04 OFFWHITE:在庫あり|09 BLACK:在庫あり|51 BEIGE:在庫あり",
-      "origin": "F",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-3001-thumb.jpg"
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-5001",
       "productName": "ロングキャミOP",
       "brandName": "MYK FASHION",
-      "salePrice": 10500,
-      "originalPrice": 10500,
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg",
       "colors": [
-        "09 BLACK"
-      ],
-      "sizes": [
+        "09 BLACK",
+        "54 BROWN",
         "85 BLUE"
       ],
-      "material": "09 BLACK:在庫あり|54 BROWN:在庫あり|85 BLUE:在庫あり",
-      "origin": "F",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5001-thumb.jpg"
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-5002",
       "productName": "AラインロングOP",
       "brandName": "MYK FASHION",
-      "salePrice": 12500,
-      "originalPrice": 12500,
+      "category": "その他",
+      "salePrice": "12500",
+      "originalPrice": "12500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5002-thumb.jpg",
       "colors": [
-        "09 BLACK"
-      ],
-      "sizes": [
+        "09 BLACK",
+        "54 BROWN",
         "85 BLUE"
       ],
-      "material": "09 BLACK:在庫あり|54 BROWN:在庫あり|85 BLUE:在庫あり",
-      "origin": "F",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-5002-thumb.jpg"
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾚｰﾖﾝ100％ 別布ﾎﾟﾘｴｽﾃﾙ65％ 綿35％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-5003",
       "productName": "ギャザーロングOP",
       "brandName": "MYK FASHION",
-      "salePrice": 13900,
-      "originalPrice": 13900,
+      "category": "その他",
+      "salePrice": "13900",
+      "originalPrice": "13900",
+      "thumbnail": null,
       "colors": [
-        "63 CREAM 50 S.BEIGE 87 NAVY"
+        "63 CREAM",
+        "50 S.BEIGE",
+        "87 NAVY"
       ],
       "sizes": [
         "F"
       ],
       "material": "表地：ｱｸﾘﾙ75％ ﾅｲﾛﾝ25％ 別布綿100％",
-      "origin": "中国",
-      "thumbnail": ""
+      "origin": "中国"
     },
     {
       "productNumber": "5117-7002",
       "productName": "無地バルーンスカート",
       "brandName": "MYK FASHION",
-      "salePrice": 8500,
-      "originalPrice": 8500,
+      "category": "その他",
+      "salePrice": "8500",
+      "originalPrice": "8500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7002-thumb.jpg",
       "colors": [
-        "04 OFFWHITE"
+        "04 OFFWHITE",
+        "09 BLAV\\CK",
+        "17 C.GRAY",
+        "87 NAVY"
       ],
       "sizes": [
-        "17 C.GRAY"
+        "F"
       ],
-      "material": "87 NAVY",
-      "origin": "04 OFFWHITE:在庫あり|09 BLAV\\CK:在庫あり|17 C.GRAY:在庫あり|87 NAVY:在庫あり",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7002-thumb.jpg"
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ90％ ﾚｰﾖﾝ10％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-7003",
       "productName": "ウエストツータックストレートパンツ",
       "brandName": "MYK FASHION",
-      "salePrice": 9500,
-      "originalPrice": 9500,
+      "category": "その他",
+      "salePrice": "9500",
+      "originalPrice": "9500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7003-thumb.jpg",
       "colors": [
-        "09 BLACK  54 BROWN"
+        "09 BLACK",
+        "54 BROWN"
       ],
       "sizes": [
-        "S"
+        "S",
+        "M",
+        "L"
       ],
-      "material": "M",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7003-thumb.jpg"
+      "material": "表地：ｱｸﾘﾙ75％ ﾅｲﾛﾝ25％ 別布綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-7004",
       "productName": "フェイク前開きイージーパンツ",
       "brandName": "MYK FASHION",
-      "salePrice": 8900,
-      "originalPrice": 8900,
+      "category": "その他",
+      "salePrice": "8900",
+      "originalPrice": "8900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7004-thumb.jpg",
       "colors": [
         "54 BROWN"
       ],
       "sizes": [
-        "S"
+        "S",
+        "M",
+        "L"
       ],
-      "material": "M",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7004-thumb.jpg"
+      "material": "表地：ｱｸﾘﾙ75％ ﾅｲﾛﾝ25％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-7005",
       "productName": "ウエストイージーパンツ",
       "brandName": "MYK FASHION",
-      "salePrice": 9500,
-      "originalPrice": 9500,
+      "category": "その他",
+      "salePrice": "9500",
+      "originalPrice": "9500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7005-thumb.jpg",
       "colors": [
-        "01 WHITE 51 BEIGE"
+        "01 WHITE",
+        "51 BEIGE"
       ],
       "sizes": [
-        "S"
+        "S",
+        "M",
+        "L"
       ],
-      "material": "M",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7005-thumb.jpg"
+      "material": "表地：ﾚｰﾖﾝ89％ ﾅｲﾛﾝ11％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-7006",
       "productName": "カツラギコクーンパンツ",
       "brandName": "MYK FASHION",
-      "salePrice": 13500,
-      "originalPrice": 13500,
+      "category": "その他",
+      "salePrice": "13500",
+      "originalPrice": "13500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7006-thumb.jpg",
       "colors": [
-        "01 WHITE"
+        "01 WHITE",
+        "51 BEIGE"
       ],
       "sizes": [
-        "01 WHITE:在庫あり|51 BEIGE:在庫あり"
+        "S",
+        "M",
+        "L",
+        "XL"
       ],
-      "material": "S",
-      "origin": "M",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7006-thumb.jpg"
+      "material": "表地：綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5117-7007",
       "productName": "PU入りストレートデニムパンツ",
       "brandName": "MYK FASHION",
-      "salePrice": 15000,
-      "originalPrice": 15000,
+      "category": "その他",
+      "salePrice": "15000",
+      "originalPrice": "15000",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7007-thumb.jpg",
       "colors": [
-        "09 BLACK 81 SAX BACK STYLE"
+        "09 BLACK",
+        "81 SAX BACK STYLE"
       ],
       "sizes": [
-        "S"
+        "S",
+        "M",
+        "L",
+        "XL"
       ],
-      "material": "M",
-      "origin": "L",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7007-thumb.jpg"
+      "material": "表地：綿100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5317-1001",
       "productName": "スカーフ付き2WAYBAG",
       "brandName": "MYK FASHION",
-      "salePrice": 7900,
-      "originalPrice": 7900,
+      "category": "その他",
+      "salePrice": "7900",
+      "originalPrice": "7900",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1001-thumb.jpg",
       "colors": [
-        "09 BLACK 51 BEIGE"
+        "09 BLACK",
+        "51 BEIGE"
       ],
       "sizes": [
         "F"
       ],
       "material": "-",
-      "origin": "中国",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1001-thumb.jpg"
+      "origin": "中国"
     },
     {
       "productNumber": "5317-1003",
       "productName": "2つポーチセットショルダーBAG",
       "brandName": "MYK FASHION",
-      "salePrice": 12500,
-      "originalPrice": 12500,
+      "category": "その他",
+      "salePrice": "12500",
+      "originalPrice": "12500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1003-thumb.jpg",
       "colors": [
-        "09 BLACK 51 BEIGE"
+        "09 BLACK",
+        "51 BEIGE"
       ],
       "sizes": [
         "F"
       ],
       "material": "-",
-      "origin": "中国",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1003-thumb.jpg"
+      "origin": "中国"
     },
     {
       "productNumber": "5317-1004",
       "productName": "2つポーチセットショルダーBAG",
       "brandName": "MYK FASHION",
-      "salePrice": 12500,
-      "originalPrice": 12500,
+      "category": "その他",
+      "salePrice": "12500",
+      "originalPrice": "12500",
+      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1004-thumb.jpg",
       "colors": [
-        "04 KINARI"
+        "04 KINARI",
+        "51 BEIGE"
       ],
       "sizes": [
-        "04 KINARI:在庫あり|51 BEIGE:在庫あり"
+        "F"
       ],
-      "material": "F",
-      "origin": "-",
-      "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1004-thumb.jpg"
+      "material": "-",
+      "origin": "中国"
     },
     {
       "productNumber": "test",
       "productName": "ロングキャミOP",
       "brandName": "MYK FASHION",
-      "salePrice": 10500,
-      "originalPrice": 10500,
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": null,
       "colors": [
-        "09 BLACK"
-      ],
-      "sizes": [
+        "09 BLACK",
+        "54 BROWN",
         "85 BLUE"
       ],
-      "material": "09 BLACK:在庫あり|54 BROWN:在庫あり|85 BLUE:在庫あり",
-      "origin": "F",
-      "thumbnail": ""
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％",
+      "origin": "中国"
     },
     {
       "productNumber": "5771-70083",
       "productName": "ロングキャミOP",
       "brandName": "MYK FASHION",
-      "salePrice": 10500,
-      "originalPrice": 10500,
+      "category": "その他",
+      "salePrice": "10500",
+      "originalPrice": "10500",
+      "thumbnail": null,
       "colors": [
-        "09 BLACK"
-      ],
-      "sizes": [
+        "09 BLACK",
+        "54 BROWN",
         "85 BLUE"
       ],
-      "material": "09 BLACK:在庫あり|54 BROWN:在庫あり|85 BLUE:在庫あり",
-      "origin": "F",
-      "thumbnail": ""
+      "sizes": [
+        "F"
+      ],
+      "material": "表地：ﾎﾟﾘｴｽﾃﾙ72％ 綿28％ 裏地：ﾎﾟﾘｴｽﾃﾙ100％",
+      "origin": "中国"
     }
   ]
 }
