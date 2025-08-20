@@ -511,7 +511,7 @@
         "17 C.GRAY"
       ],
       "sizes": [
-        "Material： 表地："
+        "F"
       ],
       "material": "-",
       "origin": "中国"
@@ -544,7 +544,8 @@
       "originalPrice": "10500",
       "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-4002-thumb.jpg",
       "colors": [
-        "04 OFFWHITE 09 BLACK"
+        "04 OFFWHITE",
+        "09 BLACK"
       ],
       "sizes": [
         "F"
@@ -579,7 +580,8 @@
       "originalPrice": "10500",
       "thumbnail": null,
       "colors": [
-        "09 BLACK 85 BLUE"
+        "09 BLACK",
+        "85 BLUE"
       ],
       "sizes": [
         "F"
@@ -653,7 +655,9 @@
       "originalPrice": "13900",
       "thumbnail": null,
       "colors": [
-        "63 CREAM 50 S.BEIGE 87 NAVY"
+        "63 CREAM",
+        "50 S.BEIGE",
+        "87 NAVY"
       ],
       "sizes": [
         "F"
@@ -690,7 +694,8 @@
       "originalPrice": "9500",
       "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7003-thumb.jpg",
       "colors": [
-        "09 BLACK  54 BROWN"
+        "09 BLACK",
+        "54 BROWN"
       ],
       "sizes": [
         "S",
@@ -728,7 +733,8 @@
       "originalPrice": "9500",
       "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7005-thumb.jpg",
       "colors": [
-        "01 WHITE 51 BEIGE"
+        "01 WHITE",
+        "51 BEIGE"
       ],
       "sizes": [
         "S",
@@ -768,7 +774,8 @@
       "originalPrice": "15000",
       "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5117-7007-thumb.jpg",
       "colors": [
-        "09 BLACK 81 SAX BACK STYLE"
+        "09 BLACK",
+        "81 SAX BACK STYLE"
       ],
       "sizes": [
         "S",
@@ -788,7 +795,8 @@
       "originalPrice": "7900",
       "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1001-thumb.jpg",
       "colors": [
-        "09 BLACK 51 BEIGE"
+        "09 BLACK",
+        "51 BEIGE"
       ],
       "sizes": [
         "F"
@@ -805,7 +813,8 @@
       "originalPrice": "12500",
       "thumbnail": "https://pub-a2319224352d4abda31352be3c2b1c19.r2.dev/products/5317-1003-thumb.jpg",
       "colors": [
-        "09 BLACK 51 BEIGE"
+        "09 BLACK",
+        "51 BEIGE"
       ],
       "sizes": [
         "F"
