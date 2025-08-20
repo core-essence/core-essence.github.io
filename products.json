@@ -1,6 +1,6 @@
 {
-  "generated": "2025-08-20T15:52:17.772Z",
-  "count": 55,
+  "generated": "2025-08-20T16:31:58.707Z",
+  "count": 54,
   "products": [
     {
       "productNumber": "5115-6002",
@@ -44,27 +44,6 @@
         "XL"
       ],
       "material": "表地：綿100％",
-      "origin": "中国"
-    },
-    {
-      "productNumber": "5115-6014",
-      "productName": "ムラ両面プリントTシャツ",
-      "brandName": "MYK FASHION",
-      "category": "その他",
-      "salePrice": "7500",
-      "originalPrice": "7500",
-      "thumbnail": null,
-      "colors": [
-        "01 WHITE",
-        "09 BLACK",
-        "51 BEIGE"
-      ],
-      "sizes": [
-        "M",
-        "L",
-        "XL"
-      ],
-      "material": "表地：綿60％ ポリエステル40％",
       "origin": "中国"
     },
     {
