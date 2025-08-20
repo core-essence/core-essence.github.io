@@ -297,25 +297,92 @@
             margin: 0 auto;
         }
         
-        /* レスポンシブ */
+        /* レスポンシブ - タブレット */
         @media (max-width: 768px) {
+            .header-content {
+                padding: 15px 20px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
             .hero-fallback h1 {
                 font-size: 32px;
             }
             
             .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
+            }
+            
+            .main-container {
+                padding: 30px 15px;
             }
             
             .category-list {
                 padding: 0 15px;
+                gap: 10px;
+            }
+            
+            .category-item {
+                padding: 8px 16px;
+                font-size: 13px;
             }
             
             .slider-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 16px;
+            }
+            
+            .product-info {
+                padding: 15px;
+            }
+            
+            .product-name {
+                font-size: 13px;
+            }
+            
+            .product-price {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* レスポンシブ - 小型スマホ */
+        @media (max-width: 375px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .main-container {
+                padding: 20px 10px;
+            }
+            
+            .product-info {
+                padding: 12px;
+            }
+            
+            .product-brand {
+                font-size: 11px;
+            }
+            
+            .product-name {
+                font-size: 12px;
+            }
+            
+            .product-price {
+                font-size: 14px;
+            }
+            
+            .original-price {
+                font-size: 12px;
             }
         }
         
