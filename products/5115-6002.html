@@ -443,7 +443,70 @@
                     box-shadow: 0 -2px 10px rgba(0,0,0,0.1) !important;
                 }
             }
-        }</style>
+        }
+        /* サイズ詳細表のスタイル */
+        .size-chart-section {
+            padding: 20px;
+            background: transparent;
+            margin: 20px 0;
+        }
+        
+        .size-chart-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .size-table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .size-table {
+            width: 100%;
+            min-width: 350px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .size-table th,
+        .size-table td {
+            padding: 10px 8px;
+            text-align: center;
+            font-size: 13px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .size-table thead {
+            background: #f5f5f5;
+        }
+        
+        .size-table th {
+            font-weight: 600;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .size-table tbody tr:hover {
+            background: #fafafa;
+        }
+        
+        .size-table .size-label {
+            font-weight: 600;
+            color: #000;
+            background: #f8f8f8;
+        }
+        
+        .size-note {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #888;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
     
@@ -569,6 +632,52 @@
             <h3 class="section-title">商品説明</h3>
             <p class="description-text">硫化染め無地Tシャツは、MYK FASHIONの人気アイテムです。<br>素材には表地：綿100％を使用し、品質にこだわって製作されています。<br>6色のカラーバリエーションからお選びいただけます。<br>サイズはM、L、XLをご用意しています。<br>ぜひこの機会にお買い求めください。</p>
         </div>
+
+            <!-- サイズ詳細表を追加 -->
+            <div class="size-chart-section">
+                <h3 class="section-title">サイズ詳細</h3>
+                <div class="size-table-wrapper">
+                    <table class="size-table">
+                        <thead>
+                            <tr>
+                                <th>サイズ</th>
+                                <th>着丈</th>
+                                <th>身幅</th>
+                                <th>肩幅</th>
+                                <th>袖丈</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="size-label">M</td>
+                                <td>71.0</td>
+                                <td>56.0</td>
+                                <td>52.0</td>
+                                <td>20.0</td>
+                            </tr>
+                            <tr>
+                                <td class="size-label">L</td>
+                                <td>73.5</td>
+                                <td>58.5</td>
+                                <td>54.5</td>
+                                <td>22.5</td>
+                            </tr>
+                            <tr>
+                                <td class="size-label">XL</td>
+                                <td>76.0</td>
+                                <td>61.0</td>
+                                <td>57.0</td>
+                                <td>25.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="size-note">
+                    ※単位：cm<br>
+                    ※平置き採寸のため、多少の誤差はご了承ください。
+                </p>
+            </div>
+
             
         <div class="details-section">
             <h3 class="section-title">商品詳細</h3>
