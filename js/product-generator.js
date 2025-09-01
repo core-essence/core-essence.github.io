@@ -470,8 +470,8 @@ class ProductGenerator {
             // 実行時に結合
             const GITHUB_TOKEN = TOKEN_PART1 + TOKEN_PART2 + TOKEN_PART3;
             
-            const GITHUB_OWNER = 'aminati-ec';  // あなたのGitHubユーザー名
-            const GITHUB_REPO = 'aminati-ec.github.io';  // リポジトリ名
+            const GITHUB_OWNER = 'core-essence';  // あなたのGitHubユーザー名
+            const GITHUB_REPO = 'core-essence.github.io';  // リポジトリ名
             const GITHUB_BRANCH = 'main';  // ブランチ名（mainまたはmaster）
             
             if (!confirm('GitHubに直接アップロードしますか？\n既存のファイルは上書きされます。')) {
