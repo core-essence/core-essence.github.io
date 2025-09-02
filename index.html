@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMINATI_EC - オンラインストア</title>
+    <title>core essence - Online Store</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -412,7 +412,7 @@
 <body>
     <header>
         <div class="header-content">
-            <h1 class="logo">AMINATI</h1>
+            <h1 class="logo">core essence</h1>
             <nav class="header-nav">
                 <div class="cart-icon">
                     <div class="cart-badge">0</div>
@@ -434,7 +434,7 @@
     
     <!-- フォールバックヒーロー（画像がない場合） -->
     <section class="hero-fallback" id="heroFallback">
-        <h1>AMINATI COLLECTION</h1>
+        <h1>core essence COLLECTION</h1>
         <p>上質なライフスタイルを提案する、こだわりのセレクション</p>
     </section>
     
@@ -459,7 +459,7 @@
     
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 AMINATI_EC. All rights reserved.</p>
+            <p>&copy; 2024 core essence. All rights reserved.</p>
         </div>
     </footer>
     
@@ -473,7 +473,7 @@
         
         // ページ読み込み時の処理
         document.addEventListener('DOMContentLoaded', async () => {
-            console.log('[AMINATI_EC] ページ読み込み開始');
+            console.log('[core essence] ページ読み込み開始');
             await loadHeaderConfig();
             await loadProducts();
             setupCategoryFilters();
@@ -482,19 +482,19 @@
         // ヘッダー設定の読み込み
         async function loadHeaderConfig() {
             try {
-                console.log('[AMINATI_EC] ヘッダー設定読み込み開始');
+                console.log('[core essence] ヘッダー設定読み込み開始');
                 const response = await fetch('./header-config.json');
                 
                 if (response.ok) {
                     headerConfig = await response.json();
-                    console.log('[AMINATI_EC] ヘッダー設定取得成功:', headerConfig);
+                    console.log('[core essence] ヘッダー設定取得成功:', headerConfig);
                     setupHeroSlider();
                 } else {
-                    console.log('[AMINATI_EC] ヘッダー設定なし、フォールバック表示');
+                    console.log('[core essence] ヘッダー設定なし、フォールバック表示');
                     showFallbackHero();
                 }
             } catch (error) {
-                console.error('[AMINATI_EC] ヘッダー設定読み込みエラー:', error);
+                console.error('[core essence] ヘッダー設定読み込みエラー:', error);
                 showFallbackHero();
             }
         }
@@ -596,7 +596,7 @@
         // 商品データの読み込み（既存コード）
         async function loadProducts() {
             try {
-                console.log('[AMINATI_EC] 商品データ読み込み開始');
+                console.log('[core essence] 商品データ読み込み開始');
                 
                 const response = await fetch('./products.json');
                 if (!response.ok) {
@@ -606,7 +606,7 @@
                 const data = await response.json();
                 allProducts = data.products;
                 
-                console.log('[AMINATI_EC] 取得した商品数:', allProducts.length);
+                console.log('[core essence] 取得した商品数:', allProducts.length);
                 
                 if (allProducts.length === 0) {
                     document.getElementById('productGrid').innerHTML = '';
@@ -618,7 +618,7 @@
                 displayProducts();
                 
             } catch (error) {
-                console.error('[AMINATI_EC] 商品の読み込みエラー:', error);
+                console.error('[core essence] 商品の読み込みエラー:', error);
                 document.getElementById('productGrid').innerHTML = 
                     '<div class="error-message">商品データの読み込みに失敗しました</div>';
             }
@@ -703,7 +703,7 @@
                              class="product-image" 
                              loading="lazy">
                         <div class="product-info">
-                            <div class="product-brand">${product.brandName || 'AMINATI'}</div>
+                            <div class="product-brand">${product.brandName || 'core essence'}</div>
                             <h3 class="product-name">${product.productName}</h3>
                             <div class="product-price">
                                 ${hasDiscount ? `<span class="original-price">¥${formatNumber(product.originalPrice)}</span>` : ''}
