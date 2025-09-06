@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学問題集 - P.53</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        h1 {
+            color: #2c5530;
+            font-size: 20px;
+            border-bottom: 2px solid #52c41a;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            background-color: #52c41a;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .problem-section {
+            margin-bottom: 30px;
+            padding: 0;
+            border-left: 3px solid #52c41a;
+            padding-left: 10px;
+        }
+        
+        .problem-number {
+            display: inline-block;
+            background-color: #52c41a;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .problem-text {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #2c5530;
+            line-height: 1.6;
+        }
+        
+        .explanation {
+            background-color: #f6ffed;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #52c41a;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #95a5a6;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        
+        .formula {
+            background-color: #e8f5e9;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: "SF Mono", "Monaco", "Courier New", monospace;
+            display: inline-block;
+            margin: 2px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .answer-box {
+            background-color: #f0f9ff;
+            border-left: 3px solid #52c41a;
+            padding: 10px;
+            margin: 12px 0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .example-box {
+            background-color: #fff9f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .hint {
+            background-color: #d4edda;
+            border-left: 3px solid #155724;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .page-indicator {
+            text-align: right;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .step-content {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+        
+        .check-mark {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .cross-mark {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+        
+        .sub-problem {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .sub-problem-number {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 3px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .image-placeholder {
+            display: inline-block;
+            border: 2px solid #52c41a;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-indicator">P.53</div>
+        
+        <div class="section-title">B 力をつけよう</div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 1</span>
+            <div class="problem-text">
+                3つの続いた整数がある。nを整数として、もっとも小さい整数をn-1と表すとき、もっとも大きい整数をnを使って表しなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">連続する整数の関係を理解しよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>「3つの続いた整数」とは？</strong><br>
+                    例：4, 5, 6 や 10, 11, 12 のように、1ずつ増える整数のこと
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>問題の設定を整理</strong><br>
+                    • 一番小さい整数：<span class="formula">n-1</span><br>
+                    • 真ん中の整数：<span class="formula">n</span>（n-1より1大きい）<br>
+                    • 一番大きい整数：<span class="formula">？</span>（真ん中より1大きい）
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>パターンを見つけよう</strong><br>
+                    n-1 → n → ？<br>
+                    1ずつ増えているので、nの次は <span class="formula">n+1</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">n+1</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">確認してみよう</div>
+                n=5のとき：<br>
+                • 最小：n-1 = 4<br>
+                • 真ん中：n = 5<br>
+                • 最大：n+1 = 6<br>
+                確かに4, 5, 6は3つの続いた整数！
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 2</span>
+            <div class="problem-text">
+                nを整数とする。連続する2つの奇数のうち、小さい数を2n+1とするとき、大きい数をnを用いて表しなさい。（長野）
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">奇数の性質を理解して解こう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>奇数とは？</strong><br>
+                    2で割り切れない数。1, 3, 5, 7, 9, 11...のような数
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>連続する奇数の関係</strong><br>
+                    奇数は2ずつ増える！<br>
+                    例：1 → 3 → 5 → 7（+2ずつ）
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>問題の奇数を考える</strong><br>
+                    • 小さい奇数：<span class="formula">2n+1</span><br>
+                    • 大きい奇数：小さい奇数 + 2<br>
+                    つまり：<span class="formula">(2n+1) + 2 = 2n+3</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">2n+3</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">確認してみよう</div>
+                n=3のとき：<br>
+                • 小さい奇数：2×3+1 = 7<br>
+                • 大きい奇数：2×3+3 = 9<br>
+                確かに7と9は連続する奇数！
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 3</span>
+            <div class="problem-text">
+                次の数量の間の関係を、等式または不等式で表しなさい。
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(1)</span>25mのテープからx mのテープを7本切り取ると、y m残る。（愛知）
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">状況を式にしよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>何が起きているか整理</strong><br>
+                    • 最初：25mのテープがある<br>
+                    • 切り取る：x mを7本 = <span class="formula">7x m</span><br>
+                    • 残り：y m
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>関係を式にする</strong><br>
+                    元の長さ - 切り取った長さ = 残りの長さ<br>
+                    <span class="formula">25 - 7x = y</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">25 - 7x = y</span>または<span class="formula">y = 25 - 7x</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(2)</span>xを5倍した数は、yの2乗から4をひいた数より小さい。
+            </div>
+            
+            <div class="explanation">
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>それぞれの式を作る</strong><br>
+                    • xを5倍した数：<span class="formula">5x</span><br>
+                    • yの2乗：<span class="formula">y²</span><br>
+                    • yの2乗から4をひいた数：<span class="formula">y² - 4</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>「より小さい」を式にする</strong><br>
+                    5x ＜ y² - 4
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">5x < y² - 4</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(3)</span>100gがx円の肉をy g買ったら、代金は2000円以上になった。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">単価計算を使った式を作ろう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>1gあたりの値段は？</strong><br>
+                    100gがx円なので、1gあたり：<span class="formula">x/100 円</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>y g買った時の代金</strong><br>
+                    1g × y = <span class="formula">(x/100) × y = xy/100 円</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>「2000円以上」を式にする</strong><br>
+                    xy/100 ≥ 2000
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">xy/100 ≥ 2000</span>または<span class="formula">xy ≥ 200000</span>
+            </div>
+        </div>
+        
+        <div class="section-title">C 力をのばそう</div>
+        
+        <div class="problem-section">
+            <div class="problem-text">
+                右の図のような長方形の形をした花だんがある。次の問に答えなさい。
+                <span class="image-placeholder">花だん図：縦 a m、横 b m</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(1)</span>花だんの周の長さが17mより長いとき、数量の関係を不等式に表しなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">長方形の周の長さを求めよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>長方形の周の長さの公式</strong><br>
+                    周の長さ = (縦 + 横) × 2<br>
+                    = <span class="formula">(a + b) × 2 = 2(a + b)</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>「17mより長い」を式にする</strong><br>
+                    2(a + b) > 17
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">2(a + b) > 17</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(2)</span>ab ≤ 30は、どんなことを表していますか。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">abが何を表すか考えよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>長方形でa × bは？</strong><br>
+                    縦 × 横 = <span class="formula">面積</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>ab ≤ 30の意味</strong><br>
+                    面積が30以下ということ
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：花だんの面積が30m²以下である
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 4</span>
+            <div class="problem-text">
+                ある動物園の入園料は、大人1人がa円、中学生1人がb円である。このとき、次の等式や不等式はどんなことを表していますか。
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(1)</span>a - b = 200
+            </div>
+            
+            <div class="explanation">
+                <div class="step-content">
+                    a - b は「大人料金 - 中学生料金」<br>
+                    これが200円ということは...
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：大人の入園料は中学生の入園料より200円高い
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(2)</span>3a + 5b ≤ 4000
+            </div>
+            
+            <div class="explanation">
+                <div class="step-content">
+                    • 3a：大人3人分の料金<br>
+                    • 5b：中学生5人分の料金<br>
+                    • 合計が4000円以下
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：大人3人と中学生5人の入園料の合計が4000円以下である
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(3)</span>10b > 6a
+            </div>
+            
+            <div class="explanation">
+                <div class="step-content">
+                    • 10b：中学生10人分の料金<br>
+                    • 6a：大人6人分の料金<br>
+                    • 中学生10人分の方が高い
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：中学生10人の入園料の合計は、大人6人の入園料の合計より高い
+            </div>
+        </div>
+    </div>
+</body>
+</html>

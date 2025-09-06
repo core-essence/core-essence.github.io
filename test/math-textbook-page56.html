@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学問題集 - P.56</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-section {
+            margin-bottom: 30px;
+            padding: 0;
+            border-left: 3px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        .problem-number {
+            display: inline-block;
+            background-color: #f39c12;
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .stars {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e74c3c;
+            font-size: 12px;
+        }
+        
+        .problem-text {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            line-height: 1.8;
+        }
+        
+        .explanation {
+            background-color: #f0f8ff;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        
+        .formula {
+            background-color: #e3f2fd;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: "SF Mono", "Monaco", "Courier New", monospace;
+            display: inline-block;
+            margin: 2px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .answer-box {
+            background-color: #e8f4fd;
+            border-left: 3px solid #3498db;
+            padding: 10px;
+            margin: 12px 0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .example-box {
+            background-color: #fffbf0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .hint {
+            background-color: #d1ecf1;
+            border-left: 3px solid #0c5460;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .page-indicator {
+            text-align: right;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .step-content {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+        
+        .check-mark {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+        
+        .sub-problem {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .sub-problem-number {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 3px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .calendar-table {
+            border-collapse: collapse;
+            margin: 10px auto;
+        }
+        
+        .calendar-table td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        .calendar-table td:first-child {
+            color: #e74c3c;
+        }
+        
+        .calendar-table td:last-child {
+            color: #3498db;
+        }
+        
+        .calendar-header {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+        
+        .highlight-date {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
+        
+        .note-text {
+            color: #e74c3c;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        .calculation-box {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-indicator">P.56</div>
+        
+        <div class="problem-section">
+            <div class="problem-number">
+                <span class="stars">★★★</span>
+                5
+            </div>
+            <div class="problem-text">
+                1枚の重さ a g の原稿用紙16枚をまとめて重さ b g の封筒に入れると、全体の重さは250g以上になった。このとき、数量の間の関係を不等式で表しなさい。（福島）
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">状況を整理して式にしよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>重さの内訳を整理</strong><br>
+                    • 原稿用紙1枚：<span class="formula">a g</span><br>
+                    • 原稿用紙16枚：<span class="formula">16a g</span><br>
+                    • 封筒：<span class="formula">b g</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>全体の重さは？</strong><br>
+                    原稿用紙16枚 + 封筒 = <span class="formula">16a + b g</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>「250g以上」を式で表す</strong><br>
+                    全体の重さ ≥ 250<br>
+                    つまり：<span class="formula">16a + b ≥ 250</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">16a + b ≥ 250</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">確認してみよう</div>
+                例：原稿用紙1枚が12g、封筒が15gの場合<br>
+                16×12 + 15 = 192 + 15 = 207g<br>
+                207 < 250 なので、この場合は条件を満たさない！
+            </div>
+            
+            <div class="calculation-box">
+                <div class="note-text">計算メモ</div>
+                16a + b<br>
+                ≥ 250
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <div class="problem-number">
+                <span class="stars">★★★</span>
+                6
+            </div>
+            <div class="problem-text">
+                右の図は、ある年の3月のカレンダーの一部である。この年の3月1日を基準日として考えたとき、基準日から1週間後の週の金曜日は3月12日であり、基準日から11日後である。
+            </div>
+            
+            <table class="calendar-table">
+                <tr class="calendar-header">
+                    <td>日</td><td>月</td><td>火</td><td>水</td><td>木</td><td>金</td><td>土</td>
+                </tr>
+                <tr>
+                    <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td class="highlight-date">12</td><td>13</td>
+                </tr>
+                <tr>
+                    <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+                </tr>
+            </table>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(1)</span>基準日から n 週間後の週の金曜日は、基準日から何日後になるか、n を使った式で表しなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">週と日の関係を理解しよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>1週間 = 7日を使って考える</strong><br>
+                    • n週間 = <span class="formula">7n 日</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>基準日（3月1日）は月曜日</strong><br>
+                    • 同じ週の金曜日：4日後（3月5日）<br>
+                    • 1週間後の金曜日：4 + 7 = 11日後（3月12日）<br>
+                    • 2週間後の金曜日：4 + 14 = 18日後（3月19日）
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>パターンを見つける</strong><br>
+                    n週間後の金曜日 = 4 + 7n 日後<br>
+                    = <span class="formula">7n + 4</span> 日後
+                </div>
+                
+                <div class="hint">
+                    <strong>別の考え方：</strong><br>
+                    基準日から金曜日まで：4日<br>
+                    そこからn週間分進む：+7n日<br>
+                    合計：4 + 7n = 7n + 4 日後
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">7n + 4</span> 日後
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">検証してみよう</div>
+                • n = 1のとき：7×1 + 4 = 11日後（3月12日）<span class="check-mark"> ✓</span><br>
+                • n = 2のとき：7×2 + 4 = 18日後（3月19日）<span class="check-mark"> ✓</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(2)</span>彩さんの誕生日は、基準日から204日後の9月21日である。この日は、何週間後の週の何曜日であるか求めなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">204日を週と曜日に分解しよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>204日は何週間と何日？</strong><br>
+                    204 ÷ 7 = 29 あまり 1<br>
+                    つまり：<span class="formula">29週間と1日</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>基準日（月曜日）から1日後は？</strong><br>
+                    月曜日の1日後 = <span class="formula">火曜日</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>29週間後の週の火曜日</strong><br>
+                    29週間進んでも曜日の並びは同じ<br>
+                    だから、29週間後の週の火曜日！
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：29週間後の週の火曜日
+            </div>
+            
+            <div class="hint">
+                <strong>ポイント：</strong><br>
+                7で割った余りが曜日のズレを教えてくれる！<br>
+                • 余り0 → 同じ曜日（月曜日）<br>
+                • 余り1 → 1日後（火曜日）<br>
+                • 余り2 → 2日後（水曜日）...
+            </div>
+        </div>
+    </div>
+</body>
+</html>

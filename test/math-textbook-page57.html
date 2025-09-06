@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学問題集 - P.57 活用しよう！</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        .page-header {
+            background-color: #ffeb3b;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .page-title {
+            color: #e91e63;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .page-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .page-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .problem-intro {
+            font-size: 13px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .conversation-box {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .conversation-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #795548;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .speech-bubble {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .speech-bubble::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 12px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8px 8px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .name-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+        
+        .blank-space {
+            display: inline-block;
+            width: 60px;
+            border-bottom: 1px solid #333;
+            margin: 0 5px;
+            text-align: center;
+            color: #e91e63;
+            font-weight: bold;
+        }
+        
+        .problem-section {
+            margin-bottom: 25px;
+            padding-left: 10px;
+            border-left: 3px solid #52c41a;
+        }
+        
+        .problem-number {
+            display: inline-block;
+            background-color: #52c41a;
+            color: white;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .problem-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #2c5530;
+        }
+        
+        .formula {
+            background-color: #e8f5e9;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: "SF Mono", "Monaco", "Courier New", monospace;
+            display: inline-block;
+            margin: 2px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .answer-box {
+            background-color: #f0f9ff;
+            border-left: 3px solid #52c41a;
+            padding: 10px;
+            margin: 12px 0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .explanation-box {
+            background-color: #f6ffed;
+            border: 1px solid #52c41a;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #52c41a;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .step-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #95a5a6;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        
+        .hint-text {
+            font-size: 12px;
+            color: #666;
+            text-align: right;
+            margin-top: 5px;
+        }
+        
+        .mascot {
+            display: inline-block;
+            font-size: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        
+        .important-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .calculation-flow {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        
+        .arrow {
+            text-align: center;
+            color: #52c41a;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        
+        .test-point {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        
+        .test-point-title {
+            color: #f44336;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-indicator">57</div>
+        
+        <div class="page-header">
+            <div class="page-title">
+                <span class="mascot">🐻</span>活用しよう！
+            </div>
+            <div class="page-subtitle">
+                数あてゲームのしくみを考えよう！
+            </div>
+        </div>
+        
+        <div class="problem-intro">
+            この章で学んだ考え方を活用して、身近な題材の問題を解いてみよう。<br>
+            <strong>問題</strong><br>
+            めいさんとはるさんは、数あてゲームをしている。
+        </div>
+        
+        <div class="important-box">
+            <strong>⚠️ この問題の狙い</strong><br>
+            具体的な数での計算（問題1）→ 文字式での一般化（問題2）という流れで、<br>
+            「なぜ答えがいつも同じになるか」を説明する力を見る問題です。
+        </div>
+        
+        <div class="conversation-box">
+            <div class="conversation-item">
+                <div class="avatar">😊</div>
+                <div>
+                    <div class="name-label">めい</div>
+                    <div class="speech-bubble">
+                        ある数を１つ思うかべて、12からその数をひいて、その答えに6をかけてみて。…(A)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conversation-item">
+                <div class="avatar">😊</div>
+                <div>
+                    <div class="name-label">はる</div>
+                    <div class="speech-bubble">
+                        その答えから46をひいて、2でわって。…(B)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conversation-item">
+                <div class="avatar">😊</div>
+                <div>
+                    <div class="name-label">めい</div>
+                    <div class="speech-bubble">
+                        その答えに、はじめに思った数を3倍してたして。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conversation-item">
+                <div class="avatar">😄</div>
+                <div>
+                    <div class="name-label">めい</div>
+                    <div class="speech-bubble">
+                        計算の結果は、<span class="blank-space">13</span>だね。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">1</span>
+            <div class="problem-text">
+                はるさんがはじめに思うかべた数を13として、(A)、(B)の計算の結果と、最後の計算の結果アにあてはまる数をそれぞれ求めなさい。
+            </div>
+            
+            <div class="explanation-box">
+                <div class="explanation-title">【解き方】思うかべた数を13として、順番に計算しよう</div>
+                
+                <div class="calculation-flow">
+                    思うかべた数：13
+                    <div class="arrow">↓</div>
+                    <strong>(A) 12から13をひいて6をかける</strong><br>
+                    (12 - 13) × 6 = (-1) × 6 = -6
+                    <div class="arrow">↓</div>
+                    <strong>(B) -6から46をひいて2でわる</strong><br>
+                    (-6 - 46) ÷ 2 = -52 ÷ 2 = -26
+                    <div class="arrow">↓</div>
+                    <strong>-26に、13×3をたす</strong><br>
+                    -26 + (13 × 3) = -26 + 39 = 13
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：(A) -6　　(B) -26　　ア 13
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">2</span>
+            <div class="problem-text">
+                このゲームでは、どんな数を思うかべても、結果は決まった数になる。このことを文字式を使って説明する。説明の続きを書きなさい。
+            </div>
+            
+            <div class="hint-text">aを使った計算の式を、順に書いていこう。</div>
+            
+            <div class="test-point">
+                <div class="test-point-title">📝 テストで求められること</div>
+                • 計算の各ステップを文字式で表す<br>
+                • 式を整理して最終結果を導く<br>
+                • 「aが消えて13だけ残る」ことを示す
+            </div>
+        </div>
+        
+        <div class="explanation-box">
+            <div class="explanation-title">● 説明【解答例】</div>
+            <p>はるさんがはじめに思うかべた数をaとする。12からaをひき、それに6をかけると、</p>
+            <p><span class="formula">(12-a)×6 = 72-6a</span></p>
+            
+            <div class="step-box">
+                <span class="step-number">続き①</span><br>
+                72-6aから46をひいて、2でわると、<br>
+                <span class="formula">(72-6a-46)÷2 = 26-6a÷2 = 26-3a÷2 = 13-3a</span>
+            </div>
+            
+            <div class="step-box">
+                <span class="step-number">続き②</span><br>
+                13-3aに、aの3倍（3a）をたすと、<br>
+                <span class="formula">(13-3a) + 3a = 13-3a+3a = 13</span>
+            </div>
+            
+            <p>したがって、aがどんな数であっても、最後の計算の結果は、いつでも13になる。</p>
+        </div>
+        
+        <div class="important-box">
+            <strong>💡 ポイント</strong><br>
+            • 各計算を文字式で表して整理する<br>
+            • 最後に「-3a + 3a = 0」となってaが消える<br>
+            • だから最初の数aに関係なく答えは13になる！
+        </div>
+        
+        <div class="test-point">
+            <div class="test-point-title">✏️ テストでの書き方のコツ</div>
+            1. 計算の流れを順番に文字式で表す<br>
+            2. 式の整理は丁寧に（特に分数の計算）<br>
+            3. 最後に「aが消えるから、どんな数でも13になる」と結論づける
+        </div>
+    </div>
+</body>
+</html>

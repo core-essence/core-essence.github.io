@@ -1,0 +1,1913 @@
+<!DOCTYPE html><html lang='ja'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>数学問題集（親ページ）</title><style>:root{--blue:#3498db;--ink:#222;--bg:#fff;--muted:#666;--border:#e9eef8}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.85 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Meiryo",sans-serif}
+.header{position:fixed;inset:0 0 auto 0;z-index:1000;background:#ffffffcc;backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--border)}
+.hdr{max-width:1080px;margin:0 auto;padding:8px 10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.title{font-weight:800;color:#1d5fd1;font-size:14px}
+.pager{display:flex;gap:6px;overflow-x:auto;padding:2px 0 4px}
+.pill{border:1px solid #d8e5ff;background:#f0f4ff;color:#1d5fd1;border-radius:999px;padding:6px 10px;font-weight:700;cursor:pointer;user-select:none;white-space:nowrap;text-decoration:none}
+.pill:hover{background:#e7f0ff}.pill.active{background:#1d5fd1;color:#fff;border-color:#1d5fd1}.pill:focus{outline:2px solid #9ec3ff;outline-offset:2px}
+.main{max-width:1080px;margin:0 auto;padding:72px 10px 56px}.page{margin:48px 0;scroll-margin-top:72px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,1px,1px);white-space:nowrap;border:0}</style><style>
+
+  :root{
+    --blue:#3498db;
+    --ink:#333;
+    --muted:#555;
+    --bg:#fff;
+    --chip:#f0f4ff;
+    --chip-ink:#1d5fd1;
+    --note:#f7fbff;
+    --note-border:#e6f0fb;
+    --explain:#f0f8ff;
+    --explain-border:#e0eefc;
+    --formula:#e3f2fd;
+    --ok-bg:#f3fbf5;
+    --ok-border:#dff3e6;
+    --ok-ink:#165a31;
+    --warn-bg:#fff7eb;
+    --warn-border:#ffe0b2;
+    --warn-ink:#7a4700;
+    --ex-bg:#fbfbfb;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.8 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Meiryo",sans-serif;}
+  .container{max-width:740px;margin:0 auto;padding:14px 12px 56px;}
+  header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .page-badge{background:var(--blue);color:#fff;border-radius:6px;padding:3px 8px;font-weight:700;font-size:12px;letter-spacing:.3px}
+  h1{font-size:18px;margin:6px 0 0 0}
+  h2{font-size:16px;margin:12px 0 6px}
+  .note{background:var(--note);border:1px solid var(--note-border);padding:10px 12px;border-radius:8px;color:#2a5d9f;margin:10px 0 14px}
+  .unit{background:#fff;border:1px solid #eee;border-radius:7px;padding:6px 8px;margin:6px 0}
+  .problem-section{border:1px solid #eee;border-radius:10px;padding:12px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.03);margin:12px 0}
+  .problem-number{display:inline-flex;align-items:center;gap:8px;background:var(--chip);color:var(--chip-ink);padding:4px 10px;border-radius:999px;font-weight:700;margin-bottom:6px}
+  .stars{color:#f39c12;font-size:12px}
+  .problem-text{margin:6px 0 8px}
+  .sub-problem{margin:12px 0 14px}
+  .sub-problem-number{display:inline-block;width:26px;height:26px;background:#f0f0f0;text-align:center;line-height:26px;border-radius:4px;margin-right:8px;font-weight:700}
+  .title-inline{font-weight:700}
+  .explanation{background:var(--explain);padding:10px 12px;margin-top:8px;border-radius:6px;border:1px solid var(--explain-border)}
+  .explanation-title{font-weight:700;color:var(--blue);margin-bottom:6px;font-size:13px}
+  .why, .point, .example, .warning{padding:8px 10px;border-radius:6px;margin-top:8px}
+  .why{background:var(--ex-bg);border:1px dashed #d7e3ff}
+  .point{background:#eef9ff;border:1px solid #d9f0ff}
+  .example{background:#f8f9ff;border:1px solid #ecefff}
+  .warning{background:var(--warn-bg);border:1px solid var(--warn-border);color:var(--warn-ink)}
+  .step{margin:5px 0}
+  .step-number{display:inline-block;background:var(--blue);color:#fff;padding:1px 6px;border-radius:50%;font-size:11px;margin-right:6px}
+  .formula{background:var(--formula);padding:2px 6px;border-radius:4px;font-family:"SF Mono","Monaco","Courier New",monospace;display:inline-block}
+  .answer{background:var(--ok-bg);border:1px solid var(--ok-border);color:var(--ok-ink);padding:8px 10px;border-radius:6px;margin-top:8px}
+  .answer strong{font-weight:800}
+  .tip{font-size:12px;color:var(--muted);margin-top:6px}
+  details{background:#fcfcff;border:1px dashed #dbe2ff;padding:8px 10px;border-radius:8px;margin-top:8px}
+  summary{cursor:pointer;font-weight:700;color:#3c5ad9}
+  footer{margin-top:22px;color:#777;font-size:12px;text-align:center}
+
+</style>
+<style>
+
+  :root{
+    --blue:#3498db;
+    --ink:#333;
+    --muted:#555;
+    --bg:#fff;
+    --chip:#f0f4ff;
+    --chip-ink:#1d5fd1;
+    --note:#f7fbff;
+    --note-border:#e6f0fb;
+    --explain:#f0f8ff;
+    --explain-border:#e0eefc;
+    --formula:#e3f2fd;
+    --ok-bg:#f3fbf5;
+    --ok-border:#dff3e6;
+    --ok-ink:#165a31;
+    --warn-bg:#fff7eb;
+    --warn-border:#ffe0b2;
+    --warn-ink:#7a4700;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.85 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Meiryo",sans-serif;}
+  .container{max-width:740px;margin:0 auto;padding:14px 12px 56px;}
+  header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .page-badge{background:var(--blue);color:#fff;border-radius:6px;padding:3px 8px;font-weight:700;font-size:12px;letter-spacing:.3px}
+  h1{font-size:18px;margin:6px 0 0 0}
+  .problem-section{border:1px solid #eee;border-radius:10px;padding:12px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.03);margin:12px 0}
+  .problem-number{display:inline-flex;align-items:center;gap:8px;background:var(--chip);color:var(--chip-ink);padding:4px 10px;border-radius:999px;font-weight:700;margin-bottom:6px}
+  .stars{color:#f39c12;font-size:12px}
+  .problem-text{margin:6px 0 8px}
+  .sub-problem{margin:12px 0 14px}
+  .sub-problem-number{display:inline-block;width:26px;height:26px;background:#f0f0f0;text-align:center;line-height:26px;border-radius:4px;margin-right:8px;font-weight:700}
+  .title-inline{font-weight:700}
+  .explanation{background:var(--explain);padding:10px 12px;margin-top:8px;border-radius:6px;border:1px solid var(--explain-border)}
+  .explanation-title{font-weight:700;color:var(--blue);margin-bottom:6px;font-size:13px}
+  .step{margin:5px 0}
+  .step-number{display:inline-block;background:var(--blue);color:#fff;padding:1px 6px;border-radius:50%;font-size:11px;margin-right:6px}
+  .formula{background:var(--formula);padding:2px 6px;border-radius:4px;font-family:"SF Mono","Monaco","Courier New",monospace;display:inline-block}
+  .answer{background:var(--ok-bg);border:1px solid var(--ok-border);color:var(--ok-ink);padding:8px 10px;border-radius:6px;margin-top:8px}
+  .answer strong{font-weight:800}
+  .warning{background:var(--warn-bg);border:1px solid var(--warn-border);color:var(--warn-ink);padding:8px 10px;border-radius:6px;margin-top:8px}
+  footer{margin-top:22px;color:#777;font-size:12px;text-align:center}
+
+</style>
+<style>
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-section {
+            margin-bottom: 25px;
+            padding: 0;
+            border-left: 3px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        .problem-number {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .problem-text {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .explanation {
+            background-color: #f8f9fa;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #95a5a6;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        
+        .formula {
+            background-color: #ecf0f1;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: "SF Mono", "Monaco", "Courier New", monospace;
+            display: inline-block;
+            margin: 2px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .answer-box {
+            background-color: #e8f4fd;
+            border-left: 3px solid #3498db;
+            padding: 10px;
+            margin: 12px 0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .example-box {
+            background-color: #fffbf0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .hint {
+            background-color: #d1ecf1;
+            border-left: 3px solid #0c5460;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .page-indicator {
+            text-align: right;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .summary-box {
+            background-color: #f0f8f5;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .summary-box h3 {
+            font-size: 14px;
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        td {
+            padding: 6px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .step-content {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+        
+        .check-mark {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .cross-mark {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+    
+</style>
+<style>
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        h1 {
+            color: #2c5530;
+            font-size: 20px;
+            border-bottom: 2px solid #52c41a;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            background-color: #52c41a;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .problem-section {
+            margin-bottom: 30px;
+            padding: 0;
+            border-left: 3px solid #52c41a;
+            padding-left: 10px;
+        }
+        
+        .problem-number {
+            display: inline-block;
+            background-color: #52c41a;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .problem-text {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #2c5530;
+            line-height: 1.6;
+        }
+        
+        .explanation {
+            background-color: #f6ffed;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #52c41a;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #95a5a6;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        
+        .formula {
+            background-color: #e8f5e9;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: "SF Mono", "Monaco", "Courier New", monospace;
+            display: inline-block;
+            margin: 2px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .answer-box {
+            background-color: #f0f9ff;
+            border-left: 3px solid #52c41a;
+            padding: 10px;
+            margin: 12px 0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .example-box {
+            background-color: #fff9f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .hint {
+            background-color: #d4edda;
+            border-left: 3px solid #155724;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .page-indicator {
+            text-align: right;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .step-content {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+        
+        .check-mark {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .cross-mark {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+        
+        .sub-problem {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .sub-problem-number {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 3px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .image-placeholder {
+            display: inline-block;
+            border: 2px solid #52c41a;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    
+</style>
+<style>
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-section {
+            margin-bottom: 30px;
+            padding: 0;
+            border-left: 3px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        .problem-number {
+            display: inline-block;
+            background-color: #f39c12;
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .stars {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e74c3c;
+            font-size: 12px;
+        }
+        
+        .problem-text {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            line-height: 1.8;
+        }
+        
+        .explanation {
+            background-color: #f0f8ff;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        
+        .formula {
+            background-color: #e3f2fd;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: "SF Mono", "Monaco", "Courier New", monospace;
+            display: inline-block;
+            margin: 2px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .answer-box {
+            background-color: #e8f4fd;
+            border-left: 3px solid #3498db;
+            padding: 10px;
+            margin: 12px 0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .example-box {
+            background-color: #fffbf0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .hint {
+            background-color: #d1ecf1;
+            border-left: 3px solid #0c5460;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .page-indicator {
+            text-align: right;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .step-content {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+        
+        .check-mark {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+        
+        .sub-problem {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .sub-problem-number {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 3px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .calendar-table {
+            border-collapse: collapse;
+            margin: 10px auto;
+        }
+        
+        .calendar-table td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        .calendar-table td:first-child {
+            color: #e74c3c;
+        }
+        
+        .calendar-table td:last-child {
+            color: #3498db;
+        }
+        
+        .calendar-header {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+        
+        .highlight-date {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
+        
+        .note-text {
+            color: #e74c3c;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        .calculation-box {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    
+</style>
+<style>
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        .page-header {
+            background-color: #ffeb3b;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .page-title {
+            color: #e91e63;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .page-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .page-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .problem-intro {
+            font-size: 13px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .conversation-box {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .conversation-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #795548;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .speech-bubble {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .speech-bubble::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 12px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8px 8px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .name-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+        
+        .blank-space {
+            display: inline-block;
+            width: 60px;
+            border-bottom: 1px solid #333;
+            margin: 0 5px;
+            text-align: center;
+            color: #e91e63;
+            font-weight: bold;
+        }
+        
+        .problem-section {
+            margin-bottom: 25px;
+            padding-left: 10px;
+            border-left: 3px solid #52c41a;
+        }
+        
+        .problem-number {
+            display: inline-block;
+            background-color: #52c41a;
+            color: white;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .problem-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #2c5530;
+        }
+        
+        .formula {
+            background-color: #e8f5e9;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: "SF Mono", "Monaco", "Courier New", monospace;
+            display: inline-block;
+            margin: 2px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .answer-box {
+            background-color: #f0f9ff;
+            border-left: 3px solid #52c41a;
+            padding: 10px;
+            margin: 12px 0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .explanation-box {
+            background-color: #f6ffed;
+            border: 1px solid #52c41a;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #52c41a;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .step-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #95a5a6;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        
+        .hint-text {
+            font-size: 12px;
+            color: #666;
+            text-align: right;
+            margin-top: 5px;
+        }
+        
+        .mascot {
+            display: inline-block;
+            font-size: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        
+        .important-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .calculation-flow {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        
+        .arrow {
+            text-align: center;
+            color: #52c41a;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        
+        .test-point {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        
+        .test-point-title {
+            color: #f44336;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    
+</style>
+</head><body><header class='header' id='hdr'><div class='hdr'><div class='title'>数学問題集</div><nav class='pager' id='pager'><a class='pill' href='#p38'>38</a><a class='pill' href='#p39'>39</a><a class='pill' href='#p52'>52</a><a class='pill' href='#p53'>53</a><a class='pill' href='#p56'>56</a><a class='pill' href='#p57'>57</a></nav></div></header><main class='main'><section id="p38" class="page"><h2 class="sr-only">P.38</h2>
+<div class="container">
+  <header>
+    <span class="page-badge">P.38</span>
+    <h1>数量の表し方（モバイル1列・丁寧な解説）</h1>
+  </header>
+
+  <div class="note">
+    <strong>まず覚える３つのルール</strong>
+    <div class="unit">① たし算・ひき算は<strong>単位をそろえる</strong>（例：km と m を同じに）。</div>
+    <div class="unit">② <code>p%</code> は <code>p/100</code>、<code>9割</code> は <code>9/10</code>。</div>
+    <div class="unit">③ 「割合」で求めるときは<strong>全体 × 割合</strong>にする。</div>
+  </div>
+
+  <!-- Problem 1 -->
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★★</span> 1</div>
+    <div class="problem-text">次の数量を、[ ] の中の単位で表しなさい。</div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">(1)</span>
+      <span class="title-inline"><span class="formula">x km</span> と <span class="formula">30 m</span> の和 [m]</span>
+      <div class="explanation">
+        <div class="explanation-title">手順と理由</div>
+        <div class="why"><strong>なぜ単位をそろえる？</strong><br>「2m + 3m」は足せるけど、「2km + 3m」は箱の大きさが違う感じで直接足せません。<br>そこで <span class="formula">km → m</span> に変えて同じ箱に入れてから足します。</div>
+        <div class="step"><span class="step-number">1</span><span class="formula">x km</span> を m に直す：<span class="formula">1 km = 1000 m</span> なので <span class="formula">x × 1000 = 1000x</span>（m）</div>
+        <div class="step"><span class="step-number">2</span>同じ m になったので足す：<span class="formula">1000x + 30</span>（m）</div>
+        <div class="answer"><strong>答え：</strong><span class="formula">1000x + 30</span> <strong>[m]</strong></div>
+        <div class="example"><strong>具体例：</strong>もし <span class="formula">x=2</span> なら、<span class="formula">2000 + 30 = 2030</span> m。感覚と合っているか確かめよう。</div>
+        <div class="warning"><strong>よくあるミス：</strong><br>30m を 1000 倍して <span class="formula">30,000</span> にしてしまう → 片方だけ直せばOK。<br>両方を km にしてもよいが、その場合は <span class="formula">30m = 0.03km</span> として <span class="formula">x + 0.03</span> [km] になります。</div>
+      </div>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">(2)</span>
+      <span class="title-inline"><span class="formula">a 分</span> と <span class="formula">b 秒</span> の差 [分]</span>
+      <div class="explanation">
+        <div class="explanation-title">手順と理由</div>
+        <div class="why"><strong>なぜ秒→分にする？</strong><br>「差＝ひき算」も同じ単位どうしでしかできません。<span class="formula">1分＝60秒</span> なので、秒を分に直します。</div>
+        <div class="step"><span class="step-number">1</span><span class="formula">b 秒</span> を分へ：<span class="formula">b ÷ 60 = b/60</span> 分</div>
+        <div class="step"><span class="step-number">2</span>ひき算にする：<span class="formula">a − b/60</span> 分</div>
+        <div class="answer"><strong>答え：</strong><span class="formula">a − b/60</span> <strong>[分]</strong>（同じ意味で <span class="formula">(60a − b)/60</span> 分 でも可）</div>
+        <div class="example"><strong>具体例：</strong><span class="formula">a=5</span> 分、<span class="formula">b=30</span> 秒なら、<span class="formula">5 − 30/60 = 5 − 1/2 = 4.5</span> 分。</div>
+        <div class="warning"><strong>よくあるミス：</strong><br><span class="formula">b</span> をそのまま引いて <span class="formula">a − b</span> としてしまう（単位が違うまま）。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem 2 -->
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★★</span> 2</div>
+    <div class="problem-text">次の数量を、文字を使った式で表しなさい。</div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">(1)</span>
+      <span class="title-inline"><span class="formula">a kg</span> の <span class="formula">19%</span> の重さ</span>
+      <div class="explanation">
+        <div class="explanation-title">考え方</div>
+        <div class="why"><strong>% とは？</strong><br>100 を基準にした割合です。<span class="formula">19% = 19/100 = 0.19</span>。割合を使うときは「全体 × 割合」にします。</div>
+        <div class="step"><span class="step-number">1</span>割合に直す：<span class="formula">19% → 19/100</span></div>
+        <div class="step"><span class="step-number">2</span>全体にかける：<span class="formula">a × (19/100)</span></div>
+        <div class="answer"><strong>式：</strong><span class="formula">(19/100) a</span> <strong>[kg]</strong>（＝ <span class="formula">0.19a</span> kg）</div>
+        <div class="example"><strong>具体例：</strong><span class="formula">a=50</span> kg なら <span class="formula">50 × 0.19 = 9.5</span> kg。</div>
+        <div class="warning"><strong>よくあるミス：</strong>19 を足す／引くのではありません。必ず「かけ算」。</div>
+      </div>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">(2)</span>
+      <span class="title-inline"><span class="formula">b 個</span> の <span class="formula">9割</span> の個数</span>
+      <div class="explanation">
+        <div class="explanation-title">考え方</div>
+        <div class="why"><strong>「割」って？</strong><br>10 を基準にした割合です。<span class="formula">9割 = 9/10 = 0.9</span>。こちらも「全体 × 割合」。</div>
+        <div class="step"><span class="step-number">1</span>割合に直す：<span class="formula">9割 → 9/10</span></div>
+        <div class="step"><span class="step-number">2</span>全体にかける：<span class="formula">b × (9/10)</span></div>
+        <div class="answer"><strong>式：</strong><span class="formula">(9/10) b</span> <strong>[個]</strong>（＝ <span class="formula">0.9b</span> 個）</div>
+        <div class="example"><strong>具体例：</strong><span class="formula">b=80</span> 個なら <span class="formula">80 × 0.9 = 72</span> 個。</div>
+        <div class="warning"><strong>注意：</strong>「9割引」は 90% OFF の意味で別物。ここは「9割そのもの」＝ 90% のこと。</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>仕上げチェック（3点）</summary>
+      <ul style="margin:6px 0 0 18px">
+        <li>たし算・ひき算の前に単位をそろえた？</li>
+        <li>%や割を分数/小数に直して「全体 × 割合」にした？</li>
+        <li>式の最後に単位を書いた？（m / 分 / kg / 個）</li>
+      </ul>
+    </details>
+  </section>
+
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★</span> 仕上げの練習</div>
+    <div class="problem-text">自分でやってみよう（答えはタップで表示）。</div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">Q1</span>
+      <span class="title-inline"><span class="formula">y m</span> と <span class="formula">4 km</span> の和 [m]</span>
+      <details><summary>答えを見る</summary><div class="answer"><span class="formula">y + 4000</span> [m]</div>
+      <div class="tip">4km を m にしてから足す。</div></details>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">Q2</span>
+      <span class="title-inline"><span class="formula">c 分</span> と <span class="formula">45 秒</span> の差 [秒]</span>
+      <details><summary>答えを見る</summary><div class="answer"><span class="formula">60c − 45</span> [秒]</div>
+      <div class="tip">今回は「秒」でそろえる：<span class="formula">c 分 = 60c 秒</span>。</div></details>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">Q3</span>
+      <span class="title-inline"><span class="formula">p kg</span> の <span class="formula">12%</span></span>
+      <details><summary>答えを見る</summary><div class="answer"><span class="formula">(12/100)p = 0.12p</span> [kg]</div></details>
+    </div>
+  </section>
+
+  <footer>© 自学サポート — 教科書P.38対応（スマホ最適・丁寧解説）。</footer>
+</div>
+</section><section id="p39" class="page"><h2 class="sr-only">P.39</h2>
+<div class="container">
+  <header>
+    <span class="page-badge">P.39</span>
+    <h1>数量の表し方（モバイル1列・原文準拠）</h1>
+  </header>
+
+  <!-- B-1 -->
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★★</span> B-1</div>
+    <div class="problem-text">次の問に答えなさい（単位や意味をそろえて式に）。</div>
+
+    <!-- (1) -->
+    <div class="sub-problem">
+      <span class="sub-problem-number">（1）</span>
+      <span class="title-inline">「2kmの道のりを、分速 <span class="formula">a</span> mで <span class="formula">b</span> 分間歩いたときの残りの道のりを、文字を使った式で表しなさい。<u>ただし、単位は m とする。</u>」</span>
+      <div class="explanation">
+        <div class="explanation-title">解き方</div>
+        <div class="step"><span class="step-number">1</span>全体：<span class="formula">2 km = 2000 m</span> にそろえる</div>
+        <div class="step"><span class="step-number">2</span>歩いた距離：<span class="formula">分速 a m × b 分 = ab</span>（m）</div>
+        <div class="step"><span class="step-number">3</span>残り：<span class="formula">2000 − ab</span>（m）</div>
+        <div class="answer"><strong>答え：</strong><span class="formula">2000 − ab</span> <strong>[m]</strong></div>
+      </div>
+    </div>
+
+    <!-- (2) -->
+    <div class="sub-problem">
+      <span class="sub-problem-number">（2）</span>
+      <span class="title-inline">「ある中学校の生徒の人数は <span class="formula">a</span> 人で、そのうちの <span class="formula">3%</span> の生徒がバス通学をしている。このとき、<u>バス通学をしている生徒の人数</u>を、文字を使った式で表しなさい。」</span>
+      <div class="explanation">
+        <div class="explanation-title">考え方</div>
+        <div class="step"><span class="step-number">1</span><span class="formula">3% = 3/100 = 0.03</span></div>
+        <div class="step"><span class="step-number">2</span>人数：<span class="formula">a × 0.03</span></div>
+        <div class="answer"><strong>式：</strong><span class="formula">(3/100)a</span> <strong>[人]</strong></div>
+      </div>
+    </div>
+
+    <!-- (3) -->
+    <div class="sub-problem">
+      <span class="sub-problem-number">（3）</span>
+      <span class="title-inline">「<u>定価</u> <span class="formula">x</span> 円の<u>1割引き</u>の値段を、文字を使った式で表しなさい。」</span>
+      <div class="explanation">
+        <div class="explanation-title">考え方</div>
+        <div class="step"><span class="step-number">1</span>1割引き＝10%引き＝支払うのは<span class="formula">90%</span></div>
+        <div class="step"><span class="step-number">2</span>値段：<span class="formula">x × 9/10</span></div>
+        <div class="answer"><strong>式：</strong><span class="formula">(9/10)x</span> <strong>[円]</strong></div>
+      </div>
+    </div>
+
+    <!-- (4) -->
+    <div class="sub-problem">
+      <span class="sub-problem-number">（4）</span>
+      <span class="title-inline">「<span class="formula">x</span> kmの道のりを<u>時速4km</u>の速さで歩いたとき、<u>かかった時間</u>を<span class="formula">x</span> を使った式で表しなさい。」</span>
+      <div class="explanation">
+        <div class="explanation-title">解き方</div>
+        <div class="step"><span class="step-number">1</span>時間＝距離÷速さ：<span class="formula">x ÷ 4 = x/4</span></div>
+        <div class="answer"><strong>答え：</strong><span class="formula">x/4</span> <strong>[時間]</strong></div>
+      </div>
+    </div>
+
+    <!-- (5) -->
+    <div class="sub-problem">
+      <span class="sub-problem-number">（5）</span>
+      <span class="title-inline">「右の図のような<u>半径 <span class="formula">a</span> cm の半円</u>の<u>面積</u>を、<span class="formula">π</span>を使って表しなさい。」</span>
+      <div class="explanation">
+        <div class="explanation-title">考え方</div>
+        <div class="step"><span class="step-number">1</span>円の面積 <span class="formula">πa²</span> の半分</div>
+        <div class="answer"><strong>式：</strong><span class="formula">(1/2)πa²</span> <strong>[cm²]</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A-2 -->
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★</span> A-2：式が表す数量</div>
+    <div class="problem-text">「右の正三角形で、次の式が表している数量と、その単位を答えなさい。」</div>
+    <div class="explanation">
+      <div class="explanation-title">図の前提</div>
+      <div>一辺 <span class="formula">a</span> cm、（高さ）<span class="formula">b</span> cm の正三角形。</div>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">（1）</span>
+      <span class="title-inline"><span class="formula">3a</span></span>
+      <div class="explanation">
+        <div class="explanation-title">意味</div>
+        <div>周の長さ（<span class="formula">a + a + a</span>）</div>
+        <div class="answer"><strong>数量：</strong>周囲　／　<strong>単位：</strong><span class="formula">cm</span></div>
+      </div>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">（2）</span>
+      <span class="title-inline"><span class="formula">1/2 ab</span></span>
+      <div class="explanation">
+        <div class="explanation-title">意味</div>
+        <div>面積（底辺×高さ÷2）</div>
+        <div class="answer"><strong>数量：</strong>面積　／　<strong>単位：</strong><span class="formula">cm²</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★★★</span> C：力をのばそう</div>
+    <div class="problem-text">「<span class="formula">x</span> mのリボンから、<span class="formula">30</span> cmのリボンを <span class="formula">y</span> 本切り取った。けんさんの式は <span class="formula">(x − 30y)</span> cm。<br>この式は正しくない理由を説明し、正しい式を答えなさい。」</div>
+
+    <div class="explanation">
+      <div class="explanation-title">ポイント</div>
+      <div class="warning">単位が混ざっている（<span class="formula">x</span> は m、<span class="formula">30y</span> は cm）。引き算は同じ単位で！</div>
+      <div class="step"><span class="step-number">1</span><span class="formula">x m = 100x cm</span> に直す</div>
+      <div class="step"><span class="step-number">2</span>残り：<span class="formula">100x − 30y</span>（cm）</div>
+      <div class="answer"><strong>正しい式：</strong><span class="formula">100x − 30y</span> <strong>[cm]</strong>（または <span class="formula">x − 0.3y</span> [m]）</div>
+    </div>
+  </section>
+
+  <footer>© 自学サポート — 教科書P.39対応（スマホ・原文準拠）。</footer>
+</div>
+</section><section id="p52" class="page"><h2 class="sr-only">P.52</h2>
+<div class="container">
+        <div class="page-indicator">P.52</div>
+        <h1>不等式と文字式の表現</h1>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 35 (3)</span>
+            <div class="problem-text">
+                200ページの本を読む。昨日 x ページ読んで、今日 y ページ読んだ。まだ読み終えていない残りのページ数を式で表しなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">「なぜ 200 - (x + y) になるのか」を、できるだけ具体的にイメージで説明します</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>本の全体</strong><br>
+                    本は <span class="formula">200ページ</span>。これが「スタート時点での総量」です。
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>昨日読んだページ数</strong><br>
+                    昨日読んだ量は <span class="formula">x ページ</span>。<br>
+                    だから、200ページのうち x ページ分はもう消費された（残りから減った）ことになります。
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>今日読んだページ数</strong><br>
+                    今日読んだ量は <span class="formula">y ページ</span>。<br>
+                    だから、さらに y ページ分が消費されたことになります。
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">④</span><strong>読んだページの合計</strong><br>
+                    昨日と今日で読んだページを合わせると <span class="formula">x + y</span> ページ読んだことになります。
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">⑤</span><strong>残りページ数</strong><br>
+                    全体200ページから、すでに読んだ分 <span class="formula">(x + y)</span> を引けば、残りが出ます。<br>
+                    <span class="formula">200 - (x + y)</span><br>
+                    これが「まだ読んでいないページ数」です。
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">日常の例でたとえると</div>
+                2000円持っていて、昨日 x 円使った。今日 y 円使った。残りの所持金は？<br>
+                と聞かれたら、自然に <span class="formula">2000 - (x + y)</span> になりますよね。<br>
+                本のページも「総量から使った（読んだ）分を引く」という考え方で同じなんです。
+            </div>
+            
+            <div class="answer-box">
+                <span class="check-mark">✅</span> まとめ<br>
+                「200 - (x + y)」は<br>
+                • 200ページが全体<br>
+                • xページとyページをもう読んだ<br>
+                • だから全体から読んだ分を引く<br>
+                という流れで出てきた式なんです。
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 35 (4)</span>
+            <div class="problem-text">
+                b は a の4倍より1小さい。
+            </div>
+            
+            <div class="explanation">
+                <strong>日本語をほどく</strong>
+                <div class="step-content">
+                    • a の4倍 …… a を4回分 ⇒ <span class="formula">4a</span><br>
+                    • より1小さい …… そこから1だけ減らす ⇒ <span class="formula">4a - 1</span><br>
+                    • bは〜である …… b がその値と等しい ⇒ <span class="formula">b = ...</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                できた式：<span class="formula">b = 4a - 1</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">たしかめ例</div>
+                a = 5 なら<br>
+                4a = 20、1小さい → 19。だから b = 19。<br>
+                式に入れても b = 4×5 - 1 = 19。<span class="check-mark">合ってるね。</span>
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 35 (5)</span>
+            <div class="problem-text">
+                x から y をひいた差は 5 より大きい。
+            </div>
+            
+            <div class="explanation">
+                <strong>日本語をほどく</strong>
+                <div class="step-content">
+                    • x から y をひいた差 …… 引き算の結果 ⇒ <span class="formula">x - y</span><br>
+                    • 5 より大きい …… > 5
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                できた式：<span class="formula">x - y > 5</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">たしかめ例</div>
+                x = 12, y = 6 → x - y = 6。6は5より大きい → <span class="check-mark">成り立つ</span><br>
+                x = 10, y = 6 → x - y = 4。4は5より大きくない → <span class="cross-mark">成り立たない</span>
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 3</span>
+            <div class="problem-text">
+                縦が a cm、横が b cm の長方形がある。このとき、不等式 a + b < 60 はどんなことを表していますか。
+            </div>
+            
+            <div class="explanation">
+                <strong>まず意味を整理</strong>
+                <div class="step-content">
+                    • a … 縦の長さ（cm）<br>
+                    • b … 横の長さ（cm）<br>
+                    • a + b … 縦と横を足した長さ（「一辺ずつの合計」）<br>
+                    ※ 周の長さ（ぐるっと一周）は 2a + 2b。ここは周でも面積でもないよ。<br>
+                    あくまで「縦＋横」という和に注目した不等式。
+                </div>
+                
+                <strong>不等式の読み</strong>
+                <div class="step-content">
+                    <span class="formula">a + b < 60</span> …… 「縦と横の合計が 60cm より小さい」
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                文章にすると：<br>
+                縦の長さと横の長さの和が 60cm より小さい
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">たしかめ例</div>
+                a = 20, b = 30 → a + b = 50 < 60 → <span class="check-mark">OK</span><br>
+                a = 35, b = 28 → a + b = 63 < 60 ではない → <span class="cross-mark">NG</span>
+            </div>
+        </div>
+        
+        <div class="summary-box">
+            <h3>📝 ことば⇔記号のミニ対応表（覚えると楽）</h3>
+            <table>
+                <tr>
+                    <td>〜より大きい</td>
+                    <td><span class="formula">></span></td>
+                </tr>
+                <tr>
+                    <td>〜より小さい</td>
+                    <td><span class="formula"><</span></td>
+                </tr>
+                <tr>
+                    <td>〜以上</td>
+                    <td><span class="formula">≥</span></td>
+                </tr>
+                <tr>
+                    <td>〜以下</td>
+                    <td><span class="formula">≤</span></td>
+                </tr>
+                <tr>
+                    <td>和（あわせた数）</td>
+                    <td><span class="formula">+</span></td>
+                </tr>
+                <tr>
+                    <td>〜から…をひいた差</td>
+                    <td><span class="formula">−</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section><section id="p53" class="page"><h2 class="sr-only">P.53</h2>
+<div class="container">
+        <div class="page-indicator">P.53</div>
+        
+        <div class="section-title">B 力をつけよう</div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 1</span>
+            <div class="problem-text">
+                3つの続いた整数がある。nを整数として、もっとも小さい整数をn-1と表すとき、もっとも大きい整数をnを使って表しなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">連続する整数の関係を理解しよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>「3つの続いた整数」とは？</strong><br>
+                    例：4, 5, 6 や 10, 11, 12 のように、1ずつ増える整数のこと
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>問題の設定を整理</strong><br>
+                    • 一番小さい整数：<span class="formula">n-1</span><br>
+                    • 真ん中の整数：<span class="formula">n</span>（n-1より1大きい）<br>
+                    • 一番大きい整数：<span class="formula">？</span>（真ん中より1大きい）
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>パターンを見つけよう</strong><br>
+                    n-1 → n → ？<br>
+                    1ずつ増えているので、nの次は <span class="formula">n+1</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">n+1</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">確認してみよう</div>
+                n=5のとき：<br>
+                • 最小：n-1 = 4<br>
+                • 真ん中：n = 5<br>
+                • 最大：n+1 = 6<br>
+                確かに4, 5, 6は3つの続いた整数！
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 2</span>
+            <div class="problem-text">
+                nを整数とする。連続する2つの奇数のうち、小さい数を2n+1とするとき、大きい数をnを用いて表しなさい。（長野）
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">奇数の性質を理解して解こう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>奇数とは？</strong><br>
+                    2で割り切れない数。1, 3, 5, 7, 9, 11...のような数
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>連続する奇数の関係</strong><br>
+                    奇数は2ずつ増える！<br>
+                    例：1 → 3 → 5 → 7（+2ずつ）
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>問題の奇数を考える</strong><br>
+                    • 小さい奇数：<span class="formula">2n+1</span><br>
+                    • 大きい奇数：小さい奇数 + 2<br>
+                    つまり：<span class="formula">(2n+1) + 2 = 2n+3</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">2n+3</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">確認してみよう</div>
+                n=3のとき：<br>
+                • 小さい奇数：2×3+1 = 7<br>
+                • 大きい奇数：2×3+3 = 9<br>
+                確かに7と9は連続する奇数！
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 3</span>
+            <div class="problem-text">
+                次の数量の間の関係を、等式または不等式で表しなさい。
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(1)</span>25mのテープからx mのテープを7本切り取ると、y m残る。（愛知）
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">状況を式にしよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>何が起きているか整理</strong><br>
+                    • 最初：25mのテープがある<br>
+                    • 切り取る：x mを7本 = <span class="formula">7x m</span><br>
+                    • 残り：y m
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>関係を式にする</strong><br>
+                    元の長さ - 切り取った長さ = 残りの長さ<br>
+                    <span class="formula">25 - 7x = y</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">25 - 7x = y</span>または<span class="formula">y = 25 - 7x</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(2)</span>xを5倍した数は、yの2乗から4をひいた数より小さい。
+            </div>
+            
+            <div class="explanation">
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>それぞれの式を作る</strong><br>
+                    • xを5倍した数：<span class="formula">5x</span><br>
+                    • yの2乗：<span class="formula">y²</span><br>
+                    • yの2乗から4をひいた数：<span class="formula">y² - 4</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>「より小さい」を式にする</strong><br>
+                    5x ＜ y² - 4
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">5x < y² - 4</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(3)</span>100gがx円の肉をy g買ったら、代金は2000円以上になった。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">単価計算を使った式を作ろう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>1gあたりの値段は？</strong><br>
+                    100gがx円なので、1gあたり：<span class="formula">x/100 円</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>y g買った時の代金</strong><br>
+                    1g × y = <span class="formula">(x/100) × y = xy/100 円</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>「2000円以上」を式にする</strong><br>
+                    xy/100 ≥ 2000
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">xy/100 ≥ 2000</span>または<span class="formula">xy ≥ 200000</span>
+            </div>
+        </div>
+        
+        <div class="section-title">C 力をのばそう</div>
+        
+        <div class="problem-section">
+            <div class="problem-text">
+                右の図のような長方形の形をした花だんがある。次の問に答えなさい。
+                <span class="image-placeholder">花だん図：縦 a m、横 b m</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(1)</span>花だんの周の長さが17mより長いとき、数量の関係を不等式に表しなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">長方形の周の長さを求めよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>長方形の周の長さの公式</strong><br>
+                    周の長さ = (縦 + 横) × 2<br>
+                    = <span class="formula">(a + b) × 2 = 2(a + b)</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>「17mより長い」を式にする</strong><br>
+                    2(a + b) > 17
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">2(a + b) > 17</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(2)</span>ab ≤ 30は、どんなことを表していますか。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">abが何を表すか考えよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>長方形でa × bは？</strong><br>
+                    縦 × 横 = <span class="formula">面積</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>ab ≤ 30の意味</strong><br>
+                    面積が30以下ということ
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：花だんの面積が30m²以下である
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 4</span>
+            <div class="problem-text">
+                ある動物園の入園料は、大人1人がa円、中学生1人がb円である。このとき、次の等式や不等式はどんなことを表していますか。
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(1)</span>a - b = 200
+            </div>
+            
+            <div class="explanation">
+                <div class="step-content">
+                    a - b は「大人料金 - 中学生料金」<br>
+                    これが200円ということは...
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：大人の入園料は中学生の入園料より200円高い
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(2)</span>3a + 5b ≤ 4000
+            </div>
+            
+            <div class="explanation">
+                <div class="step-content">
+                    • 3a：大人3人分の料金<br>
+                    • 5b：中学生5人分の料金<br>
+                    • 合計が4000円以下
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：大人3人と中学生5人の入園料の合計が4000円以下である
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(3)</span>10b > 6a
+            </div>
+            
+            <div class="explanation">
+                <div class="step-content">
+                    • 10b：中学生10人分の料金<br>
+                    • 6a：大人6人分の料金<br>
+                    • 中学生10人分の方が高い
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：中学生10人の入園料の合計は、大人6人の入園料の合計より高い
+            </div>
+        </div>
+    </div>
+</section><section id="p56" class="page"><h2 class="sr-only">P.56</h2>
+<div class="container">
+        <div class="page-indicator">P.56</div>
+        
+        <div class="problem-section">
+            <div class="problem-number">
+                <span class="stars">★★★</span>
+                5
+            </div>
+            <div class="problem-text">
+                1枚の重さ a g の原稿用紙16枚をまとめて重さ b g の封筒に入れると、全体の重さは250g以上になった。このとき、数量の間の関係を不等式で表しなさい。（福島）
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">状況を整理して式にしよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>重さの内訳を整理</strong><br>
+                    • 原稿用紙1枚：<span class="formula">a g</span><br>
+                    • 原稿用紙16枚：<span class="formula">16a g</span><br>
+                    • 封筒：<span class="formula">b g</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>全体の重さは？</strong><br>
+                    原稿用紙16枚 + 封筒 = <span class="formula">16a + b g</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>「250g以上」を式で表す</strong><br>
+                    全体の重さ ≥ 250<br>
+                    つまり：<span class="formula">16a + b ≥ 250</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">16a + b ≥ 250</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">確認してみよう</div>
+                例：原稿用紙1枚が12g、封筒が15gの場合<br>
+                16×12 + 15 = 192 + 15 = 207g<br>
+                207 < 250 なので、この場合は条件を満たさない！
+            </div>
+            
+            <div class="calculation-box">
+                <div class="note-text">計算メモ</div>
+                16a + b<br>
+                ≥ 250
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <div class="problem-number">
+                <span class="stars">★★★</span>
+                6
+            </div>
+            <div class="problem-text">
+                右の図は、ある年の3月のカレンダーの一部である。この年の3月1日を基準日として考えたとき、基準日から1週間後の週の金曜日は3月12日であり、基準日から11日後である。
+            </div>
+            
+            <table class="calendar-table">
+                <tr class="calendar-header">
+                    <td>日</td><td>月</td><td>火</td><td>水</td><td>木</td><td>金</td><td>土</td>
+                </tr>
+                <tr>
+                    <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td class="highlight-date">12</td><td>13</td>
+                </tr>
+                <tr>
+                    <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+                </tr>
+            </table>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(1)</span>基準日から n 週間後の週の金曜日は、基準日から何日後になるか、n を使った式で表しなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">週と日の関係を理解しよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>1週間 = 7日を使って考える</strong><br>
+                    • n週間 = <span class="formula">7n 日</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>基準日（3月1日）は月曜日</strong><br>
+                    • 同じ週の金曜日：4日後（3月5日）<br>
+                    • 1週間後の金曜日：4 + 7 = 11日後（3月12日）<br>
+                    • 2週間後の金曜日：4 + 14 = 18日後（3月19日）
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>パターンを見つける</strong><br>
+                    n週間後の金曜日 = 4 + 7n 日後<br>
+                    = <span class="formula">7n + 4</span> 日後
+                </div>
+                
+                <div class="hint">
+                    <strong>別の考え方：</strong><br>
+                    基準日から金曜日まで：4日<br>
+                    そこからn週間分進む：+7n日<br>
+                    合計：4 + 7n = 7n + 4 日後
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：<span class="formula">7n + 4</span> 日後
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">検証してみよう</div>
+                • n = 1のとき：7×1 + 4 = 11日後（3月12日）<span class="check-mark"> ✓</span><br>
+                • n = 2のとき：7×2 + 4 = 18日後（3月19日）<span class="check-mark"> ✓</span>
+            </div>
+            
+            <div class="sub-problem">
+                <span class="sub-problem-number">(2)</span>彩さんの誕生日は、基準日から204日後の9月21日である。この日は、何週間後の週の何曜日であるか求めなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">204日を週と曜日に分解しよう</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>204日は何週間と何日？</strong><br>
+                    204 ÷ 7 = 29 あまり 1<br>
+                    つまり：<span class="formula">29週間と1日</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>基準日（月曜日）から1日後は？</strong><br>
+                    月曜日の1日後 = <span class="formula">火曜日</span>
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>29週間後の週の火曜日</strong><br>
+                    29週間進んでも曜日の並びは同じ<br>
+                    だから、29週間後の週の火曜日！
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：29週間後の週の火曜日
+            </div>
+            
+            <div class="hint">
+                <strong>ポイント：</strong><br>
+                7で割った余りが曜日のズレを教えてくれる！<br>
+                • 余り0 → 同じ曜日（月曜日）<br>
+                • 余り1 → 1日後（火曜日）<br>
+                • 余り2 → 2日後（水曜日）...
+            </div>
+        </div>
+    </div>
+</section><section id="p57" class="page"><h2 class="sr-only">P.57</h2>
+<div class="container">
+        <div class="page-indicator">57</div>
+        
+        <div class="page-header">
+            <div class="page-title">
+                <span class="mascot">🐻</span>活用しよう！
+            </div>
+            <div class="page-subtitle">
+                数あてゲームのしくみを考えよう！
+            </div>
+        </div>
+        
+        <div class="problem-intro">
+            この章で学んだ考え方を活用して、身近な題材の問題を解いてみよう。<br>
+            <strong>問題</strong><br>
+            めいさんとはるさんは、数あてゲームをしている。
+        </div>
+        
+        <div class="important-box">
+            <strong>⚠️ この問題の狙い</strong><br>
+            具体的な数での計算（問題1）→ 文字式での一般化（問題2）という流れで、<br>
+            「なぜ答えがいつも同じになるか」を説明する力を見る問題です。
+        </div>
+        
+        <div class="conversation-box">
+            <div class="conversation-item">
+                <div class="avatar">😊</div>
+                <div>
+                    <div class="name-label">めい</div>
+                    <div class="speech-bubble">
+                        ある数を１つ思うかべて、12からその数をひいて、その答えに6をかけてみて。…(A)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conversation-item">
+                <div class="avatar">😊</div>
+                <div>
+                    <div class="name-label">はる</div>
+                    <div class="speech-bubble">
+                        その答えから46をひいて、2でわって。…(B)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conversation-item">
+                <div class="avatar">😊</div>
+                <div>
+                    <div class="name-label">めい</div>
+                    <div class="speech-bubble">
+                        その答えに、はじめに思った数を3倍してたして。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conversation-item">
+                <div class="avatar">😄</div>
+                <div>
+                    <div class="name-label">めい</div>
+                    <div class="speech-bubble">
+                        計算の結果は、<span class="blank-space">13</span>だね。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">1</span>
+            <div class="problem-text">
+                はるさんがはじめに思うかべた数を13として、(A)、(B)の計算の結果と、最後の計算の結果アにあてはまる数をそれぞれ求めなさい。
+            </div>
+            
+            <div class="explanation-box">
+                <div class="explanation-title">【解き方】思うかべた数を13として、順番に計算しよう</div>
+                
+                <div class="calculation-flow">
+                    思うかべた数：13
+                    <div class="arrow">↓</div>
+                    <strong>(A) 12から13をひいて6をかける</strong><br>
+                    (12 - 13) × 6 = (-1) × 6 = -6
+                    <div class="arrow">↓</div>
+                    <strong>(B) -6から46をひいて2でわる</strong><br>
+                    (-6 - 46) ÷ 2 = -52 ÷ 2 = -26
+                    <div class="arrow">↓</div>
+                    <strong>-26に、13×3をたす</strong><br>
+                    -26 + (13 × 3) = -26 + 39 = 13
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                答え：(A) -6　　(B) -26　　ア 13
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">2</span>
+            <div class="problem-text">
+                このゲームでは、どんな数を思うかべても、結果は決まった数になる。このことを文字式を使って説明する。説明の続きを書きなさい。
+            </div>
+            
+            <div class="hint-text">aを使った計算の式を、順に書いていこう。</div>
+            
+            <div class="test-point">
+                <div class="test-point-title">📝 テストで求められること</div>
+                • 計算の各ステップを文字式で表す<br>
+                • 式を整理して最終結果を導く<br>
+                • 「aが消えて13だけ残る」ことを示す
+            </div>
+        </div>
+        
+        <div class="explanation-box">
+            <div class="explanation-title">● 説明【解答例】</div>
+            <p>はるさんがはじめに思うかべた数をaとする。12からaをひき、それに6をかけると、</p>
+            <p><span class="formula">(12-a)×6 = 72-6a</span></p>
+            
+            <div class="step-box">
+                <span class="step-number">続き①</span><br>
+                72-6aから46をひいて、2でわると、<br>
+                <span class="formula">(72-6a-46)÷2 = 26-6a÷2 = 26-3a÷2 = 13-3a</span>
+            </div>
+            
+            <div class="step-box">
+                <span class="step-number">続き②</span><br>
+                13-3aに、aの3倍（3a）をたすと、<br>
+                <span class="formula">(13-3a) + 3a = 13-3a+3a = 13</span>
+            </div>
+            
+            <p>したがって、aがどんな数であっても、最後の計算の結果は、いつでも13になる。</p>
+        </div>
+        
+        <div class="important-box">
+            <strong>💡 ポイント</strong><br>
+            • 各計算を文字式で表して整理する<br>
+            • 最後に「-3a + 3a = 0」となってaが消える<br>
+            • だから最初の数aに関係なく答えは13になる！
+        </div>
+        
+        <div class="test-point">
+            <div class="test-point-title">✏️ テストでの書き方のコツ</div>
+            1. 計算の流れを順番に文字式で表す<br>
+            2. 式の整理は丁寧に（特に分数の計算）<br>
+            3. 最後に「aが消えるから、どんな数でも13になる」と結論づける
+        </div>
+    </div>
+</section></main><script>const pills=[...document.querySelectorAll('.pill')];function headerH(){return document.getElementById('hdr').getBoundingClientRect().height||72}function smoothTo(id){const el=document.querySelector(id);if(!el)return;const top=el.getBoundingClientRect().top+scrollY-headerH()-8;scrollTo({top,behavior:'smooth'})}pills.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();smoothTo(a.getAttribute('href'));history.replaceState(null,'',a.getAttribute('href'))}));const secs=[...document.querySelectorAll('.page')];const io=new IntersectionObserver(ents=>{ents.forEach(ent=>{if(ent.isIntersecting){const id='#'+ent.target.id;pills.forEach(p=>p.classList.toggle('active',p.getAttribute('href')===id))}})},{root:null,rootMargin:'-52% 0px -46% 0px',threshold:0});secs.forEach(s=>io.observe(s));window.addEventListener('load',()=>{if(location.hash)smoothTo(location.hash)});</script></body></html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数学問題集 - P.38（数量の表し方 | モバイル1列・丁寧な解説）</title>
+<style>
+  :root{
+    --blue:#3498db;
+    --ink:#333;
+    --muted:#555;
+    --bg:#fff;
+    --chip:#f0f4ff;
+    --chip-ink:#1d5fd1;
+    --note:#f7fbff;
+    --note-border:#e6f0fb;
+    --explain:#f0f8ff;
+    --explain-border:#e0eefc;
+    --formula:#e3f2fd;
+    --ok-bg:#f3fbf5;
+    --ok-border:#dff3e6;
+    --ok-ink:#165a31;
+    --warn-bg:#fff7eb;
+    --warn-border:#ffe0b2;
+    --warn-ink:#7a4700;
+    --ex-bg:#fbfbfb;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.8 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Meiryo",sans-serif;}
+  .container{max-width:740px;margin:0 auto;padding:14px 12px 56px;}
+  header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .page-badge{background:var(--blue);color:#fff;border-radius:6px;padding:3px 8px;font-weight:700;font-size:12px;letter-spacing:.3px}
+  h1{font-size:18px;margin:6px 0 0 0}
+  h2{font-size:16px;margin:12px 0 6px}
+  .note{background:var(--note);border:1px solid var(--note-border);padding:10px 12px;border-radius:8px;color:#2a5d9f;margin:10px 0 14px}
+  .unit{background:#fff;border:1px solid #eee;border-radius:7px;padding:6px 8px;margin:6px 0}
+  .problem-section{border:1px solid #eee;border-radius:10px;padding:12px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.03);margin:12px 0}
+  .problem-number{display:inline-flex;align-items:center;gap:8px;background:var(--chip);color:var(--chip-ink);padding:4px 10px;border-radius:999px;font-weight:700;margin-bottom:6px}
+  .stars{color:#f39c12;font-size:12px}
+  .problem-text{margin:6px 0 8px}
+  .sub-problem{margin:12px 0 14px}
+  .sub-problem-number{display:inline-block;width:26px;height:26px;background:#f0f0f0;text-align:center;line-height:26px;border-radius:4px;margin-right:8px;font-weight:700}
+  .title-inline{font-weight:700}
+  .explanation{background:var(--explain);padding:10px 12px;margin-top:8px;border-radius:6px;border:1px solid var(--explain-border)}
+  .explanation-title{font-weight:700;color:var(--blue);margin-bottom:6px;font-size:13px}
+  .why, .point, .example, .warning{padding:8px 10px;border-radius:6px;margin-top:8px}
+  .why{background:var(--ex-bg);border:1px dashed #d7e3ff}
+  .point{background:#eef9ff;border:1px solid #d9f0ff}
+  .example{background:#f8f9ff;border:1px solid #ecefff}
+  .warning{background:var(--warn-bg);border:1px solid var(--warn-border);color:var(--warn-ink)}
+  .step{margin:5px 0}
+  .step-number{display:inline-block;background:var(--blue);color:#fff;padding:1px 6px;border-radius:50%;font-size:11px;margin-right:6px}
+  .formula{background:var(--formula);padding:2px 6px;border-radius:4px;font-family:"SF Mono","Monaco","Courier New",monospace;display:inline-block}
+  .answer{background:var(--ok-bg);border:1px solid var(--ok-border);color:var(--ok-ink);padding:8px 10px;border-radius:6px;margin-top:8px}
+  .answer strong{font-weight:800}
+  .tip{font-size:12px;color:var(--muted);margin-top:6px}
+  details{background:#fcfcff;border:1px dashed #dbe2ff;padding:8px 10px;border-radius:8px;margin-top:8px}
+  summary{cursor:pointer;font-weight:700;color:#3c5ad9}
+  footer{margin-top:22px;color:#777;font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="page-badge">P.38</span>
+    <h1>数量の表し方（モバイル1列・丁寧な解説）</h1>
+  </header>
+
+  <div class="note">
+    <strong>まず覚える３つのルール</strong>
+    <div class="unit">① たし算・ひき算は<strong>単位をそろえる</strong>（例：km と m を同じに）。</div>
+    <div class="unit">② <code>p%</code> は <code>p/100</code>、<code>9割</code> は <code>9/10</code>。</div>
+    <div class="unit">③ 「割合」で求めるときは<strong>全体 × 割合</strong>にする。</div>
+  </div>
+
+  <!-- Problem 1 -->
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★★</span> 1</div>
+    <div class="problem-text">次の数量を、[ ] の中の単位で表しなさい。</div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">(1)</span>
+      <span class="title-inline"><span class="formula">x km</span> と <span class="formula">30 m</span> の和 [m]</span>
+      <div class="explanation">
+        <div class="explanation-title">手順と理由</div>
+        <div class="why"><strong>なぜ単位をそろえる？</strong><br>「2m + 3m」は足せるけど、「2km + 3m」は箱の大きさが違う感じで直接足せません。<br>そこで <span class="formula">km → m</span> に変えて同じ箱に入れてから足します。</div>
+        <div class="step"><span class="step-number">1</span><span class="formula">x km</span> を m に直す：<span class="formula">1 km = 1000 m</span> なので <span class="formula">x × 1000 = 1000x</span>（m）</div>
+        <div class="step"><span class="step-number">2</span>同じ m になったので足す：<span class="formula">1000x + 30</span>（m）</div>
+        <div class="answer"><strong>答え：</strong><span class="formula">1000x + 30</span> <strong>[m]</strong></div>
+        <div class="example"><strong>具体例：</strong>もし <span class="formula">x=2</span> なら、<span class="formula">2000 + 30 = 2030</span> m。感覚と合っているか確かめよう。</div>
+        <div class="warning"><strong>よくあるミス：</strong><br>30m を 1000 倍して <span class="formula">30,000</span> にしてしまう → 片方だけ直せばOK。<br>両方を km にしてもよいが、その場合は <span class="formula">30m = 0.03km</span> として <span class="formula">x + 0.03</span> [km] になります。</div>
+      </div>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">(2)</span>
+      <span class="title-inline"><span class="formula">a 分</span> と <span class="formula">b 秒</span> の差 [分]</span>
+      <div class="explanation">
+        <div class="explanation-title">手順と理由</div>
+        <div class="why"><strong>なぜ秒→分にする？</strong><br>「差＝ひき算」も同じ単位どうしでしかできません。<span class="formula">1分＝60秒</span> なので、秒を分に直します。</div>
+        <div class="step"><span class="step-number">1</span><span class="formula">b 秒</span> を分へ：<span class="formula">b ÷ 60 = b/60</span> 分</div>
+        <div class="step"><span class="step-number">2</span>ひき算にする：<span class="formula">a − b/60</span> 分</div>
+        <div class="answer"><strong>答え：</strong><span class="formula">a − b/60</span> <strong>[分]</strong>（同じ意味で <span class="formula">(60a − b)/60</span> 分 でも可）</div>
+        <div class="example"><strong>具体例：</strong><span class="formula">a=5</span> 分、<span class="formula">b=30</span> 秒なら、<span class="formula">5 − 30/60 = 5 − 1/2 = 4.5</span> 分。</div>
+        <div class="warning"><strong>よくあるミス：</strong><br><span class="formula">b</span> をそのまま引いて <span class="formula">a − b</span> としてしまう（単位が違うまま）。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem 2 -->
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★★</span> 2</div>
+    <div class="problem-text">次の数量を、文字を使った式で表しなさい。</div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">(1)</span>
+      <span class="title-inline"><span class="formula">a kg</span> の <span class="formula">19%</span> の重さ</span>
+      <div class="explanation">
+        <div class="explanation-title">考え方</div>
+        <div class="why"><strong>% とは？</strong><br>100 を基準にした割合です。<span class="formula">19% = 19/100 = 0.19</span>。割合を使うときは「全体 × 割合」にします。</div>
+        <div class="step"><span class="step-number">1</span>割合に直す：<span class="formula">19% → 19/100</span></div>
+        <div class="step"><span class="step-number">2</span>全体にかける：<span class="formula">a × (19/100)</span></div>
+        <div class="answer"><strong>式：</strong><span class="formula">(19/100) a</span> <strong>[kg]</strong>（＝ <span class="formula">0.19a</span> kg）</div>
+        <div class="example"><strong>具体例：</strong><span class="formula">a=50</span> kg なら <span class="formula">50 × 0.19 = 9.5</span> kg。</div>
+        <div class="warning"><strong>よくあるミス：</strong>19 を足す／引くのではありません。必ず「かけ算」。</div>
+      </div>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">(2)</span>
+      <span class="title-inline"><span class="formula">b 個</span> の <span class="formula">9割</span> の個数</span>
+      <div class="explanation">
+        <div class="explanation-title">考え方</div>
+        <div class="why"><strong>「割」って？</strong><br>10 を基準にした割合です。<span class="formula">9割 = 9/10 = 0.9</span>。こちらも「全体 × 割合」。</div>
+        <div class="step"><span class="step-number">1</span>割合に直す：<span class="formula">9割 → 9/10</span></div>
+        <div class="step"><span class="step-number">2</span>全体にかける：<span class="formula">b × (9/10)</span></div>
+        <div class="answer"><strong>式：</strong><span class="formula">(9/10) b</span> <strong>[個]</strong>（＝ <span class="formula">0.9b</span> 個）</div>
+        <div class="example"><strong>具体例：</strong><span class="formula">b=80</span> 個なら <span class="formula">80 × 0.9 = 72</span> 個。</div>
+        <div class="warning"><strong>注意：</strong>「9割引」は 90% OFF の意味で別物。ここは「9割そのもの」＝ 90% のこと。</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>仕上げチェック（3点）</summary>
+      <ul style="margin:6px 0 0 18px">
+        <li>たし算・ひき算の前に単位をそろえた？</li>
+        <li>%や割を分数/小数に直して「全体 × 割合」にした？</li>
+        <li>式の最後に単位を書いた？（m / 分 / kg / 個）</li>
+      </ul>
+    </details>
+  </section>
+
+  <section class="problem-section">
+    <div class="problem-number"><span class="stars">★</span> 仕上げの練習</div>
+    <div class="problem-text">自分でやってみよう（答えはタップで表示）。</div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">Q1</span>
+      <span class="title-inline"><span class="formula">y m</span> と <span class="formula">4 km</span> の和 [m]</span>
+      <details><summary>答えを見る</summary><div class="answer"><span class="formula">y + 4000</span> [m]</div>
+      <div class="tip">4km を m にしてから足す。</div></details>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">Q2</span>
+      <span class="title-inline"><span class="formula">c 分</span> と <span class="formula">45 秒</span> の差 [秒]</span>
+      <details><summary>答えを見る</summary><div class="answer"><span class="formula">60c − 45</span> [秒]</div>
+      <div class="tip">今回は「秒」でそろえる：<span class="formula">c 分 = 60c 秒</span>。</div></details>
+    </div>
+
+    <div class="sub-problem">
+      <span class="sub-problem-number">Q3</span>
+      <span class="title-inline"><span class="formula">p kg</span> の <span class="formula">12%</span></span>
+      <details><summary>答えを見る</summary><div class="answer"><span class="formula">(12/100)p = 0.12p</span> [kg]</div></details>
+    </div>
+  </section>
+
+  <footer>© 自学サポート — 教科書P.38対応（スマホ最適・丁寧解説）。</footer>
+</div>
+</body>
+</html>

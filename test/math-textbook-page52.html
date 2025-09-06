@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学問題集 - 不等式と文字式</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-section {
+            margin-bottom: 25px;
+            padding: 0;
+            border-left: 3px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        .problem-number {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .problem-text {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .explanation {
+            background-color: #f8f9fa;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #95a5a6;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        
+        .formula {
+            background-color: #ecf0f1;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: "SF Mono", "Monaco", "Courier New", monospace;
+            display: inline-block;
+            margin: 2px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .answer-box {
+            background-color: #e8f4fd;
+            border-left: 3px solid #3498db;
+            padding: 10px;
+            margin: 12px 0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .example-box {
+            background-color: #fffbf0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .hint {
+            background-color: #d1ecf1;
+            border-left: 3px solid #0c5460;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        .page-indicator {
+            text-align: right;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .summary-box {
+            background-color: #f0f8f5;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .summary-box h3 {
+            font-size: 14px;
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        td {
+            padding: 6px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .step-content {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+        
+        .check-mark {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .cross-mark {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-indicator">P.52</div>
+        <h1>不等式と文字式の表現</h1>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 35 (3)</span>
+            <div class="problem-text">
+                200ページの本を読む。昨日 x ページ読んで、今日 y ページ読んだ。まだ読み終えていない残りのページ数を式で表しなさい。
+            </div>
+            
+            <div class="explanation">
+                <div class="explanation-title">「なぜ 200 - (x + y) になるのか」を、できるだけ具体的にイメージで説明します</div>
+                
+                <div class="step-content">
+                    <span class="step-number">①</span><strong>本の全体</strong><br>
+                    本は <span class="formula">200ページ</span>。これが「スタート時点での総量」です。
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">②</span><strong>昨日読んだページ数</strong><br>
+                    昨日読んだ量は <span class="formula">x ページ</span>。<br>
+                    だから、200ページのうち x ページ分はもう消費された（残りから減った）ことになります。
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">③</span><strong>今日読んだページ数</strong><br>
+                    今日読んだ量は <span class="formula">y ページ</span>。<br>
+                    だから、さらに y ページ分が消費されたことになります。
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">④</span><strong>読んだページの合計</strong><br>
+                    昨日と今日で読んだページを合わせると <span class="formula">x + y</span> ページ読んだことになります。
+                </div>
+                
+                <div class="step-content">
+                    <span class="step-number">⑤</span><strong>残りページ数</strong><br>
+                    全体200ページから、すでに読んだ分 <span class="formula">(x + y)</span> を引けば、残りが出ます。<br>
+                    <span class="formula">200 - (x + y)</span><br>
+                    これが「まだ読んでいないページ数」です。
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">日常の例でたとえると</div>
+                2000円持っていて、昨日 x 円使った。今日 y 円使った。残りの所持金は？<br>
+                と聞かれたら、自然に <span class="formula">2000 - (x + y)</span> になりますよね。<br>
+                本のページも「総量から使った（読んだ）分を引く」という考え方で同じなんです。
+            </div>
+            
+            <div class="answer-box">
+                <span class="check-mark">✅</span> まとめ<br>
+                「200 - (x + y)」は<br>
+                • 200ページが全体<br>
+                • xページとyページをもう読んだ<br>
+                • だから全体から読んだ分を引く<br>
+                という流れで出てきた式なんです。
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 35 (4)</span>
+            <div class="problem-text">
+                b は a の4倍より1小さい。
+            </div>
+            
+            <div class="explanation">
+                <strong>日本語をほどく</strong>
+                <div class="step-content">
+                    • a の4倍 …… a を4回分 ⇒ <span class="formula">4a</span><br>
+                    • より1小さい …… そこから1だけ減らす ⇒ <span class="formula">4a - 1</span><br>
+                    • bは〜である …… b がその値と等しい ⇒ <span class="formula">b = ...</span>
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                できた式：<span class="formula">b = 4a - 1</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">たしかめ例</div>
+                a = 5 なら<br>
+                4a = 20、1小さい → 19。だから b = 19。<br>
+                式に入れても b = 4×5 - 1 = 19。<span class="check-mark">合ってるね。</span>
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 35 (5)</span>
+            <div class="problem-text">
+                x から y をひいた差は 5 より大きい。
+            </div>
+            
+            <div class="explanation">
+                <strong>日本語をほどく</strong>
+                <div class="step-content">
+                    • x から y をひいた差 …… 引き算の結果 ⇒ <span class="formula">x - y</span><br>
+                    • 5 より大きい …… > 5
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                できた式：<span class="formula">x - y > 5</span>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">たしかめ例</div>
+                x = 12, y = 6 → x - y = 6。6は5より大きい → <span class="check-mark">成り立つ</span><br>
+                x = 10, y = 6 → x - y = 4。4は5より大きくない → <span class="cross-mark">成り立たない</span>
+            </div>
+        </div>
+        
+        <div class="problem-section">
+            <span class="problem-number">問題 3</span>
+            <div class="problem-text">
+                縦が a cm、横が b cm の長方形がある。このとき、不等式 a + b < 60 はどんなことを表していますか。
+            </div>
+            
+            <div class="explanation">
+                <strong>まず意味を整理</strong>
+                <div class="step-content">
+                    • a … 縦の長さ（cm）<br>
+                    • b … 横の長さ（cm）<br>
+                    • a + b … 縦と横を足した長さ（「一辺ずつの合計」）<br>
+                    ※ 周の長さ（ぐるっと一周）は 2a + 2b。ここは周でも面積でもないよ。<br>
+                    あくまで「縦＋横」という和に注目した不等式。
+                </div>
+                
+                <strong>不等式の読み</strong>
+                <div class="step-content">
+                    <span class="formula">a + b < 60</span> …… 「縦と横の合計が 60cm より小さい」
+                </div>
+            </div>
+            
+            <div class="answer-box">
+                文章にすると：<br>
+                縦の長さと横の長さの和が 60cm より小さい
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">たしかめ例</div>
+                a = 20, b = 30 → a + b = 50 < 60 → <span class="check-mark">OK</span><br>
+                a = 35, b = 28 → a + b = 63 < 60 ではない → <span class="cross-mark">NG</span>
+            </div>
+        </div>
+        
+        <div class="summary-box">
+            <h3>📝 ことば⇔記号のミニ対応表（覚えると楽）</h3>
+            <table>
+                <tr>
+                    <td>〜より大きい</td>
+                    <td><span class="formula">></span></td>
+                </tr>
+                <tr>
+                    <td>〜より小さい</td>
+                    <td><span class="formula"><</span></td>
+                </tr>
+                <tr>
+                    <td>〜以上</td>
+                    <td><span class="formula">≥</span></td>
+                </tr>
+                <tr>
+                    <td>〜以下</td>
+                    <td><span class="formula">≤</span></td>
+                </tr>
+                <tr>
+                    <td>和（あわせた数）</td>
+                    <td><span class="formula">+</span></td>
+                </tr>
+                <tr>
+                    <td>〜から…をひいた差</td>
+                    <td><span class="formula">−</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
