@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英語並び替え問題</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        
+        .problem-box {
+            background-color: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .problem-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .problem-instruction {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .japanese-sentence {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        .word-bank {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .word-bank-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #856404;
+        }
+        
+        .words-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .word-item {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid #3498db;
+            min-height: 50px;
+            min-width: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+        
+        .word-item:active {
+            transform: scale(0.95);
+            background-color: #2980b9;
+        }
+        
+        .word-item.used {
+            background-color: #95a5a6;
+            border-color: #95a5a6;
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .word-item.used:active {
+            transform: none;
+            background-color: #95a5a6;
+        }
+        
+        .answer-area {
+            background-color: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .answer-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+        
+        .answer-sentence {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            min-height: 50px;
+        }
+        
+        .answer-word {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            border: 3px solid #28a745;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-touch-callout: none;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+        
+        .answer-word:active {
+            transform: scale(0.95);
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            min-height: 60px;
+            min-width: 120px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            cursor: pointer;
+        }
+        
+        .btn:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-check {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .btn-check:active {
+            background-color: #218838;
+        }
+        
+        .btn-reset {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-reset:active {
+            background-color: #545b62;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .result.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .result.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .correct-answer {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>英語並び替え問題</h1>
+        
+        <div class="problem-box">
+            <div class="problem-title">問題 1</div>
+            <div class="problem-instruction">下の単語をタッチして、正しい英文を作ってください。</div>
+            <div class="japanese-sentence">「私は学生です」</div>
+        </div>
+        
+        <div class="word-bank">
+            <div class="word-bank-title">使う単語（全部使ってください）</div>
+            <div class="words-container" id="wordBank">
+                <div class="word-item" data-word="I">
+                    <div>I</div>
+                    <div style="font-size:12px">(私は)</div>
+                </div>
+                <div class="word-item" data-word="am">
+                    <div>am</div>
+                    <div style="font-size:12px">(〜です)</div>
+                </div>
+                <div class="word-item" data-word="a">
+                    <div>a</div>
+                    <div style="font-size:12px">(ひとりの)</div>
+                </div>
+                <div class="word-item" data-word="student">
+                    <div>student</div>
+                    <div style="font-size:12px">(学生)</div>
+                </div>
+                <div class="word-item" data-word=".">
+                    <div>.</div>
+                    <div style="font-size:12px">(ピリオド)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="answer-area">
+            <div class="answer-title">あなたの答え：</div>
+            <div class="answer-sentence" id="answerSentence">
+                <span style="color: #6c757d; font-style: italic;">単語をタッチして文を作ってください</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-check" id="checkBtn">答えをチェック</button>
+            <button class="btn btn-reset" id="resetBtn">リセット</button>
+        </div>
+        
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        const correctAnswer = ["I", "am", "a", "student", "."];
+        let currentAnswer = [];
+        
+        function addWord(word, element) {
+            if (element.classList.contains('used')) return;
+            
+            currentAnswer.push(word);
+            element.classList.add('used');
+            updateAnswerDisplay();
+        }
+        
+        function removeWord(index) {
+            const word = currentAnswer[index];
+            currentAnswer.splice(index, 1);
+            
+            // 単語を選択可能に戻す
+            const wordElements = document.querySelectorAll(`[data-word="${word}"]`);
+            wordElements.forEach(el => {
+                el.classList.remove('used');
+            });
+            
+            updateAnswerDisplay();
+        }
+        
+        function updateAnswerDisplay() {
+            const answerDiv = document.getElementById('answerSentence');
+            
+            if (currentAnswer.length === 0) {
+                answerDiv.innerHTML = '<span style="color: #6c757d; font-style: italic;">単語をタッチして文を作ってください</span>';
+                return;
+            }
+            
+            answerDiv.innerHTML = '';
+            currentAnswer.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.className = 'answer-word';
+                span.textContent = word;
+                span.dataset.index = index;
+                answerDiv.appendChild(span);
+            });
+        }
+        
+        function checkAnswer() {
+            const resultDiv = document.getElementById('result');
+            
+            if (currentAnswer.length !== correctAnswer.length) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '単語をすべて使ってください！';
+                resultDiv.style.display = 'block';
+                return;
+            }
+            
+            const isCorrect = JSON.stringify(currentAnswer) === JSON.stringify(correctAnswer);
+            
+            if (isCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '正解です！<br>I am a student.';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = 'もう一度挑戦してみてください！<div class="correct-answer">正解: I am a student.</div>';
+            }
+            
+            resultDiv.style.display = 'block';
+        }
+        
+        function resetProblem() {
+            currentAnswer = [];
+            document.querySelectorAll('.word-item').forEach(el => {
+                el.classList.remove('used');
+            });
+            updateAnswerDisplay();
+            document.getElementById('result').style.display = 'none';
+        }
+        
+        // イベントリスナーの設定
+        document.addEventListener('DOMContentLoaded', function() {
+            // 単語バンクの単語
+            document.querySelectorAll('.word-item').forEach(element => {
+                element.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                }, {passive: false});
+                
+                element.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    const word = this.getAttribute('data-word');
+                    addWord(word, this);
+                }, {passive: false});
+                
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const word = this.getAttribute('data-word');
+                    addWord(word, this);
+                });
+            });
+            
+            // 答えエリアの単語削除（イベント委譲を使用）
+            document.getElementById('answerSentence').addEventListener('touchend', function(e) {
+                if (e.target.classList.contains('answer-word')) {
+                    e.preventDefault();
+                    const index = parseInt(e.target.dataset.index);
+                    removeWord(index);
+                }
+            }, {passive: false});
+            
+            document.getElementById('answerSentence').addEventListener('click', function(e) {
+                if (e.target.classList.contains('answer-word')) {
+                    e.preventDefault();
+                    const index = parseInt(e.target.dataset.index);
+                    removeWord(index);
+                }
+            });
+            
+            // ボタン
+            document.getElementById('checkBtn').addEventListener('touchend', function(e) {
+                e.preventDefault();
+                checkAnswer();
+            }, {passive: false});
+            
+            document.getElementById('checkBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                checkAnswer();
+            });
+            
+            document.getElementById('resetBtn').addEventListener('touchend', function(e) {
+                e.preventDefault();
+                resetProblem();
+            }, {passive: false});
+            
+            document.getElementById('resetBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                resetProblem();
+            });
+        });
+    </script>
+</body>
+</html>
