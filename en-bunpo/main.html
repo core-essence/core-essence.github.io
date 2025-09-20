@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英語学習アプリ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .intro {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid #3498db;
+        }
+
+        .intro h2 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .intro p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .learning-path {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .app-section {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .app-section:hover {
+            border-color: #3498db;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: #fafbfc;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .step-number {
+            background: #3498db;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+
+        .optional-badge {
+            background: #95a5a6;
+        }
+
+        .section-title {
+            flex-grow: 1;
+        }
+
+        .section-title h3 {
+            color: #2c3e50;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .section-title .subtitle {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        .section-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .purpose-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .purpose-box h4 {
+            color: #2c3e50;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .purpose-box ul {
+            margin-left: 20px;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .start-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .start-button:hover {
+            background: #2980b9;
+        }
+
+        .grammar-button {
+            background: #e74c3c;
+        }
+
+        .grammar-button:hover {
+            background: #c0392b;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .parallel-note {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .parallel-note p {
+            color: #856404;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .section-header {
+                padding: 15px;
+            }
+
+            .start-button {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>英語学習アプリ</h1>
+        
+        <div class="intro">
+            <h2>効率的な学習方法</h2>
+            <p>
+                英語学習の基礎は<strong>単語力</strong>です。まず単語をしっかり覚えることから始めましょう。<br>
+                並行して文法パターンの理解を深めることで、総合的な英語力が身につきます。
+            </p>
+        </div>
+
+        <div class="learning-path">
+            <!-- 単語学習セクション -->
+            <div class="app-section">
+                <div class="section-header">
+                    <div class="step-number">1</div>
+                    <div class="section-title">
+                        <h3>単語学習</h3>
+                        <span class="subtitle">まず最初に取り組むべき基礎学習</span>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <p class="section-description">
+                        英語学習の土台となる<span class="highlight">単語力</span>を身につけます。<br>
+                        日本語から英語への変換練習を通じて、単語のスペルと意味を確実に覚えましょう。
+                    </p>
+                    
+                    <div class="purpose-box">
+                        <h4>このトレーニングの目的：</h4>
+                        <ul>
+                            <li>基礎単語のスペルを正確に覚える</li>
+                            <li>日本語→英語の瞬間変換力を鍛える</li>
+                            <li>ヒント機能で段階的に記憶を定着</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="index.html" class="start-button">単語学習を始める</a>
+                </div>
+            </div>
+
+            <!-- 並び替え問題セクション -->
+            <div class="app-section">
+                <div class="section-header">
+                    <div class="step-number optional-badge">並行</div>
+                    <div class="section-title">
+                        <h3>並び替え問題</h3>
+                        <span class="subtitle">文法パターンの理解と定着</span>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <p class="section-description">
+                        単語学習と<strong>並行して</strong>取り組む文法トレーニングです。<br>
+                        英語の語順や文法パターンを体系的に理解し、正しい文章を組み立てる力を養います。
+                    </p>
+                    
+                    <div class="purpose-box">
+                        <h4>このトレーニングの目的：</h4>
+                        <ul>
+                            <li>英語の基本的な語順パターンを習得</li>
+                            <li>文法ルールの実践的な理解</li>
+                            <li>単語のスペルさえ分かれば文章が作れる力を養成</li>
+                            <li>文法要素（動詞、形容詞など）の役割を理解</li>
+                        </ul>
+                    </div>
+
+                    <div class="parallel-note">
+                        <p>
+                            <strong>重要：</strong>これは単語を覚えるためのトレーニングではありません。<br>
+                            単語の意味と文法情報が表示されるので、<strong>文法パターンの理解</strong>に集中してください。
+                        </p>
+                    </div>
+                    
+                    <a href="en-mondai-fixed.html" class="start-button grammar-button">並び替え問題を始める</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
