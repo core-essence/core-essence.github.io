@@ -1,0 +1,377 @@
+{
+  "id": "test",
+  "title": "テスト",
+  "desc": "テスト",
+  "problems": [
+    {
+      "japanese": "彼女は幸せです",
+      "correct": [
+        "She",
+        "is",
+        "happy",
+        "."
+      ],
+      "words": [
+        {
+          "word": "She",
+          "meaning": "彼女は",
+          "grammar": "主語"
+        },
+        {
+          "word": "is",
+          "meaning": "〜です",
+          "grammar": "be動詞"
+        },
+        {
+          "word": "happy",
+          "meaning": "幸せな",
+          "grammar": "形容詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "私は音楽が好きです",
+      "correct": [
+        "I",
+        "like",
+        "music",
+        "."
+      ],
+      "words": [
+        {
+          "word": "I",
+          "meaning": "私は",
+          "grammar": "主語"
+        },
+        {
+          "word": "like",
+          "meaning": "好き",
+          "grammar": "動詞"
+        },
+        {
+          "word": "music",
+          "meaning": "音楽",
+          "grammar": "名詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "彼は医者です",
+      "correct": [
+        "He",
+        "is",
+        "a",
+        "doctor",
+        "."
+      ],
+      "words": [
+        {
+          "word": "He",
+          "meaning": "彼は",
+          "grammar": "主語"
+        },
+        {
+          "word": "is",
+          "meaning": "〜です",
+          "grammar": "be動詞"
+        },
+        {
+          "word": "a",
+          "meaning": "ひとりの",
+          "grammar": "冠詞"
+        },
+        {
+          "word": "doctor",
+          "meaning": "医者",
+          "grammar": "名詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "私たちはテニスをします",
+      "correct": [
+        "We",
+        "play",
+        "tennis",
+        "."
+      ],
+      "words": [
+        {
+          "word": "We",
+          "meaning": "私たちは",
+          "grammar": "主語"
+        },
+        {
+          "word": "play",
+          "meaning": "する",
+          "grammar": "動詞"
+        },
+        {
+          "word": "tennis",
+          "meaning": "テニス",
+          "grammar": "名詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "私は泳ぐことができます",
+      "correct": [
+        "I",
+        "can",
+        "swim",
+        "."
+      ],
+      "words": [
+        {
+          "word": "I",
+          "meaning": "私は",
+          "grammar": "主語"
+        },
+        {
+          "word": "can",
+          "meaning": "できる",
+          "grammar": "助動詞"
+        },
+        {
+          "word": "swim",
+          "meaning": "泳ぐ",
+          "grammar": "動詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "あなたはテニスをしますか？",
+      "correct": [
+        "Do",
+        "you",
+        "play",
+        "tennis",
+        "?"
+      ],
+      "words": [
+        {
+          "word": "Do",
+          "meaning": "〜しますか",
+          "grammar": "助動詞"
+        },
+        {
+          "word": "you",
+          "meaning": "あなたは",
+          "grammar": "主語"
+        },
+        {
+          "word": "play",
+          "meaning": "する",
+          "grammar": "動詞"
+        },
+        {
+          "word": "tennis",
+          "meaning": "テニス",
+          "grammar": "名詞"
+        },
+        {
+          "word": "?",
+          "meaning": "疑問符",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "私は日本に行きたいです",
+      "correct": [
+        "I",
+        "want",
+        "to",
+        "go",
+        "to",
+        "Japan",
+        "."
+      ],
+      "words": [
+        {
+          "word": "I",
+          "meaning": "私は",
+          "grammar": "主語"
+        },
+        {
+          "word": "want",
+          "meaning": "したい",
+          "grammar": "動詞"
+        },
+        {
+          "word": "to",
+          "meaning": "〜に",
+          "grammar": "前置詞"
+        },
+        {
+          "word": "go",
+          "meaning": "行く",
+          "grammar": "動詞"
+        },
+        {
+          "word": "to",
+          "meaning": "〜に",
+          "grammar": "前置詞"
+        },
+        {
+          "word": "Japan",
+          "meaning": "日本",
+          "grammar": "名詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "これは私の本です",
+      "correct": [
+        "This",
+        "is",
+        "my",
+        "book",
+        "."
+      ],
+      "words": [
+        {
+          "word": "This",
+          "meaning": "これは",
+          "grammar": "主語"
+        },
+        {
+          "word": "is",
+          "meaning": "〜です",
+          "grammar": "be動詞"
+        },
+        {
+          "word": "my",
+          "meaning": "私の",
+          "grammar": "所有格"
+        },
+        {
+          "word": "book",
+          "meaning": "本",
+          "grammar": "名詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "彼らは学校にいます",
+      "correct": [
+        "They",
+        "are",
+        "at",
+        "school",
+        "."
+      ],
+      "words": [
+        {
+          "word": "They",
+          "meaning": "彼らは",
+          "grammar": "主語"
+        },
+        {
+          "word": "are",
+          "meaning": "〜です",
+          "grammar": "be動詞"
+        },
+        {
+          "word": "at",
+          "meaning": "〜に",
+          "grammar": "前置詞"
+        },
+        {
+          "word": "school",
+          "meaning": "学校",
+          "grammar": "名詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    },
+    {
+      "japanese": "彼女は先生になりたいです",
+      "correct": [
+        "She",
+        "wants",
+        "to",
+        "be",
+        "a",
+        "teacher",
+        "."
+      ],
+      "words": [
+        {
+          "word": "She",
+          "meaning": "彼女は",
+          "grammar": "主語"
+        },
+        {
+          "word": "wants",
+          "meaning": "したい",
+          "grammar": "動詞"
+        },
+        {
+          "word": "to",
+          "meaning": "〜に",
+          "grammar": "前置詞"
+        },
+        {
+          "word": "be",
+          "meaning": "なる",
+          "grammar": "動詞"
+        },
+        {
+          "word": "a",
+          "meaning": "ひとりの",
+          "grammar": "冠詞"
+        },
+        {
+          "word": "teacher",
+          "meaning": "先生",
+          "grammar": "名詞"
+        },
+        {
+          "word": ".",
+          "meaning": "文の終わり",
+          "grammar": "句読点"
+        }
+      ]
+    }
+  ]
+}

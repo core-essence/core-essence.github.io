@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英語並び替え問題集（管理・学習 一体型）</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 24px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 18px;
+            font-size: 24px;
+        }
+        .sub {
+            text-align: center;
+            color: #6c757d;
+            margin-top: -8px;
+            margin-bottom: 18px;
+            font-size: 13px;
+        }
+        /* タブ */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab-btn {
+            background: #ecf0f1;
+            border: 1px solid #95a5a6;
+            padding: 10px 16px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .tab-btn.active {
+            background: #3498db;
+            border-color: #3498db;
+            color: #fff;
+        }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+
+        /* 共通UI */
+        .note {
+            background-color: #e8f4fd;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 16px;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+            display: none;
+        }
+        .ok {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+            display: none;
+        }
+        .row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        @media (min-width: 860px) {
+          .row2 { grid-template-columns: 1fr 1fr; }
+        }
+        .card {
+            border: 2px solid #e8f4fd;
+            border-radius: 10px;
+            padding: 16px;
+            background: #fff;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        .file-input { padding: 10px; font-size: 16px; }
+        .btn {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-primary { background-color: #3498db; color: #fff; }
+        .btn-secondary { background-color: #6c757d; color: #fff; }
+        .btn-success { background-color: #28a745; color: #fff; }
+        .btn-warning { background-color: #ffc107; color: #333; }
+        .btn:active { transform: scale(0.98); }
+
+        /* 学習画面 (元の雰囲気を踏襲) */
+        .progress-info {
+            background-color: #d4edda;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #155724;
+        }
+        .problem-section {
+            margin-bottom: 36px;
+            padding: 16px;
+            border: 2px solid #e8f4fd;
+            border-radius: 10px;
+        }
+        .problem-box {
+            background-color: #e8f4fd;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border-left: 4px solid #3498db;
+        }
+        .problem-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        .problem-instruction { font-size: 14px; color: #7f8c8d; margin-bottom: 8px; }
+        .japanese-sentence { font-size: 16px; font-weight: bold; color: #e74c3c; }
+        .word-bank {
+            background-color: #fff3cd;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .word-bank-title { font-size: 16px; font-weight: bold; margin-bottom: 10px; color: #856404; }
+        .words-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .word-item {
+            background-color: #3498db; color: white; padding: 14px 22px; border-radius: 25px;
+            font-size: 16px; font-weight: bold; border: 3px solid #3498db;
+            min-height: 60px; min-width: 90px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center; cursor: pointer;
+        }
+        .word-main { font-size: 18px; font-weight: bold; margin-bottom: 4px; }
+        .word-meaning { font-size: 11px; opacity: 0.9; margin-bottom: 2px; }
+        .word-grammar { font-size: 10px; opacity: 0.9; background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 10px; }
+        .word-item:active { transform: scale(0.95); background-color: #2980b9; }
+        .word-item.used { background-color: #95a5a6; border-color: #95a5a6; opacity: 0.6; cursor: not-allowed; }
+        .answer-area { background-color: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; padding: 16px; min-height: 70px; margin-top: 10px; }
+        .answer-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; color: #495057; }
+        .answer-sentence { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 46px; }
+        .answer-word { background-color: #28a745; color: white; padding: 10px 16px; border-radius: 20px; font-size: 17px; border: 3px solid #28a745; }
+        .answer-word:active { transform: scale(0.95); background-color: #dc3545; border-color: #dc3545; }
+        .controls { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
+        .result { margin-top: 12px; padding: 12px; border-radius: 8px; font-size: 15px; font-weight: bold; text-align: center; display: none; }
+        .result.correct { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .result.incorrect { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .correct-answer { margin-top: 8px; font-size: 14px; color: #6c757d; }
+
+        .dataset-bar {
+            display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;
+        }
+        select, input[type="text"] {
+            padding: 10px; border: 1px solid #95a5a6; border-radius: 6px; font-size: 14px;
+        }
+        .small { font-size: 12px; color: #666; }
+        .muted { color: #6c757d; }
+        .sep { height: 1px; background: #e9ecef; margin: 16px 0; }
+        .inline { display:inline-block; }
+        .right { text-align:right; }
+        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>英語並び替え問題集</h1>
+        <div class="sub">管理者はここで問題セット（Excel→JSON）を作成・配布し、学習者は同ページで選択して解くことができます。</div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="learn">学習</button>
+            <button class="tab-btn" data-tab="admin">管理</button>
+        </div>
+
+        <!-- 学習タブ -->
+        <div id="learn" class="tab-pane active">
+            <div class="note">
+                <strong>使い方：</strong> 下の「問題セットを選ぶ」から公開中のセットを選択して「読み込む」を押すと、すぐに解けます。<br>
+                GitHub Pages では <span class="mono">/sets/index.json</span> に登録されたセット一覧を自動で読み込みます。
+            </div>
+
+            <div class="card">
+                <h3>問題セットを選ぶ</h3>
+                <div class="dataset-bar">
+                    <select id="datasetSelect">
+                        <option value="">（セットを選択）</option>
+                    </select>
+                    <button class="btn btn-primary" id="btnLoadDataset">読み込む</button>
+                    <span class="small muted">※ 管理タブで作成し、リポジトリの <span class="mono">/sets/</span> に配置＆ <span class="mono">index.json</span> に追加</span>
+                </div>
+                <div class="sep"></div>
+                <div class="row row2">
+                    <div>
+                        <h3>ローカルファイルから試す（公開前テスト）</h3>
+                        <input type="file" id="localJsonInput" class="file-input" accept=".json">
+                        <div style="margin-top:8px;">
+                            <button class="btn btn-secondary" id="btnLoadLocalJson">JSONを読み込む</button>
+                        </div>
+                        <div class="small muted" style="margin-top:6px;">（管理タブで Excel→JSON 変換したファイルを試せます）</div>
+                    </div>
+                    <div>
+                        <h3>読み込み状態</h3>
+                        <div id="learnOk" class="ok"></div>
+                        <div id="learnErr" class="error"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height:12px;"></div>
+
+            <div class="progress-info" id="progressInfo" style="display:none;">
+                読み込み完了: <span id="problemCount">0</span>問
+            </div>
+            <div id="problemsArea"></div>
+        </div>
+
+        <!-- 管理タブ -->
+        <div id="admin" class="tab-pane">
+            <div class="note">
+                <strong>公開の流れ（GitHub Pages・完全クライアント運用）</strong><br>
+                1) Excel をアップロード → 2) 自動でプレビュー → 3) JSON 書き出し（ダウンロード） → 4) リポジトリの <span class="mono">/sets/</span> に追加 → 5) <span class="mono">/sets/index.json</span> に情報を追記 → 6) ページを更新して学習タブで選択できるように。
+            </div>
+
+            <div class="row row2">
+                <div class="card">
+                    <h3>Excel から問題を読み込み</h3>
+                    <input type="file" id="excelInput" class="file-input" accept=".xlsx,.xls">
+                    <div style="margin-top:10px;">
+                        <button class="btn btn-primary" id="btnParseExcel">読み込む</button>
+                    </div>
+                    <div id="adminErr" class="error"></div>
+                    <div id="adminOk" class="ok"></div>
+                </div>
+
+                <div class="card">
+                    <h3>メタ情報（セット名など）</h3>
+                    <label>セットID（英数字・短め）</label><br>
+                    <input type="text" id="metaId" placeholder="ex: set01" style="width:100%; margin:6px 0 10px;">
+                    <label>タイトル</label><br>
+                    <input type="text" id="metaTitle" placeholder="ex: 中1 基本文型 練習" style="width:100%; margin:6px 0 10px;">
+                    <label>説明</label><br>
+                    <input type="text" id="metaDesc" placeholder="ex: 並び替え 20問" style="width:100%; margin:6px 0 10px;">
+                    <div class="small muted">JSON書き出し時に一緒に保存され、<span class="mono">index.json</span>の表示にも使えます。</div>
+                    <div style="margin-top:10px;">
+                        <button class="btn btn-success" id="btnExportJson" disabled>JSONを書き出す（ダウンロード）</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+                <h3>プレビュー（先頭3問を表示）</h3>
+                <div id="previewArea" class="small muted">まだ読み込まれていません。</div>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+                <h3>index.json の例（sets/index.json）</h3>
+                <pre class="small" style="white-space:pre-wrap; background:#f8f9fa; padding:10px; border-radius:6px; border:1px solid #e9ecef;">
+{
+  "datasets": [
+    { "id": "set01", "title": "中1 基本文型 練習", "desc": "並び替え 20問", "file": "set01.json" },
+    { "id": "set02", "title": "can / want to", "desc": "助動詞・不定詞", "file": "set02.json" }
+  ]
+}
+                </pre>
+                <div class="small muted">作成した JSON は <span class="mono">/sets/</span> に置き、ここに項目を追加してください。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- XLSX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+    // ====== タブ制御 ======
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.tab).classList.add('active');
+        });
+    });
+
+    // ====== 学習タブ：公開セット一覧を読み込む ======
+    const datasetSelect = document.getElementById('datasetSelect');
+    const learnOk = document.getElementById('learnOk');
+    const learnErr = document.getElementById('learnErr');
+    const progressInfo = document.getElementById('progressInfo');
+    const problemCountSpan = document.getElementById('problemCount');
+    const problemsArea = document.getElementById('problemsArea');
+
+    let problems = [];
+    let userAnswers = {};
+
+    async function loadIndex() {
+        // /sets/index.json を取得（GitHub Pages上でホストされている想定）
+        try {
+            const res = await fetch('sets/index.json', { cache: 'no-store' });
+            if (!res.ok) throw new Error('index.json が見つかりません');
+            const data = await res.json();
+            datasetSelect.innerHTML = '<option value="">（セットを選択）</option>';
+            (data.datasets || []).forEach(ds => {
+                const opt = document.createElement('option');
+                opt.value = ds.file;
+                opt.textContent = `${ds.title} - ${ds.desc || ''}`.trim();
+                opt.dataset.id = ds.id;
+                datasetSelect.appendChild(opt);
+            });
+        } catch (e) {
+            // index.json が未配置でも、ページは機能する（ローカルJSON読み込み可能）
+            learnErr.style.display = 'block';
+            learnErr.textContent = 'セット一覧を読み込めませんでした（sets/index.json が未配置の可能性）。ローカルJSON読み込みで動作確認できます。';
+        }
+    }
+    loadIndex();
+
+    // セットを読み込む（公開JSON）
+    document.getElementById('btnLoadDataset').addEventListener('click', async () => {
+        const file = datasetSelect.value;
+        if (!file) {
+            showLearnErr('セットを選択してください');
+            return;
+        }
+        try {
+            const res = await fetch(`sets/${file}`, { cache: 'no-store' });
+            if (!res.ok) throw new Error('セットJSONを取得できません');
+            const json = await res.json();
+            parseProblemsFromJson(json);
+            renderProblems();
+            showLearnOk(`「${json.title || '無題セット'}」を読み込みました（${problems.length}問）`);
+        } catch (e) {
+            showLearnErr('読み込みに失敗しました: ' + e.message);
+        }
+    });
+
+    // ローカルJSONから読み込む（公開前テスト用）
+    document.getElementById('btnLoadLocalJson').addEventListener('click', () => {
+        const input = document.getElementById('localJsonInput');
+        const file = input.files && input.files[0];
+        if (!file) { showLearnErr('JSONファイルを選択してください'); return; }
+        const reader = new FileReader();
+        reader.onload = e => {
+            try {
+                const json = JSON.parse(e.target.result);
+                parseProblemsFromJson(json);
+                renderProblems();
+                showLearnOk(`ローカルJSON「${file.name}」を読み込みました（${problems.length}問）`);
+            } catch (err) {
+                showLearnErr('JSONの解析に失敗しました: ' + err.message);
+            }
+        };
+        reader.readAsText(file, 'utf-8');
+    });
+
+    function showLearnOk(msg){ learnOk.style.display='block'; learnOk.textContent=msg; learnErr.style.display='none'; }
+    function showLearnErr(msg){ learnErr.style.display='block'; learnErr.textContent=msg; learnOk.style.display='none'; }
+
+    function parseProblemsFromJson(json){
+        problems = (json.problems || []).map((p, i) => ({
+            id: i + 1,
+            japanese: p.japanese,
+            correct: p.correct,   // ["I","like","music","."] のような配列
+            words: (p.words || []).map(w => ({
+                word: w.word, meaning: w.meaning || '', grammar: w.grammar || ''
+            }))
+        }));
+        // シャッフル
+        problems.forEach(pb => pb.words.sort(() => Math.random() - 0.5));
+    }
+
+    function renderProblems(){
+        problemsArea.innerHTML = '';
+        userAnswers = {};
+        if (!problems.length){
+            progressInfo.style.display='none';
+            return;
+        }
+        progressInfo.style.display='block';
+        problemCountSpan.textContent = problems.length;
+
+        problems.forEach(pb => problemsArea.insertAdjacentHTML('beforeend', createProblemHTML(pb)));
+        setupEventListeners();
+        // 文法ラベル強調（既存UI踏襲）
+        setTimeout(() => {
+            document.querySelectorAll('.word-grammar').forEach(el => {
+                el.style.backgroundColor = '#f1c40f';
+                el.style.color = '#333';
+                el.style.opacity = '1';
+                el.style.fontWeight = 'bold';
+            });
+        }, 50);
+    }
+
+    function createProblemHTML(problem){
+        const wordsHTML = problem.words.map(w => `
+            <div class="word-item" data-word="${w.word}" data-problem="${problem.id}">
+                <div class="word-main">${w.word}</div>
+                <div class="word-meaning">(${w.meaning})</div>
+                <div class="word-grammar">${w.grammar}</div>
+            </div>`).join('');
+
+        return `
+        <div class="problem-section">
+            <div class="problem-box">
+                <div class="problem-title">問題 ${problem.id}</div>
+                <div class="problem-instruction">下の単語をタッチして、正しい英文を作ってください。</div>
+                <div class="japanese-sentence">「${escapeHtml(problem.japanese || '')}」</div>
+            </div>
+            <div class="word-bank">
+                <div class="word-bank-title">使う単語（全部使ってください）</div>
+                <div class="words-container">${wordsHTML}</div>
+            </div>
+            <div class="answer-area">
+                <div class="answer-title">あなたの答え：</div>
+                <div class="answer-sentence" id="answerSentence${problem.id}">
+                    <span style="color:#6c757d;font-style:italic;">単語をタッチして文を作ってください</span>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="btn btn-success btn-check" data-problem="${problem.id}">答えをチェック</button>
+                <button class="btn btn-secondary btn-reset" data-problem="${problem.id}">リセット</button>
+            </div>
+            <div id="result${problem.id}" class="result"></div>
+        </div>`;
+    }
+
+    function setupEventListeners(){
+        // 単語を追加
+        document.querySelectorAll('.word-item').forEach(el => {
+            const handler = () => {
+                if (el.classList.contains('used')) return;
+                const word = el.getAttribute('data-word');
+                const pid = el.getAttribute('data-problem');
+                if (!userAnswers[pid]) userAnswers[pid] = [];
+                userAnswers[pid].push(word);
+                el.classList.add('used');
+                updateAnswerDisplay(pid);
+            };
+            el.addEventListener('click', handler);
+            el.addEventListener('touchend', (e)=>{ e.preventDefault(); handler(); }, {passive:false});
+        });
+        // 答えから削除
+        document.querySelectorAll('.answer-sentence').forEach(el => {
+            const removeHandler = (e) => {
+                if (!e.target.classList.contains('answer-word')) return;
+                const idx = parseInt(e.target.dataset.index);
+                const pid = el.id.replace('answerSentence','');
+                removeWord(idx, pid);
+            };
+            el.addEventListener('click', removeHandler);
+            el.addEventListener('touchend', (e)=>{ e.preventDefault(); removeHandler(e); }, {passive:false});
+        });
+        // チェック/リセット
+        document.querySelectorAll('.btn-check').forEach(btn => {
+            const pid = btn.getAttribute('data-problem');
+            const f = () => checkAnswer(pid);
+            btn.addEventListener('click', f);
+            btn.addEventListener('touchend', (e)=>{ e.preventDefault(); f(); }, {passive:false});
+        });
+        document.querySelectorAll('.btn-reset').forEach(btn => {
+            const pid = btn.getAttribute('data-problem');
+            const f = () => resetProblem(pid);
+            btn.addEventListener('click', f);
+            btn.addEventListener('touchend', (e)=>{ e.preventDefault(); f(); }, {passive:false});
+        });
+    }
+
+    function updateAnswerDisplay(pid){
+        const area = document.getElementById(`answerSentence${pid}`);
+        const arr = userAnswers[pid] || [];
+        if (!arr.length){
+            area.innerHTML = '<span style="color:#6c757d;font-style:italic;">単語をタッチして文を作ってください</span>';
+            return;
+        }
+        area.innerHTML = '';
+        arr.forEach((w, i) => {
+            const span = document.createElement('span');
+            span.className = 'answer-word';
+            span.textContent = w;
+            span.dataset.index = i;
+            area.appendChild(span);
+        });
+    }
+
+    function removeWord(index, pid){
+        if (!userAnswers[pid]) return;
+        const word = userAnswers[pid][index];
+        userAnswers[pid].splice(index,1);
+        document.querySelectorAll(`[data-word="${cssEscape(word)}"][data-problem="${pid}"]`).forEach(el => el.classList.remove('used'));
+        updateAnswerDisplay(pid);
+    }
+
+    function checkAnswer(pid){
+        const pb = problems.find(p => p.id == pid);
+        const user = userAnswers[pid] || [];
+        const result = document.getElementById(`result${pid}`);
+
+        if (user.length !== pb.correct.length){
+            result.className = 'result incorrect';
+            result.textContent = '単語をすべて使ってください！';
+            result.style.display = 'block';
+            return;
+        }
+        const ok = JSON.stringify(user) === JSON.stringify(pb.correct);
+        if (ok){
+            result.className = 'result correct';
+            result.innerHTML = '正解です！<br>' + escapeHtml(pb.correct.join(' '));
+        } else {
+            result.className = 'result incorrect';
+            result.innerHTML = 'もう一度挑戦してみてください！<div class="correct-answer">正解: ' + escapeHtml(pb.correct.join(' ')) + '</div>';
+        }
+        result.style.display = 'block';
+    }
+
+    function resetProblem(pid){
+        userAnswers[pid] = [];
+        document.querySelectorAll(`[data-problem="${pid}"].word-item`).forEach(el => el.classList.remove('used'));
+        updateAnswerDisplay(pid);
+        const result = document.getElementById(`result${pid}`);
+        if (result) result.style.display = 'none';
+    }
+
+    // ====== 管理タブ：Excel→JSON 変換・プレビュー・書き出し ======
+    const excelInput = document.getElementById('excelInput');
+    const btnParseExcel = document.getElementById('btnParseExcel');
+    const btnExportJson = document.getElementById('btnExportJson');
+    const adminErr = document.getElementById('adminErr');
+    const adminOk = document.getElementById('adminOk');
+    const previewArea = document.getElementById('previewArea');
+    const metaId = document.getElementById('metaId');
+    const metaTitle = document.getElementById('metaTitle');
+    const metaDesc = document.getElementById('metaDesc');
+
+    let adminProblems = [];
+
+    btnParseExcel.addEventListener('click', () => {
+        const file = excelInput.files && excelInput.files[0];
+        if (!file){ showAdminErr('Excelファイルを選択してください'); return; }
+        const reader = new FileReader();
+        reader.onload = e => {
+            try {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type:'array' });
+                const ws = workbook.Sheets[workbook.SheetNames[0]];
+                const json = XLSX.utils.sheet_to_json(ws);
+                adminProblems = parseExcelRows(json);
+                showAdminOk(`読み込み完了：${adminProblems.length}問`);
+                renderPreview(adminProblems);
+                btnExportJson.disabled = adminProblems.length === 0;
+            } catch(err){
+                showAdminErr('読み込み失敗：' + err.message);
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    });
+
+    function parseExcelRows(rows){
+        const ret = [];
+        rows.forEach(row => {
+            if (!row['日本語'] || !row['正解']) return;
+            const p = {
+                japanese: String(row['日本語']),
+                correct: String(row['正解']).split(' '),
+                words: []
+            };
+            let i = 1;
+            while (row[`単語${i}`]){
+                p.words.push({
+                    word: String(row[`単語${i}`]),
+                    meaning: String(row[`意味${i}`] || ''),
+                    grammar: String(row[`文法${i}`] || '')
+                });
+                i++;
+            }
+            ret.push(p);
+        });
+        return ret;
+    }
+
+    function renderPreview(list){
+        if (!list.length){ previewArea.textContent = 'まだ読み込まれていません。'; return; }
+        const head = document.createElement('div');
+        head.innerHTML = `<div class="small">先頭3問を表示（合計 ${list.length} 問）</div>`;
+        const ol = document.createElement('ol');
+        ol.style.marginTop = '6px';
+        list.slice(0,3).forEach(p => {
+            const li = document.createElement('li');
+            li.innerHTML = `<div><strong>和文:</strong> ${escapeHtml(p.japanese)}</div>
+                            <div><strong>正解:</strong> <span class="mono">${escapeHtml(p.correct.join(' '))}</span></div>`;
+            ol.appendChild(li);
+        });
+        previewArea.innerHTML = '';
+        previewArea.appendChild(head);
+        previewArea.appendChild(ol);
+    }
+
+    btnExportJson.addEventListener('click', () => {
+        if (!metaId.value.trim()){ showAdminErr('セットIDを入力してください'); return; }
+        if (!metaTitle.value.trim()){ showAdminErr('タイトルを入力してください'); return; }
+        const payload = {
+            id: metaId.value.trim(),
+            title: metaTitle.value.trim(),
+            desc: metaDesc.value.trim(),
+            problems: adminProblems
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${payload.id}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showAdminOk(`JSONを書き出しました：${payload.id}.json を /sets/ に追加し、index.json に追記してください。`);
+    });
+
+    function showAdminErr(msg){ adminErr.style.display='block'; adminErr.textContent=msg; adminOk.style.display='none'; }
+    function showAdminOk(msg){ adminOk.style.display='block'; adminOk.textContent=msg; adminErr.style.display='none'; }
+
+    // ====== Utils ======
+    function escapeHtml(str){
+        return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+    }
+    // CSS.escape polyfill-ish for attribute selectors
+    function cssEscape(str){
+        return String(str).replace(/["\\]/g, '\\$&');
+    }
+    </script>
+</body>
+</html>
