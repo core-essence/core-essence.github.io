@@ -286,6 +286,7 @@
         .hint-section {
             text-align: center;
             margin: 20px 0;
+            min-height: 60px;
         }
 
         .hint-label {
@@ -295,10 +296,20 @@
         }
 
         .hint-text {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 600;
-            color: #7f8c8d;
-            font-family: monospace;
+            color: #2c3e50;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .hint-underscore {
+            color: #bbb;
         }
 
         .answer-input {
@@ -373,6 +384,13 @@
         .hidden {
             display: none !important;
         }
+
+        .hint-info {
+            font-size: 12px;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -429,10 +447,10 @@
                         </div>
                         
                         <div class="setting-item">
-                            <label>ヒント表示</label>
+                            <label>ヒント表示（0%で非表示、100%で全文字表示）</label>
                             <div class="setting-controls">
-                                <input type="range" id="hintSlider" class="hint-slider" min="0" max="100" value="40" onchange="updateHintValue()">
-                                <span id="hintValue" class="hint-value">40%</span>
+                                <input type="range" id="hintSlider" class="hint-slider" min="0" max="100" value="30" step="10" onchange="updateHintValue()">
+                                <span id="hintValue" class="hint-value">30%</span>
                             </div>
                         </div>
                     </div>
@@ -458,9 +476,10 @@
                     <div class="hint-section">
                         <div class="hint-label">ヒント</div>
                         <div class="hint-text" id="hintText"></div>
+                        <div class="hint-info" id="hintInfo"></div>
                     </div>
 
-                    <input type="text" id="answerInput" class="answer-input" placeholder="英語を入力してください" autocomplete="off">
+                    <input type="text" id="answerInput" class="answer-input" placeholder="英単語を入力" autocomplete="off">
 
                     <div id="resultMessage" class="result-message hidden"></div>
 
@@ -503,7 +522,7 @@
         let loadedCollections = {};
         let currentCollection = null;
         let currentQuiz = null;
-        let hintPercentage = 40;
+        let hintPercentage = 30;
         let studyOrder = 'random';
 
         // ページ読み込み時の初期化
@@ -778,11 +797,39 @@
         function updateHintDisplay() {
             if (!currentQuiz.currentWord) return;
             
-            const english = currentQuiz.currentWord.english.toLowerCase();
-            const hintLength = Math.max(1, Math.floor(english.length * hintPercentage / 100));
-            const hint = english.substring(0, hintLength);
+            const english = currentQuiz.currentWord.english;
+            const totalLength = english.length;
             
-            document.getElementById('hintText').textContent = hint;
+            if (hintPercentage === 0) {
+                // ヒント非表示
+                document.getElementById('hintText').textContent = '_ _ _';
+                document.getElementById('hintInfo').textContent = `(${totalLength}文字)`;
+            } else if (hintPercentage === 100) {
+                // 全文字表示
+                document.getElementById('hintText').textContent = english;
+                document.getElementById('hintInfo').textContent = '';
+            } else {
+                // 部分表示
+                const showLength = Math.max(1, Math.floor(totalLength * hintPercentage / 100));
+                const hiddenLength = totalLength - showLength;
+                
+                // 表示部分と隠し部分を構築
+                let hintDisplay = '';
+                for (let i = 0; i < totalLength; i++) {
+                    if (i < showLength) {
+                        hintDisplay += english[i];
+                    } else {
+                        hintDisplay += '_';
+                    }
+                    // 文字間にスペースを追加（最後の文字以外）
+                    if (i < totalLength - 1) {
+                        hintDisplay += ' ';
+                    }
+                }
+                
+                document.getElementById('hintText').textContent = hintDisplay;
+                document.getElementById('hintInfo').textContent = `(残り${hiddenLength}文字)`;
+            }
         }
 
         // 答え合わせ
@@ -846,3 +893,4 @@
     </script>
 </body>
 </html>
+            
