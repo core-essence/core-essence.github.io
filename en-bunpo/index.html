@@ -175,20 +175,10 @@
         }
 
         .setting-item {
-            margin-bottom: 15px;
-        }
-
-        .setting-item label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .setting-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 10px;
         }
 
         .hint-slider {
@@ -200,14 +190,6 @@
             color: #2c3e50;
             min-width: 40px;
             text-align: right;
-        }
-
-        .order-select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
         }
 
         /* クイズ画面 */
@@ -242,51 +224,15 @@
             font-weight: 600;
             color: #2c3e50;
             text-align: center;
-            margin: 30px 0 10px;
+            margin: 30px 0;
             padding: 20px;
             background: #f5f5f5;
             border-radius: 6px;
         }
 
-        .word-type {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .word-type-badge {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .word-type-badge.noun {
-            background: #e74c3c;
-        }
-
-        .word-type-badge.verb {
-            background: #3498db;
-        }
-
-        .word-type-badge.adjective {
-            background: #f39c12;
-        }
-
-        .word-type-badge.adverb {
-            background: #9b59b6;
-        }
-
-        .word-type-badge.other {
-            background: #95a5a6;
-        }
-
         .hint-section {
             text-align: center;
             margin: 20px 0;
-            min-height: 60px;
         }
 
         .hint-label {
@@ -296,20 +242,10 @@
         }
 
         .hint-text {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 600;
-            color: #2c3e50;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 3px;
-            padding: 10px;
-            background: #f0f0f0;
-            border-radius: 4px;
-            display: inline-block;
-            min-width: 100px;
-        }
-
-        .hint-underscore {
-            color: #bbb;
+            color: #7f8c8d;
+            font-family: monospace;
         }
 
         .answer-input {
@@ -384,13 +320,6 @@
         .hidden {
             display: none !important;
         }
-
-        .hint-info {
-            font-size: 12px;
-            color: #7f8c8d;
-            text-align: center;
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
@@ -410,9 +339,6 @@
                 <div class="refresh-section">
                     <h3>単語帳リスト</h3>
                     <p style="color: #666; margin: 10px 0;">GitHub上のエクセルファイルから単語帳を読み込みます</p>
-                    <p style="color: #e74c3c; font-size: 14px; margin: 10px 0;">
-                        ※エクセル形式: A列=日本語、B列=英語、C列=品詞（名詞/動詞/形容詞/副詞など）
-                    </p>
                     <button class="btn" onclick="loadVocabularyList()">リストを更新</button>
                 </div>
 
@@ -435,22 +361,12 @@
                     </div>
 
                     <div class="settings-section">
-                        <h4>学習設定</h4>
-                        
+                        <h4>設定</h4>
                         <div class="setting-item">
-                            <label>学習順序</label>
-                            <select id="orderSelect" class="order-select">
-                                <option value="random">ランダム</option>
-                                <option value="original">元の順序</option>
-                                <option value="wordType">品詞別（名詞→動詞→形容詞→副詞→その他）</option>
-                            </select>
-                        </div>
-                        
-                        <div class="setting-item">
-                            <label>ヒント表示（0%で非表示、100%で全文字表示）</label>
-                            <div class="setting-controls">
-                                <input type="range" id="hintSlider" class="hint-slider" min="0" max="100" value="30" step="10" onchange="updateHintValue()">
-                                <span id="hintValue" class="hint-value">30%</span>
+                            <span>ヒント表示</span>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="range" id="hintSlider" class="hint-slider" min="0" max="100" value="40" onchange="updateHintValue()">
+                                <span id="hintValue" class="hint-value">40%</span>
                             </div>
                         </div>
                     </div>
@@ -470,22 +386,29 @@
                     </div>
 
                     <div class="japanese-word" id="questionText"></div>
-                    
-                    <div class="word-type" id="wordTypeDisplay"></div>
 
                     <div class="hint-section">
                         <div class="hint-label">ヒント</div>
                         <div class="hint-text" id="hintText"></div>
-                        <div class="hint-info" id="hintInfo"></div>
                     </div>
 
-                    <input type="text" id="answerInput" class="answer-input" placeholder="英単語を入力" autocomplete="off">
+                    <input type="text" id="answerInput" class="answer-input" placeholder="英語を入力してください" autocomplete="off">
 
                     <div id="resultMessage" class="result-message hidden"></div>
 
                     <div class="quiz-actions">
                         <button id="checkBtn" class="btn" onclick="checkAnswer()">答え合わせ</button>
                         <button id="nextBtn" class="btn hidden" onclick="nextQuestion()">次へ</button>
+                    </div>
+
+                    <div class="settings-section">
+                        <div class="setting-item">
+                            <span>ヒント表示</span>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="range" id="hintSliderQuiz" class="hint-slider" min="0" max="100" value="40" onchange="updateHintValueQuiz()">
+                                <span id="hintValueQuiz" class="hint-value">40%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -522,8 +445,7 @@
         let loadedCollections = {};
         let currentCollection = null;
         let currentQuiz = null;
-        let hintPercentage = 30;
-        let studyOrder = 'random';
+        let hintPercentage = 40;
 
         // ページ読み込み時の初期化
         document.addEventListener('DOMContentLoaded', function() {
@@ -619,7 +541,7 @@
                 const workbook = XLSX.read(data, { type: 'array' });
                 const sheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[sheetName];
-                const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: ['japanese', 'english', 'wordType'] });
+                const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: ['japanese', 'english'] });
 
                 // 空行を除去
                 const words = jsonData.filter(row => row.japanese && row.english);
@@ -669,10 +591,21 @@
             hintPercentage = parseInt(slider.value);
         }
 
+        function updateHintValueQuiz() {
+            const slider = document.getElementById('hintSliderQuiz');
+            const value = document.getElementById('hintValueQuiz');
+            value.textContent = slider.value + '%';
+            hintPercentage = parseInt(slider.value);
+            
+            // 現在の問題のヒントを更新
+            if (currentQuiz && currentQuiz.currentWord) {
+                updateHintDisplay();
+            }
+        }
+
         // 学習開始
         function startStudy() {
             const selectedFile = document.getElementById('studyCollectionSelect').value;
-            studyOrder = document.getElementById('orderSelect').value;
             
             if (!selectedFile) {
                 alert('単語帳を選択してください');
@@ -689,48 +622,31 @@
             showQuizScreen();
         }
 
-        // 品詞の順序を定義
-        const wordTypeOrder = {
-            '名詞': 1,
-            'noun': 1,
-            '動詞': 2,
-            'verb': 2,
-            '形容詞': 3,
-            'adjective': 3,
-            '副詞': 4,
-            'adverb': 4,
-            'その他': 5,
-            'other': 5
-        };
-
         // クイズの初期化
         function initializeQuiz() {
             const words = [...currentCollection.words];
             
-            // 学習順序に応じて並び替え
-            if (studyOrder === 'random') {
-                // ランダムに並び替え
-                for (let i = words.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [words[i], words[j]] = [words[j], words[i]];
-                }
-            } else if (studyOrder === 'wordType') {
-                // 品詞別に並び替え
-                words.sort((a, b) => {
-                    const aOrder = wordTypeOrder[a.wordType] || 999;
-                    const bOrder = wordTypeOrder[b.wordType] || 999;
-                    return aOrder - bOrder;
-                });
+            // ランダムに並び替え
+            for (let i = words.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [words[i], words[j]] = [words[j], words[i]];
             }
-            // 'original'の場合は元の順序のまま
 
             currentQuiz = {
                 words: words,
                 currentIndex: 0,
                 correctCount: 0,
                 answeredCount: 0,
-                currentWord: null
+                currentWord: null,
+                groupA: [], // 不正解の多い単語
+                groupB: [], // 1回正解済み
+                groupC: [], // B→不正解で逆戻り
+                groupD: []  // 習得済み
             };
+
+            // クイズスライダーを選択画面の値に同期
+            document.getElementById('hintSliderQuiz').value = hintPercentage;
+            document.getElementById('hintValueQuiz').textContent = hintPercentage + '%';
 
             nextQuestion();
         }
@@ -740,17 +656,6 @@
             document.getElementById('studySelect').classList.add('hidden');
             document.getElementById('studyQuiz').classList.remove('hidden');
             document.getElementById('studyResults').classList.add('hidden');
-        }
-
-        // 品詞バッジのクラスを取得
-        function getWordTypeClass(wordType) {
-            if (!wordType) return 'other';
-            const type = wordType.toLowerCase();
-            if (type.includes('名詞') || type.includes('noun')) return 'noun';
-            if (type.includes('動詞') || type.includes('verb')) return 'verb';
-            if (type.includes('形容詞') || type.includes('adjective')) return 'adjective';
-            if (type.includes('副詞') || type.includes('adverb')) return 'adverb';
-            return 'other';
         }
 
         // 次の問題
@@ -768,12 +673,6 @@
             document.getElementById('totalQ').textContent = currentQuiz.words.length;
             document.getElementById('correctCount').textContent = currentQuiz.correctCount;
             document.getElementById('answeredCount').textContent = currentQuiz.answeredCount;
-            
-            // 品詞表示
-            const wordTypeDisplay = document.getElementById('wordTypeDisplay');
-            const wordType = currentQuiz.currentWord.wordType || 'その他';
-            const wordTypeClass = getWordTypeClass(wordType);
-            wordTypeDisplay.innerHTML = `<span class="word-type-badge ${wordTypeClass}">${wordType}</span>`;
             
             // プログレスバー
             const progress = (currentQuiz.currentIndex / currentQuiz.words.length) * 100;
@@ -797,39 +696,11 @@
         function updateHintDisplay() {
             if (!currentQuiz.currentWord) return;
             
-            const english = currentQuiz.currentWord.english;
-            const totalLength = english.length;
+            const english = currentQuiz.currentWord.english.toLowerCase();
+            const hintLength = Math.max(1, Math.floor(english.length * hintPercentage / 100));
+            const hint = english.substring(0, hintLength);
             
-            if (hintPercentage === 0) {
-                // ヒント非表示
-                document.getElementById('hintText').textContent = '_ _ _';
-                document.getElementById('hintInfo').textContent = `(${totalLength}文字)`;
-            } else if (hintPercentage === 100) {
-                // 全文字表示
-                document.getElementById('hintText').textContent = english;
-                document.getElementById('hintInfo').textContent = '';
-            } else {
-                // 部分表示
-                const showLength = Math.max(1, Math.floor(totalLength * hintPercentage / 100));
-                const hiddenLength = totalLength - showLength;
-                
-                // 表示部分と隠し部分を構築
-                let hintDisplay = '';
-                for (let i = 0; i < totalLength; i++) {
-                    if (i < showLength) {
-                        hintDisplay += english[i];
-                    } else {
-                        hintDisplay += '_';
-                    }
-                    // 文字間にスペースを追加（最後の文字以外）
-                    if (i < totalLength - 1) {
-                        hintDisplay += ' ';
-                    }
-                }
-                
-                document.getElementById('hintText').textContent = hintDisplay;
-                document.getElementById('hintInfo').textContent = `(残り${hiddenLength}文字)`;
-            }
+            document.getElementById('hintText').textContent = hint;
         }
 
         // 答え合わせ
@@ -893,4 +764,3 @@
     </script>
 </body>
 </html>
-            
