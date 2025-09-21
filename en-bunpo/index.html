@@ -230,6 +230,41 @@
             border-radius: 6px;
         }
 
+        .word-type {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .word-type-badge {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .word-type-badge.noun {
+            background: #e74c3c;
+        }
+
+        .word-type-badge.verb {
+            background: #3498db;
+        }
+
+        .word-type-badge.adjective {
+            background: #f39c12;
+        }
+
+        .word-type-badge.adverb {
+            background: #9b59b6;
+        }
+
+        .word-type-badge.other {
+            background: #95a5a6;
+        }
+
         .hint-section {
             text-align: center;
             margin: 20px 0;
@@ -242,10 +277,17 @@
         }
 
         .hint-text {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 600;
-            color: #7f8c8d;
-            font-family: monospace;
+            color: #2c3e50;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            background: #f0f0f0;
+            padding: 10px 20px;
+            border-radius: 6px;
+            display: inline-block;
+            min-width: 150px;
+            border: 2px solid #ddd;
         }
 
         .answer-input {
@@ -339,6 +381,9 @@
                 <div class="refresh-section">
                     <h3>単語帳リスト</h3>
                     <p style="color: #666; margin: 10px 0;">GitHub上のエクセルファイルから単語帳を読み込みます</p>
+                    <p style="color: #e74c3c; font-size: 14px; margin: 10px 0;">
+                        ※エクセル形式: A列=日本語、B列=英語、C列=品詞（名詞/動詞/形容詞/副詞など）
+                    </p>
                     <button class="btn" onclick="loadVocabularyList()">リストを更新</button>
                 </div>
 
@@ -386,6 +431,8 @@
                     </div>
 
                     <div class="japanese-word" id="questionText"></div>
+
+                    <div class="word-type" id="wordTypeDisplay"></div>
 
                     <div class="hint-section">
                         <div class="hint-label">ヒント</div>
@@ -541,7 +588,7 @@
                 const workbook = XLSX.read(data, { type: 'array' });
                 const sheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[sheetName];
-                const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: ['japanese', 'english'] });
+                const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: ['japanese', 'english', 'wordType'] });
 
                 // 空行を除去
                 const words = jsonData.filter(row => row.japanese && row.english);
@@ -622,6 +669,17 @@
             showQuizScreen();
         }
 
+        // 品詞のクラスを取得
+        function getWordTypeClass(wordType) {
+            if (!wordType) return 'other';
+            const type = wordType.toLowerCase();
+            if (type.includes('名詞') || type.includes('noun')) return 'noun';
+            if (type.includes('動詞') || type.includes('verb')) return 'verb';
+            if (type.includes('形容詞') || type.includes('adjective')) return 'adjective';
+            if (type.includes('副詞') || type.includes('adverb')) return 'adverb';
+            return 'other';
+        }
+
         // クイズの初期化
         function initializeQuiz() {
             const words = [...currentCollection.words];
@@ -637,11 +695,7 @@
                 currentIndex: 0,
                 correctCount: 0,
                 answeredCount: 0,
-                currentWord: null,
-                groupA: [], // 不正解の多い単語
-                groupB: [], // 1回正解済み
-                groupC: [], // B→不正解で逆戻り
-                groupD: []  // 習得済み
+                currentWord: null
             };
 
             // クイズスライダーを選択画面の値に同期
@@ -674,6 +728,17 @@
             document.getElementById('correctCount').textContent = currentQuiz.correctCount;
             document.getElementById('answeredCount').textContent = currentQuiz.answeredCount;
             
+            // 品詞表示
+            const wordTypeDisplay = document.getElementById('wordTypeDisplay');
+            if (currentQuiz.currentWord.wordType) {
+                const wordType = currentQuiz.currentWord.wordType;
+                const wordTypeClass = getWordTypeClass(wordType);
+                wordTypeDisplay.innerHTML = `<span class="word-type-badge ${wordTypeClass}">${wordType}</span>`;
+                wordTypeDisplay.style.display = 'block';
+            } else {
+                wordTypeDisplay.style.display = 'none';
+            }
+            
             // プログレスバー
             const progress = (currentQuiz.currentIndex / currentQuiz.words.length) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
@@ -692,15 +757,23 @@
             document.getElementById('resultMessage').classList.add('hidden');
         }
 
-        // ヒント表示更新
+        // ヒント表示更新（元のシンプルな実装）
         function updateHintDisplay() {
             if (!currentQuiz.currentWord) return;
             
-            const english = currentQuiz.currentWord.english.toLowerCase();
-            const hintLength = Math.max(1, Math.floor(english.length * hintPercentage / 100));
-            const hint = english.substring(0, hintLength);
+            const english = currentQuiz.currentWord.english;
             
-            document.getElementById('hintText').textContent = hint;
+            if (hintPercentage === 0) {
+                // ヒントなし
+                const underscores = '_'.repeat(english.length);
+                document.getElementById('hintText').textContent = underscores;
+            } else {
+                // 指定されたパーセンテージ分表示
+                const hintLength = Math.ceil(english.length * hintPercentage / 100);
+                const visiblePart = english.substring(0, hintLength);
+                const hiddenPart = '_'.repeat(english.length - hintLength);
+                document.getElementById('hintText').textContent = visiblePart + hiddenPart;
+            }
         }
 
         // 答え合わせ
