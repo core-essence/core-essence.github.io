@@ -408,6 +408,14 @@
                     <div class="settings-section">
                         <h4>設定</h4>
                         <div class="setting-item">
+                            <span>学習順序</span>
+                            <select id="orderSelect" style="width: 150px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                                <option value="random">ランダム</option>
+                                <option value="original">元の順序</option>
+                                <option value="wordType">品詞別</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
                             <span>ヒント表示</span>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <input type="range" id="hintSlider" class="hint-slider" min="0" max="100" value="40" onchange="updateHintValue()">
@@ -493,6 +501,7 @@
         let currentCollection = null;
         let currentQuiz = null;
         let hintPercentage = 40;
+        let studyOrder = 'random';  // 学習順序を追加
 
         // ページ読み込み時の初期化
         document.addEventListener('DOMContentLoaded', function() {
@@ -653,6 +662,7 @@
         // 学習開始
         function startStudy() {
             const selectedFile = document.getElementById('studyCollectionSelect').value;
+            studyOrder = document.getElementById('orderSelect').value;  // 順序設定を取得
             
             if (!selectedFile) {
                 alert('単語帳を選択してください');
@@ -669,7 +679,7 @@
             showQuizScreen();
         }
 
-        // 品詞のクラスを取得
+        // 品詞のクラスを取得（関数を追加）
         function getWordTypeClass(wordType) {
             if (!wordType) return 'other';
             const type = wordType.toLowerCase();
@@ -680,15 +690,40 @@
             return 'other';
         }
 
+        // 品詞の順序を定義
+        const wordTypeOrder = {
+            '名詞': 1,
+            'noun': 1,
+            '動詞': 2,
+            'verb': 2,
+            '形容詞': 3,
+            'adjective': 3,
+            '副詞': 4,
+            'adverb': 4,
+            'その他': 5,
+            'other': 5
+        };
+
         // クイズの初期化
         function initializeQuiz() {
             const words = [...currentCollection.words];
             
-            // ランダムに並び替え
-            for (let i = words.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [words[i], words[j]] = [words[j], words[i]];
+            // 学習順序に応じて並び替え
+            if (studyOrder === 'random') {
+                // ランダムに並び替え
+                for (let i = words.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [words[i], words[j]] = [words[j], words[i]];
+                }
+            } else if (studyOrder === 'wordType') {
+                // 品詞別に並び替え
+                words.sort((a, b) => {
+                    const aOrder = wordTypeOrder[a.wordType] || 999;
+                    const bOrder = wordTypeOrder[b.wordType] || 999;
+                    return aOrder - bOrder;
+                });
             }
+            // 'original'の場合は元の順序のまま
 
             currentQuiz = {
                 words: words,
